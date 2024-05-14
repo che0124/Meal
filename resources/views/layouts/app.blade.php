@@ -16,10 +16,8 @@
     <div id="app">
         <div class="navbar">
             <div class="nav-brand">
-                <a class="nav-link-brand" href="{{ url('/') }}">
-                    <span class="nav-title">Meal</span>
-                </a>
             </div>
+            <img src="http://localhost:8080/Meal/resources/views/layouts/meal.svg" alt="標題" height="80px" width="200px" />
             <div class="nav-item-list">
                 <div class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">

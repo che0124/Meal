@@ -4,9 +4,10 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #88641e;
+    background-color: #e4d4b4;
     font-family: "Noto Sans TC", sans-serif;
 }
+
 
 #id{
     display: flex;
@@ -19,7 +20,7 @@ html, body {
     left: 0;
     width: 224px;
     height: 100vh;
-    border-right: 1px solid #ff8c1a;
+    border-right: 1px solid #3f2a15;
     padding: 10px;
 }
 
