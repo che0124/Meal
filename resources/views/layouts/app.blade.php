@@ -17,7 +17,7 @@
         <div class="navbar">
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
-                    <span class="nav-title">{{ config('app.name', 'Laravel') }}</span>
+                    <span class="nav-title">Meal</span>
                 </a>
             </div>
             <div class="nav-item-list">
