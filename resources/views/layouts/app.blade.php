@@ -43,7 +43,7 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="#">
-                        <span class="nav-title">通知</span>
+                        <span class="nav-title">notify</span>
                     </a>
                 </div>
                 <div class="nav-item">
