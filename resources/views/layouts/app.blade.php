@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,21 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    @vite(['resources/css/app.css']) 
+    @vite(['resources/css/app.css'])
 </head>
+
 <body>
+
+
     <div id="app">
         <div class="navbar">
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
-                    <span class="nav-title">{{ config('app.name', 'Laravel') }}</span>
+                    <img src="img1.svg" alt="meal">
+                    
                 </a>
             </div>
             <div class="nav-item-list">
@@ -53,10 +58,11 @@
                 </div>
             </div>
         </div>
-        
+
         <main>
             @yield('content')
         </main>
     </div>
 </body>
+
 </html>

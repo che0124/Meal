@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #ffeac1;
+    background-color:#f9ecdc;
     font-family: "Noto Sans TC", sans-serif;
 }
 
@@ -19,7 +19,7 @@ html, body {
     left: 0;
     width: 224px;
     height: 100vh;
-    border-right: 1px solid #ff8c1a;
+    border-right: 1.5px solid #b57331;
     padding: 10px;
 }
 
@@ -47,9 +47,18 @@ div.nav-item-list{
     color: black;
 }
 
+    
+/* .nav-link-brand{ 
+    background-image: url(meal.svg);
+}*/
 /* content */
 .container{
     height: 100%;
-    margin-left: 244px;
-    padding: 30px 50px 0;
+    margin-left: 600px;
+    padding: 30px 50px 30px;
+   
+    border-top: 1px solid black;     /*  上方邊框  */
+    border-bottom: 1px solid black;  /*  下方邊框  */
+    border-left: 1px solid black;    /*  左方邊框  */
+    border-right: 1px solid black; 
 }
