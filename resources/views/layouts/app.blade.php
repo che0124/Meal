@@ -21,7 +21,7 @@
         <div class="navbar">
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
-                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題" height="60px" width="150px" />
+                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題" height="40px" width="100px" />
                 </a>
             </div>
             
@@ -53,7 +53,7 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('{name}', ['name' => $user->name ?? 'None']) }}">
-                        <span>個人檔案</span>
+                        <span class="nav-title">個人檔案</span>
                     </a>
                 </div>
             </div>
