@@ -10,6 +10,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('/surprise', [App\Http\Controllers\SurpriseController::class, 'surprise'])->name('surprise');
 Route::get('/join', [App\Http\Controllers\JoinController::class, 'join'])->name('join');
 Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
