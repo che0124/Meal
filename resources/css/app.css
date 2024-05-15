@@ -37,6 +37,9 @@ html, body {
 div.nav-item-list{
     width: 200px;
 }
+.nav-title{
+    font-weight: 500;
+}
 
 .nav-link:hover {
     background-color: #FFEBCD;
@@ -168,4 +171,14 @@ div.nav-item-list{
     height: 100%;
     margin-left: 244px;
     padding: 30px 50px 30px;
+}
+
+.page-title{
+    color:#63310e;
+    font-weight: 500;
+}
+
+.page-label{
+    font-size: 25px;
+    margin: 4px 0;
 }
