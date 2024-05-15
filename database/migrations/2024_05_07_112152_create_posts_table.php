@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('restaurant', 25);
             $table->string('time', 25);
-            $table->string('content', 255);
+            $table->string('content', 255)->nullable();
             $table->timestamps();
         });
     }
