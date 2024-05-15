@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +20,8 @@
     <div id="app">
         <div class="navbar">
             <div class="nav-brand">
-                <a class="nav-link-brand" href="{{ url('/') }}">
-                    <img src="http://localhost:8080/Meal/resources/views/layouts/meal.svg" alt="標題" height="80px" width="200px" />
+                <a class="nav-brand-link" href="{{ url('/') }}">
+                    <img src="http://localhost:8080/Meal/resources/views/layouts/meal.svg" alt="logo" height="80px" width="200px />
                 </a>
             </div>
             
