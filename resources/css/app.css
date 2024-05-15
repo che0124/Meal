@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #88641e;
+    background-color: #FFFAF0;
     font-family: "Noto Sans TC", sans-serif;
 }
 
@@ -19,7 +19,7 @@ html, body {
     left: 0;
     width: 224px;
     height: 100vh;
-    border-right: 1px solid #ff8c1a;
+    border-right: 1px solid #ff8d1a9c;
     padding: 10px;
 }
 
