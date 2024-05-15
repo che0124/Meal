@@ -22,7 +22,7 @@
         <div class="navbar">
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
-                    <img src="http://localhost:8080/Meal/resources/views/layouts/meal.svg" alt="標題" height="80px" width="200px" />
+                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題" height="60px" width="150px" />
                 </a>
             </div>
             
@@ -49,7 +49,7 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="#">
-                        <span class="nav-title">notify</span>
+                        <span class="nav-title">通知</span>
                     </a>
                 </div>
                 <div class="nav-item">

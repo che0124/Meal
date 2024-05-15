@@ -48,6 +48,10 @@ div.nav-item-list{
     color: black;
 }
 
+.nav-link-brand img{
+    top: 0;
+}
+
     
 /* .nav-link-brand{ 
     background-image: url(meal.svg);
