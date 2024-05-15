@@ -4,9 +4,10 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #88641e;
+    background-color: #e4d4b4;
     font-family: "Noto Sans TC", sans-serif;
 }
+
 
 #id{
     display: flex;
