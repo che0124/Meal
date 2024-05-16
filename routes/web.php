@@ -19,7 +19,7 @@ Route::get('/event', [App\Http\Controllers\UserController::class, 'show'])->name
 
 
 Route::get('/test', function(){
-    return session()->all();
+    return view('home');
 });
 
 
