@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="{{ route('join') }}">
+                    <a class="nav-link" href="{{ route('posts.index') }}">
                         <span class="nav-title">我要假奔</span>
                     </a>
                 </div>
