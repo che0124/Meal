@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #fffcf5;
+    background-color: #fff5f5;
     font-family: "Noto Sans TC", sans-serif;
 }
 
@@ -181,3 +181,4 @@ div.nav-item-list{
     font-size: 25px;
     margin: 4px 0;
 }
+/**/

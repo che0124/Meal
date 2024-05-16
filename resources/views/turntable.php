@@ -2,10 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h1 class="page-title">驚喜包</h1>
+    <h1 class="nav-item">轉盤</h1>
 
-   
+    <!doctype html>
+    <html>
+
     <head>
+        <meta charset="utf-8" />
         <title>驚喜包轉盤</title>
         <style>
             * {
@@ -127,7 +130,7 @@
                 background: #fff;
                 border: 1px solid #dfd8be;
                 border-radius: 50%;
-                transform: rotate(72deg);
+                transform: rotate(90deg);
             }
 
             .turntable-wrap .turntable .bg li {
@@ -140,14 +143,13 @@
                 height: 100%;
                 background: #dfd8be;
                 transform-origin: center center;
-                /*transform: rotate(36deg);*/
             }
 
             .turntable-wrap .turntable .gift {
                 position: relative;
                 width: 100%;
                 height: 100%;
-                transform: rotate(63deg);
+                transform: rotate(45deg);
             }
 
             .turntable-wrap .turntable .gift li {
@@ -170,7 +172,7 @@
                 height: 70px;
                 margin: auto;
                 background: yellow;
-                transform: rotate(-60deg);
+                transform: rotate(-45deg);
                 text-align: center;
                 line-height: 80px;
                 border-radius: 5px;
@@ -244,7 +246,7 @@
 
         <script>
             let turntable = {
-                itemNum: 10, // 轉盤平均分幾塊
+                itemNum: 6, // 轉盤平均分幾塊
 
                 lightNum: 18, // 燈
                 light: null, // 燈容器
@@ -259,8 +261,8 @@
 
                 lottery: [], // 中獎
 
-                typeMap: { 1: '1', 2: '2',  3: '3' , 4: '4' , 5: '5' , 6: '6' , 7: '7' , 8: '8' , 9: '9', 10: '10' },
-                typeClassMap: { 1: 'no-gift', 2: 'no-gift' ,  3: 'no-gift' , 4: 'no-gift' , 5: 'no-gift' , 6: 'no-gift' , 7: 'no-gift' , 8: 'no-gift' , 9: 'no-gift', 10: 'no-gift'  },
+                typeMap: { 1: '¥', 2: '謝謝參與' },
+                typeClassMap: { 1: '', 2: 'no-gift' },
 
                 isGoing: false, // 遊戲是否開始
 
@@ -311,7 +313,7 @@
                     }
                     this.isGoing = true;
 
-                    // 隨機中獎結果
+                    // 1. 隨機中獎結果
                     // 1-100隨機數
                     let randomRate = ~~(Math.random() * 100) // ~~ == Math.floor()
                     // 中獎概率範圍
@@ -327,7 +329,7 @@
                     })[0];
                     
 
-                    // 轉五圈，轉1圈用時1s
+                    // 2. 轉五圈，轉1圈用時1s
                     let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length); 
                     let rotate = rotateItemDeg + 5 * 360;
                     let rotateSpeed = (rotateItemDeg / 360 * 1 + 5).toFixed(2);
@@ -351,21 +353,17 @@
                 {
                     location: 1, // 位置
                     type: 1, // 中獎
-                    rate: 10,
+                    rate: 30,
                 },
                 {
                     location: 2,
                     type: 2, // 未中獎
-                    rate: 10
+                    rate: 20
                 },
-                { location: 3, type: 3, rate: 10 },
-                { location: 4, type: 4, rate: 10 },
-                { location: 5, type: 5, rate: 10 },
-                { location: 6, type: 6, rate: 10 },
-                { location: 7, type: 7, rate: 10 },
-                { location: 8, type: 8, rate: 10 },
-                { location: 9, type: 9, rate: 10 },
-                { location: 10, type: 10, rate: 10 }
+                { location: 3, type: 1, rate: 10 },
+                { location: 4, type: 2, rate: 20 },
+                { location: 5, type: 1, rate: 10 },
+                { location: 6, type: 2, rate: 10 }
             ];
 
             turntable.turntable = document.querySelector('#turntable');
@@ -378,6 +376,7 @@
         </script>
     </body>
 
+    </html>
 
 </div>
 @endsection
