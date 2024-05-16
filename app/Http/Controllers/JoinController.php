@@ -10,6 +10,6 @@ class JoinController extends Controller
 {
     public function join()
     {
-        return view('join', ['posts' => Post::cursor()]);
+        return view('posts.index', ['posts' => Post::cursor()]);
     }
 }

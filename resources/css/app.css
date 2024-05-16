@@ -78,7 +78,7 @@ div.nav-item-list{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-title {
+.form-title { 
     margin: 50px 0;
 }
 
@@ -160,7 +160,7 @@ div.nav-item-list{
 
 .btn-link {
     margin: 15px 0;
-    color: #a7833c;
+    color: #4e3b17;
     font-size: 13px;
     text-decoration: none;
 }
@@ -168,11 +168,18 @@ div.nav-item-list{
 /* content */
 .container{
     height: 100%;
-    margin-left: 600px;
-    padding: 30px 50px 30px;
-   
-    border-top: 1px solid black;     /*  上方邊框  */
-    border-bottom: 1px solid black;  /*  下方邊框  */
-    border-left: 1px solid black;    /*  左方邊框  */
-    border-right: 1px solid black; 
+    margin-left: 220px;
+    padding: 30px 50px 30px;   
+    
+    
+}
+/* 我要假崩 */
+h1.page-title{
+    font-size: 30px;
+    font-family: "Noto Sans TC", sans-serif;
+
+}
+div.container{
+    padding: 10  20px  20px; 
+
 }
