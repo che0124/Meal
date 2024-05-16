@@ -18,7 +18,7 @@ Route::resource('posts', App\Http\Controllers\PostController::class);
 
 
 Route::get('/test', function(){
-    return session()->all();
+    return view('home');
 });
 
 
