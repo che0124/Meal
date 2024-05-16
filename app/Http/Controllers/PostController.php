@@ -38,7 +38,7 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->user_id = 1;
         $post->save();
-        return redirect(route('posts.index'));
+        return redirect(route('posts.show', ['post'=>$post]));
     }
 
     /**
@@ -66,7 +66,7 @@ class PostController extends Controller
         $post->time = $request->input('time');
         $post->content = $request->input('content');
         $post->save();
-        return redirect(route('posts.show', ['post' => $post]));
+        return redirect(route('posts.show', ['post'=>$post]));
     }
 
     /**
