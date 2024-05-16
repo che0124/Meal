@@ -168,16 +168,11 @@ div.nav-item-list{
 /* content */
 .container{
     height: 100%;
-    margin-left: 244px;
+    margin-left: 600px;
     padding: 30px 50px 30px;
-}
-
-.page-title{
-    color:#63310e;
-    font-weight: 500;
-}
-
-.page-label{
-    font-size: 25px;
-    margin: 4px 0;
+   
+    border-top: 1px solid black;     /*  上方邊框  */
+    border-bottom: 1px solid black;  /*  下方邊框  */
+    border-left: 1px solid black;    /*  左方邊框  */
+    border-right: 1px solid black; 
 }
