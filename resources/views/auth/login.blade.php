@@ -17,7 +17,8 @@
     <body>
         <div class="auth">
             <div class="auth-container">
-                <div class="form-title">{{ __('Login') }}</div>
+                <img class="form-title" src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題"
+                    height="55px" width="137.5px" />
 
                 <div class="form">
                     <form method="POST" action="{{ route('login') }}">
@@ -29,7 +30,8 @@
                             <div class="form-textbox">
                                 <input id="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" placeholder="Type your email" autocomplete="email" autofocus>
+                                    value="{{ old('email') }}" placeholder="Type your email" autocomplete="email"
+                                    autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

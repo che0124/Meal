@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>驚喜包</h1>
+    <h1 class="page-title">驚喜包</h1>
     <hr />
     @foreach($posts as $post)
         {{ $post->restaurant }}

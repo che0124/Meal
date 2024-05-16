@@ -37,6 +37,9 @@ html, body {
 div.nav-item-list{
     width: 200px;
 }
+.nav-title{
+    font-weight: 500;
+}
 
 .nav-link:hover {
     background-color: #FFEBCD;
@@ -53,7 +56,7 @@ div.nav-item-list{
     color: #63310e;
 }
 
-/* login */
+/* auth*/
 .auth {
     display: flex;
     justify-content: center;
@@ -76,8 +79,7 @@ div.nav-item-list{
 }
 
 .form-title {
-    font-size: 1.5rem;
-    margin: 20px 0;
+    margin: 50px 0;
 }
 
 .form {
@@ -159,7 +161,7 @@ div.nav-item-list{
 .btn-link {
     margin: 15px 0;
     color: #a7833c;
-    font-size: 10px;
+    font-size: 13px;
     text-decoration: none;
 }
 
@@ -168,4 +170,14 @@ div.nav-item-list{
     height: 100%;
     margin-left: 244px;
     padding: 30px 50px 30px;
+}
+
+.page-title{
+    color:#63310e;
+    font-weight: 500;
+}
+
+.page-label{
+    font-size: 25px;
+    margin: 4px 0;
 }

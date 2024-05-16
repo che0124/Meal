@@ -2,19 +2,19 @@
 
 @section('content')
 <div class="container">
-    <h1>創建飯局</h1>
+    <h1 class="page-title">創建飯局</h1>
 
-    <form action="{{ route('posts.store') }}" method="POST">
+    <form action="{{ route('posts.store') }}" method="POST" class="page-label">
         @csrf
-        <label for="name">Enter restaurant: 
+        <label for="name">用餐地點(餐廳): 
             <input type="text" name="restaurant" id="restaurant" required />
         </label><br>
 
-        <label for="time">Enter the meal time: 
+        <label for="time">時間: 
             <input type="text" name="time" id="time" required />
         </label><br>
 
-        <label>content:
+        <label>備註:
             <textarea name="content"></textarea>
         </label><br>
 
