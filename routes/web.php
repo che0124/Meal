@@ -10,11 +10,12 @@ Route::get('/', function () {
 });
 
 
+Route::resource('posts', App\Http\Controllers\PostController::class); 
 
 Route::get('/surprise', [App\Http\Controllers\SurpriseController::class, 'surprise'])->name('surprise');
 Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
+Route::get('/event', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
 
-Route::resource('posts', App\Http\Controllers\PostController::class); 
 
 
 Route::get('/test', function(){

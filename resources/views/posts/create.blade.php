@@ -6,19 +6,19 @@
 
     <form action="{{ route('posts.store') }}" method="POST" class="page-label">
         @csrf
-        <label for="title">派對名稱: 
+        <label for="name">標題 : 
             <input type="text" name="restaurant" id="restaurant" required />
         </label><br>
 
-        <label for="name">用餐地點(餐廳): 
+        <label for="name">餐廳 : 
             <input type="text" name="restaurant" id="restaurant" required />
         </label><br>
 
-        <label for="time">時間: 
-            <input type="text" name="time" id="time" required />
+        <label for="time">時間 : 
+            <input type="datetime-local" name="time" id="time" required />
         </label><br>
 
-        <label>備註:
+        <label>備註 :
             <textarea name="content"></textarea>
         </label><br>
 
