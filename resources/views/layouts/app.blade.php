@@ -28,31 +28,37 @@
             <div class="nav-item-list">
                 <div class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">
+                        <img src="http://localhost:8080/Meal/public/images/home-icon.svg" alt="首頁logo" height="20px" width="50px"/>
                         <span class="nav-title">首頁</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('posts.create')}}">
+                        <img src="http://localhost:8080/Meal/public/images/plus,%20add%20svg%20icon.svg" alt="創建logo" height="20px" width="50px"/>
                         <span class="nav-title">創建飯局</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('surprise') }}">
+                        <img src="http://localhost:8080/Meal/public/images/pocket,%20bag,%20shop%20svg%20icon.svg" alt="創建logo" height="20px" width="50px"/>
                         <span class="nav-title">驚喜包</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('join') }}">
+                        <img src="http://localhost:8080/Meal/public/images/search%20svg%20icon.svg" alt="創建logo" height="20px" width="50px"/>
                         <span class="nav-title">我要假奔</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="#">
+                        <img src="http://localhost:8080/Meal/public/images/bell,%20alert,%20warning,%20alarm%20svg%20icon.svg" alt="創建logo" height="25px" width="55px"/>
                         <span class="nav-title">通知</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('{name}', ['name' => $user->name ?? 'None']) }}">
+                        <img src="http://localhost:8080/Meal/public/images/avatar,%20account,%20profile,%20user,%20person,%20face,%20emoji%20svg%20icon.svg" alt="創建logo" height="25px" width="55px"/>
                         <span class="nav-title">個人檔案</span>
                     </a>
                 </div>
