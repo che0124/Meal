@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #88641e;
+    background-color: #e5d0a5;
     font-family: "Noto Sans TC", sans-serif;
 }
 
@@ -55,10 +55,17 @@ div.nav-item-list{
 .container{
     height: 100%;
     margin-left: 600px;
-    padding: 30px 50px 30px;
-   
-    border-top: 1px solid black;     /*  上方邊框  */
-    border-bottom: 1px solid black;  /*  下方邊框  */
-    border-left: 1px solid black;    /*  左方邊框  */
-    border-right: 1px solid black; 
+    margin-right: 400px;
+    margin-bottom: 600px;
+    margin-top: 100px;
+    padding: 200px 200px 150px 200px;
+    background-color: #f8f8f8; 
+    border-radius: 20px;
+}
+
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
