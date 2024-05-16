@@ -56,7 +56,7 @@ div.nav-item-list{
     color: #63310e;
 }
 
-/* login */
+/* auth*/
 .auth {
     display: flex;
     justify-content: center;
@@ -79,8 +79,7 @@ div.nav-item-list{
 }
 
 .form-title {
-    font-size: 1.5rem;
-    margin: 20px 0;
+    margin: 50px 0;
 }
 
 .form {
@@ -162,7 +161,7 @@ div.nav-item-list{
 .btn-link {
     margin: 15px 0;
     color: #a7833c;
-    font-size: 10px;
+    font-size: 13px;
     text-decoration: none;
 }
 
