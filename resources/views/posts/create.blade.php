@@ -3,11 +3,7 @@
 window.onload = function() {
     var createlightLogo = document.getElementById('createlightLogo');
     if (createlightLogo) {
-        createlightLogo.src = "http://localhost:8080/Meal/public/images/plus%20%E6%B7%B1.svg";
-    }
-    var homedarkLogo = document.getElementById('homedarkLogo');
-    if (homedarkLogo) {
-        homedarkLogo.src = "http://localhost:8080/Meal/public/images/home%20%E6%B7%BA.svg";
+        createlightLogo.src = "http://localhost:8080/Meal/public/images/create%20%E6%B7%B1.svg";
     }
 };
 </script>

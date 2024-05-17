@@ -3,7 +3,7 @@
 window.onload = function() {
     var baglightLogo = document.getElementById('baglightLogo');
     if (baglightLogo) {
-        baglightLogo.src = "http://localhost:8080/Meal/public/images/bag%20%E6%B7%B1.svg";
+        baglightLogo.src = "http://localhost:8080/Meal/public/images/surpride%20%E6%B7%B12.svg";
     }
 };
 </script>

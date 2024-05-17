@@ -9,7 +9,7 @@ function changelogo() {
 }
 
 // 定义函数来处理点击事件
-function handleClick(event) {
+function handleClick() {
     // 获取点击的元素
     var clickedElement = event.target;
     
@@ -22,5 +22,3 @@ function handleClick(event) {
 
 // 为整个页面添加点击事件监听器，以处理点击事件
 document.addEventListener('click', handleClick);
-
-
