@@ -1,4 +1,4 @@
-@extends('')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -7,6 +7,10 @@
         {{ $post->restaurant }} <br>
         {{ $post->time }} <br>
         {{ $post->content }}
-    <hr />
+
+        <form action="{{ route('event', ['post'=>$post]) }}" method="GET">
+            @csrf
+            <input type="submit" value="Join">
+        </form>
 </div>
 @endsection

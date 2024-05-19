@@ -44,7 +44,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="{{ route('join') }}">
+                    <a class="nav-link" href="{{ route('posts.index') }}">
                         <img id="joinlightLogo" src="http://localhost:8080/Meal/public/images/join%20%E6%B7%BA%E7%89%88.svg" alt="吃飯淺logo" height="20px" width="50px"/>
                         <span class="nav-title">我要假奔</span>
                     </a>
