@@ -22,6 +22,7 @@
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
                     <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題" height="40px" width="100px" />
+                        
                 </a>
             </div>
             
@@ -34,6 +35,7 @@
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('posts.create')}}">
                         <span class="nav-title">創建飯局</span>
+
                     </a>
                 </div>
                 <div class="nav-item">
@@ -44,6 +46,7 @@
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('posts.index') }}">
                         <span class="nav-title">我要假奔</span>
+                        
                     </a>
                 </div>
                 <div class="nav-item">

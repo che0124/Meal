@@ -7,7 +7,7 @@
     <form action="{{ route('posts.store') }}" method="POST" class="page-label">
         @csrf
         <label for="title">派對名稱: 
-            <input type="text" name="restaurant" id="restaurant" required />
+            <input type="text" name="title" id="title" required />
         </label><br>
 
         <label for="name">用餐地點(餐廳): 

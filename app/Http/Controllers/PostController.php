@@ -33,6 +33,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
+        $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
         $post->time = $request->input('time');
         $post->content = $request->input('content');
@@ -46,7 +47,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.index', ['post'=>$post]);
+        return view('posts.show ', ['post'=>$post]);
     }
 
     /**
