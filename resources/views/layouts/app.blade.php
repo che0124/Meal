@@ -21,8 +21,7 @@
         <div class="navbar">
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
-                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px"
-                        width="100px" />
+                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px" width="100px" />
                 </a>
             </div>
 
@@ -68,6 +67,9 @@
                         <input type="submit" value="logout">
                     </form>
                 </div>
+                <a class="nav-link" href="{{ route('{name}', ['name' => $user->name ?? 'None']) }}">
+                    <span class="nav-title">轉盤</span>
+                </a>
             </div>
         </div>
 

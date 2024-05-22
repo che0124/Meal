@@ -275,3 +275,26 @@ div.nav-item-list{
     text-decoration: none;
 }
 
+/* content */
+.container{
+    height: 100%;
+    margin-left: 220px;
+    padding: 30px 50px 30px;   
+    
+    
+}
+/* 我要假崩 */
+h1.page-title{
+    font-size: 30px;
+    font-family: "Noto Sans TC", sans-serif;
+
+}
+div.container{
+    padding: 10  20px  20px; 
+}
+  
+.page-label{
+    font-size: 25px;
+    margin: 4px 0;
+}
+
