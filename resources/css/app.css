@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400&display=swap');
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -9,12 +10,12 @@ html, body {
 }
 
 
-#id{
+#id {
     display: flex;
 }
 
 /* navbar */
-.navbar{
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -24,30 +25,32 @@ html, body {
     padding: 10px;
 }
 
-.nav-brand{
+.nav-brand {
     margin: 0 0 15px;
     padding: 30px 12px 10px;
 }
 
-.nav-brand-link{
+.nav-brand-link {
     display: block;
     padding: 12px;
     margin: 4px 0;
 }
-div.nav-item-list{
+
+div.nav-item-list {
     width: 200px;
 }
-.nav-title{
+
+.nav-title {
     font-weight: 500;
 }
 
 .nav-link:hover {
     background-color: #FFEBCD;
     border-radius: 8px;
-    transition: 0.5s; 
+    transition: 0.5s;
 }
 
-.nav-link{
+.nav-link {
     display: block;
     padding: 12px;
     margin: 4px 0;
@@ -78,7 +81,7 @@ div.nav-item-list{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-title { 
+.form-title {
     margin: 50px 0;
 }
 
@@ -93,7 +96,7 @@ div.nav-item-list{
     margin: 0 0 20px;
 }
 
-.form-field-name{
+.form-field-name {
     display: block;
     margin: 10px 0 0;
     font-size: 15px;
@@ -111,7 +114,7 @@ div.nav-item-list{
     letter-spacing: 1px;
 }
 
-.form-control::placeholder{
+.form-control::placeholder {
     font-size: 12px;
     font-weight: 100;
     color: #a7833c;
@@ -120,8 +123,8 @@ div.nav-item-list{
 .form-control:focus {
     outline: none;
 }
-    
-.form-control:-webkit-autofill{
+
+.form-control:-webkit-autofill {
     box-shadow: inset 0 0 0 2000px #fffcf5;
 }
 
@@ -166,23 +169,56 @@ div.nav-item-list{
 }
 
 /* content */
-.container{
+.container {
     height: 100%;
     margin-left: 220px;
-    padding: 30px 50px 30px;   
-    
-    
+    padding: 30px 50px 30px;
+
+
 }
+
+/*profile*/
+.profilebackround {
+    width: 1100px;
+    height: 40px;
+    background-color: #d6c497;
+    border-radius: 5px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+.page-title{
+    font-size: 80px;
+}
+.modify {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#modify {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn-modify:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 /* 我要假崩 */
-h1.page-title{
+h1.page-title {
     font-size: 30px;
     font-family: "Noto Sans TC", sans-serif;
 
 }
-div.container{
-    padding: 10  20px  20px; 
+
+div.container {
+    padding: 10 20px 20px;
 
 }
+
 .btn-modify {
     margin-left: 500px;
     margin-top: 250px;
@@ -192,8 +228,4 @@ div.container{
     border: none;
     cursor: pointer;
     transition: box-shadow 0.3s ease;
-}
-
-.btn-modify:active {
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
 }

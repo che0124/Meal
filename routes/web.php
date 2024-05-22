@@ -12,11 +12,11 @@ Route::get('/', function () {
 
 
 Route::resource('posts', App\Http\Controllers\PostController::class); 
-Route::get('/modify', [ModifyController::class, 'modify'])->name('modify');
+Route::get('/modify/{user}', [ModifyController::class, 'modify'])->name('modify');
 Route::get('/surprise', [App\Http\Controllers\SurpriseController::class, 'surprise'])->name('surprise');
 Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
 Route::get('/event', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
-
+Route::post('/update', [App\Http\Controllers\UserController::class, 'update'])->name('update');
 
 Route::get('/test', function(){
     return view('home');
