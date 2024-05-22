@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+use App\Models\PostUser;
+
 
 class PostController extends Controller
 {
@@ -13,7 +15,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index', ['posts' => Post::cursor()]);
+        $user = Auth::user();
+        $posts = Post::all();
+
+        $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
+
+        return view('posts.index', [
+            'posts' => $posts,
+            'userPostIds' => $userPostIds
+        ]);
     }
 
     /**
@@ -36,9 +46,9 @@ class PostController extends Controller
         $post->restaurant = $request->input('restaurant');
         $post->time = $request->input('time');
         $post->content = $request->input('content');
-        $post->user_id = 1;
+        $post->user_id = $request->user()->id;
         $post->save();
-        return redirect(route('posts.show', ['post'=>$post]));
+        return redirect(route('posts.show', ['post' => $post]));
     }
 
     /**
@@ -46,7 +56,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.index', ['post'=>$post]);
+        $exist = PostUser::where('user_id', Auth::user()->id)->where('post_id', $post->id)->exists();
+
+        return view('posts.show', ['post' => $post, 'exist' => $exist]);
     }
 
     /**
@@ -54,7 +66,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post'=>$post]);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -66,7 +78,8 @@ class PostController extends Controller
         $post->time = $request->input('time');
         $post->content = $request->input('content');
         $post->save();
-        return redirect(route('posts.show', ['post'=>$post]));
+
+        return redirect(route('posts.show', ['post' => $post]));
     }
 
     /**
@@ -75,6 +88,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+
         return redirect(route('posts.index'));
     }
 }
