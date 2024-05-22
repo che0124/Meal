@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ModifyController;
 use App\Http\Controllers\SurpriseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
@@ -21,10 +22,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('post_user', PostUserController::class);
 });
 
+Route::get('/modify/{user}', [ModifyController::class, 'modify'])->name('modify');
 
 
 Route::get('/test', function(){
     return view('home');
 });
-
 
