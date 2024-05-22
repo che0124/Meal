@@ -43,6 +43,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
+        $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
         $post->time = $request->input('time');
         $post->content = $request->input('content');

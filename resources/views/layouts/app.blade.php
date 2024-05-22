@@ -62,12 +62,24 @@
                         <span class="nav-title">個人檔案</span>
                     </a>
                 </div>
-                <div class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <input type="submit" value="logout">
-                    </form>
-                </div>
+
+                    <input type="checkbox" id="menu">
+                    <label for="menu" class="line">
+                        <div class="menu"></div>
+                    </label>
+
+                    <div class="menu-list">
+                        <ul>
+                            <li>選單2</li>
+                            <li>選單3</li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <input class="burger-link-logout" type="submit" value="logout">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
             </div>
         </div>
 

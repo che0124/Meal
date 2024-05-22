@@ -144,17 +144,11 @@ html, body {
     padding: 12px;
     margin: 4px 0;
 }
-div.nav-item-list{
+.nav-item-list{
     width: 200px;
 }
 .nav-title{
     font-weight: 500;
-}
-
-.nav-link:hover {
-    background-color: #fff1d9;
-    border-radius: 8px;
-    transition: 0.5s; 
 }
 
 .nav-link{
@@ -165,6 +159,120 @@ div.nav-item-list{
     font-size: 20px;
     color: #63310e;
 }
+
+.nav-link:hover {
+    background-color: #fff1d9;
+    border-radius: 8px;
+    transition: 0.5s; 
+}
+
+/* burger list */
+.line {
+    width: 24px;
+    height: 24px;
+    background: #fef8f2;
+    cursor: pointer;
+    display: block;
+    padding: 16px;
+    position: fixed;
+    bottom: 16px; /* 将按钮定位在页面底部 */
+    left: 16px; /* 将按钮定位在页面右侧 */
+    z-index: 2;
+}
+.line .menu,
+.line .menu::before,
+.line .menu::after {
+    background: #222;
+    content: '';
+    display: block;
+    height: 1px;
+    position: absolute;
+    transition: background ease .3s, top ease .3s .3s, transform ease .3s;
+    width: 20px;
+}
+.line .menu {
+    left: 18px;
+    top: 27px;
+}
+
+.burger-link-logout{
+    background-color: #ffe3c2;
+    border: none;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.burger-link-logout:hover{
+    background-color: #ffffff;
+    
+}
+
+.line .menu::before {
+    top: -6px;
+}
+.line .menu::after {
+    top: 6px;
+}
+
+/*點選選單變叉叉*/
+#menu:checked + .line .menu {
+    background: transparent;
+}
+#menu:checked + .line .menu::before {
+    transform: rotate(45deg);
+}
+#menu:checked + .line .menu::after {
+    transform: rotate(-45deg);
+}
+#menu:checked + .line .menu::before,
+#menu:checked + .line .menu::after {
+    top: 0;
+    transition: top ease .3s, transform ease .3s .3s;
+}
+
+/*
+選單開合
+*/
+#menu:checked ~ .menu-list {
+    height: 200px; /* 展开时设置高度 */
+    overflow: visible; /* 确保菜单展开时内容可见 */
+}
+
+.menu-list {
+    width: 200px; /* 设置菜单宽度 */
+    height: 0; /* 初始高度为0，完全隐藏 */
+    background: #ffe3c2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    position: fixed;
+    bottom: 75px; /* 定位在按钮的上方 */
+    left: 16px; /* 与按钮右对齐 */
+    z-index: 1;
+    transition: all .6s;
+    overflow: hidden; /* 初始状态下隐藏内容 */
+    border-radius: 10px;
+}
+/*
+選單向外推
+*/
+.menu-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* 居中菜单项 */
+    padding-top: 10px; /* 顶部间距 */
+}
+.menu-list ul>li {
+    display: block;
+    padding: 10px 0; /* 添加内边距，增加可点击区域 */
+}
+/*
+隱藏核許框
+*/
+input#menu {
+    display: none;
+}
+
+
 
 /* auth*/
 .auth {
