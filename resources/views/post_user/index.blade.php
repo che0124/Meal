@@ -6,6 +6,7 @@
         <hr>
         @foreach ($posts as $post)
             <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->restaurant }}</a>
+            <hr>
         @endforeach
 
     </div>
