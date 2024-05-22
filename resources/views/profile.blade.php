@@ -19,7 +19,7 @@
     </div>
 
     <div class="modify">
-        <form action="{{ route('modify', ['user' => $user]) }}" method="GET">
+        <form action="{{ route('user.edit', ['user' => $user]) }}" method="post">
             <input type="submit" value="修改資料" id="modify">
         </form>
     </div>

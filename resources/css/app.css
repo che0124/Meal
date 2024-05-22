@@ -9,7 +9,6 @@ body {
     font-family: "Noto Sans TC", sans-serif;
 }
 
-
 #id {
     display: flex;
 }
@@ -42,7 +41,6 @@ body {
 
 
 /* form */
-
 .form {
     padding-right: 500px;
 }
@@ -288,9 +286,7 @@ div.nav-item-list {
     align-items: center;
     padding-left: 15px;
 }
-.page-title{
-    font-size: 80px;
-}
+
 .modify {
     display: flex;
     justify-content: center;
@@ -391,10 +387,6 @@ div.nav-item-list {
     animation: white-to-yellow 1s linear infinite;
 }
 
-div.container {
-    padding: 10 20px 20px;
-
-}
 
 .btn-modify {
     margin-left: 500px;
@@ -406,7 +398,7 @@ div.container {
     cursor: pointer;
     transition: box-shadow 0.3s ease;
 }
-=======
+
 .turntable-wrap .light span:nth-of-type(odd):before {
     background: #d7a945;
     animation: white-to-yellow 1s linear reverse infinite;

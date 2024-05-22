@@ -11,9 +11,7 @@ use App\Http\Controllers\PostUserController;
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('home');
-    });
+    Route::get('/', [PostUserController::class, 'index']);
     
     Route::get('/surprise', [SurpriseController::class, 'surprise'])->name('surprise');
     Route::get('/user/{name}', [UserController::class, 'show'])->name('{name}');

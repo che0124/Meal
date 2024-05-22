@@ -57,11 +57,6 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="{{ route('post_user.index') }}">
-                        <span class="nav-title">我的飯局</span>
-                    </a>
-                </div>
-                <div class="nav-item">
                     <a class="nav-link" href="#">
                         <img src="http://localhost:8080/Meal/public/images/bell%20%E6%B7%BA.svg" alt="通知淺logo"
                             height="25px" width="55px" />
