@@ -513,7 +513,6 @@ div.container {
     cursor: pointer;
     transition: box-shadow 0.3s ease;
 }
-=======
 .turntable-wrap .light span:nth-of-type(odd):before {
     background: #d7a945;
     animation: white-to-yellow 1s linear reverse infinite;
