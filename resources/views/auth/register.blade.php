@@ -20,15 +20,15 @@
             <img class="form-title" src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題"
             height="55px" width="137.5px" />
 
-            <div class="form">
+            <div class="auth-form">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    <div class="form-item">
-                        <label for="name" class="form-field-name">{{ __('Name') }}</label>
+                    <div class="auth-   form-item">
+                        <label for="name" class="auth-form-field-name">{{ __('Name') }}</label>
 
                         <div class="form-textbox">
                             <input id="name" type="text"
-                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                class="auth-form-control @error('name') is-invalid @enderror" name="name"
                                 value="{{ old('name') }}" placeholder="Type your name" required autocomplete="name" autofocus>
 
                             @error('name')
@@ -39,13 +39,13 @@
                         </div>
                     </div>
 
-                    <div class="form-item">
+                    <div class="auth-   form-item">
                         <label for="email"
-                            class="form-field-name">{{ __('Email Address') }}</label>
+                            class="auth-form-field-name">{{ __('Email Address') }}</label>
 
                         <div class="form-textbox">
                             <input id="email" type="email"
-                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                class="auth-form-control @error('email') is-invalid @enderror" name="email"
                                 value="{{ old('email') }}" placeholder="Type your email" required autocomplete="email">
 
                             @error('email')
@@ -56,12 +56,12 @@
                         </div>
                     </div>
 
-                    <div class="form-item">
-                        <label for="password" class="form-field-name">{{ __('Password') }}</label>
+                    <div class="auth-   form-item">
+                        <label for="password" class="auth-form-field-name">{{ __('Password') }}</label>
 
                         <div class="form-textbox">
                             <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Type your password" required
+                                class="auth-form-control @error('password') is-invalid @enderror" name="password" placeholder="Type your password" required
                                 autocomplete="new-password">
 
                             @error('password')
@@ -72,19 +72,19 @@
                         </div>
                     </div>
 
-                    <div class="form-item">
+                    <div class="auth-   form-item">
                         <label for="password-confirm"
-                            class="form-field-name">{{ __('Confirm Password') }}</label>
+                            class="auth-form-field-name">{{ __('Confirm Password') }}</label>
 
                         <div class="form-textbox">
-                            <input id="password-confirm" type="password" class="form-control"
+                            <input id="password-confirm" type="password" class="auth-form-control"
                                 name="password_confirmation" placeholder="Confirm your password" required autocomplete="new-password">
                         </div>
                     </div>
 
-                    <div class="form-item">
+                    <div class="auth-   form-item">
                         <div class="form-submit">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="auth-btn-primary">
                                 {{ __('Register') }}
                             </button>
                         </div>

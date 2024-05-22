@@ -20,7 +20,8 @@
         <div class="navbar">
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
-                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="標題" height="40px" width="100px" />
+                    <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px"
+                        width="100px" />
                 </a>
             </div>
 
@@ -56,6 +57,11 @@
                     </a>
                 </div>
                 <div class="nav-item">
+                    <a class="nav-link" href="{{ route('post_user.index') }}">
+                        <span class="nav-title">我的飯局</span>
+                    </a>
+                </div>
+                <div class="nav-item">
                     <a class="nav-link" href="#">
                         <img src="http://localhost:8080/Meal/public/images/bell%20%E6%B7%BA.svg" alt="通知淺logo"
                             height="25px" width="55px" />
@@ -68,6 +74,17 @@
                             alt="使用者淺logo" height="25px" width="55px" />
                         <span class="nav-title">個人檔案</span>
                     </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="{{ route('surprise') }}">
+                        <span class="nav-title">轉盤</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <input type="submit" value="logout">
+                    </form>
                 </div>
             </div>
         </div>
