@@ -3,8 +3,6 @@
 @section('content')
 <div class="container">
     <h1 class="page-title">驚喜包</h1>
-
-   
     <head>
         <title>驚喜包轉盤</title>
         <style>
@@ -377,7 +375,5 @@
             turntable.init();
         </script>
     </body>
-
-
 </div>
 @endsection

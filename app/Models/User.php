@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function participatedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'post_user');
+    }
 }
