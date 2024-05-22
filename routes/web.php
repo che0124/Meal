@@ -2,19 +2,24 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SurpriseController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostUserController;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+    
+    Route::get('/surprise', [SurpriseController::class, 'surprise'])->name('surprise');
+    Route::get('/user/{name}', [UserController::class, 'show'])->name('{name}');
+    
+    Route::resource('posts', PostController::class); 
+    Route::resource('post_user', PostUserController::class);
 });
-
-
-Route::resource('posts', App\Http\Controllers\PostController::class); 
-
-Route::get('/surprise', [App\Http\Controllers\SurpriseController::class, 'surprise'])->name('surprise');
-Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
-Route::get('/event', [App\Http\Controllers\UserController::class, 'show'])->name('{name}');
 
 
 
@@ -23,4 +28,3 @@ Route::get('/test', function(){
 });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
