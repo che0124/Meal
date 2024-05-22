@@ -143,6 +143,7 @@ body {
     padding: 12px;
     margin: 4px 0;
 }
+
 .nav-item-list{
     width: 200px;
 }
@@ -163,7 +164,7 @@ body {
 .nav-link:hover {
     background-color: #fff1d9;
     border-radius: 8px;
-    transition: 0.5s; 
+    transition: 0.5s;
 }
 
 /* burger list */
