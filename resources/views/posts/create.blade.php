@@ -1,28 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1 class="page-title">創建飯局</h1>
+    <div class="container">
+        <h1 class="page-title">創建飯局</h1>
 
-    <form action="{{ route('posts.store') }}" method="POST" class="page-label">
-        @csrf
-        <label for="title">派對名稱: 
-            <input type="text" name="title" id="title" required />
-        </label><br>
+        <div class="form">
+            <form action="{{ route('posts.store') }}" method="POST">
+                @csrf
+                <div class="form-item">
+                    <label for="title" class="form-field-name">標題 :</label>
+                    <input type="text" class="form-control" name="title" id="title" required />
+                </div>
 
-        <label for="name">用餐地點(餐廳): 
-            <input type="text" name="restaurant" id="restaurant" required />
-        </label><br>
+                <div class="form-item">
+                    <label for="restaurant" class="form-field-name">餐廳 :</label>
+                    <input type="text" class="form-control" name="restaurant" id="restaurant" required />
+                </div>
 
-        <label for="time">時間: 
-            <input type="text" name="time" id="time" required />
-        </label><br>
 
-        <label>備註:
-            <textarea name="content"></textarea>
-        </label><br>
+                <div class="form-item">
+                    <label for="date" class="form-field-name">日期 :</label>
+                    <input type="date" class="form-control" name="date" />
+                    <label for="time" class="form-field-name">時間 :</label>
+                    <input type="time" class="form-control" id="time" name="time" value="<?= date('H').':00' ?>" step="3600">
+                </div>
 
-        <input type="submit" value="submit" />
-    </form>
-</div>
+                <div class="form-item-textarea">
+                    <label class="form-name-textarea">備註 :</label>
+                    <textarea name="content" class="form-control-textarea" style="resize: none;"></textarea>
+                </div>
+
+                <div class="form-item-btn">
+                    <input class="btn-primary" type="submit" value="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
