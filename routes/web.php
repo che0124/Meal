@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get('/test', function(){
-    return session()->all();
+    return view('home');
 });
 
 

@@ -188,7 +188,7 @@ div.nav-item-list{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form-title {
+.form-title { 
     margin: 50px 0;
 }
 
@@ -270,9 +270,8 @@ div.nav-item-list{
 
 .auth-btn-link {
     margin: 15px 0;
-    color: #a7833c;
+    color: #4e3b17;
     font-size: 13px;
     text-decoration: none;
 }
-
 
