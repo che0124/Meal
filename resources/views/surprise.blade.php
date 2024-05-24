@@ -1,15 +1,15 @@
 @extends('layouts.app')
 <script>
-window.onload = function() {
-    var baglightLogo = document.getElementById('baglightLogo');
-    if (baglightLogo) {
-        baglightLogo.src = "http://localhost:8080/Meal/public/images/surpride%20%E6%B7%B12.svg";
-    }
-};
+    window.onload = function () {
+        var baglightLogo = document.getElementById('baglightLogo');
+        if (baglightLogo) {
+            baglightLogo.src = "http://localhost:8080/Meal/public/images/surpride%20%E6%B7%B12.svg";
+        }
+    };
 </script>
 @section('content')
 <div class="container">
-    <h1 class="page-title">驚喜包</h1>
+    <h1 class="page-title" style="margin-top: 60px;">驚喜包</h1>
     <head>
         <title>驚喜包轉盤</title>
         <style>
@@ -264,8 +264,8 @@ window.onload = function() {
 
                 lottery: [], // 中獎
 
-                typeMap: { 1: '1', 2: '2',  3: '3' , 4: '4' , 5: '5' , 6: '6' , 7: '7' , 8: '8' , 9: '9', 10: '10' },
-                typeClassMap: { 1: 'no-gift', 2: 'no-gift' ,  3: 'no-gift' , 4: 'no-gift' , 5: 'no-gift' , 6: 'no-gift' , 7: 'no-gift' , 8: 'no-gift' , 9: 'no-gift', 10: 'no-gift'  },
+                typeMap: { 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: '10' },
+                typeClassMap: { 1: 'no-gift', 2: 'no-gift', 3: 'no-gift', 4: 'no-gift', 5: 'no-gift', 6: 'no-gift', 7: 'no-gift', 8: 'no-gift', 9: 'no-gift', 10: 'no-gift' },
 
                 isGoing: false, // 遊戲是否開始
 
@@ -306,7 +306,7 @@ window.onload = function() {
                     this.bg.appendChild(bgFragment);
                     this.gift.appendChild(giftFragment);
 
-                    
+
                     this.pointer.onclick = this.gameStart.bind(this)
                 },
 
@@ -326,14 +326,14 @@ window.onload = function() {
                         num += item.rate;
                         item.max = num;
                     })
-                    
+
                     let res = this.lottery.filter(item => {
                         return randomRate >= item.min && randomRate < item.max;
                     })[0];
-                    
+
 
                     // 轉五圈，轉1圈用時1s
-                    let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length); 
+                    let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length);
                     let rotate = rotateItemDeg + 5 * 360;
                     let rotateSpeed = (rotateItemDeg / 360 * 1 + 5).toFixed(2);
                     // 重置轉盤

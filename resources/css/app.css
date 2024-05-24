@@ -15,28 +15,30 @@ body {
 }
 
 /* content */
-.container{
+.container {
     height: 100%;
     margin-left: 244px;
     padding: 30px 50px 30px;
 }
 
-.page-title{
+.page-title {
     color: #4B2E20;
     font-weight: 900;
+
 }
 
-.page-label{
+.page-label {
     font-size: 25px;
     margin: 4px 0;
 }
 
-.link{
+.link {
     font-size: 20px;
-    color:#8B5E34;
+    color: #8B5E34;
     text-decoration: none;
 }
-.link:hover{
+
+.link:hover {
     font-weight: 600;
 }
 
@@ -83,7 +85,7 @@ body {
     align-items: start;
 }
 
-.form-name-textarea{
+.form-name-textarea {
     flex: 0 0 120px;
     font-weight: bold;
     margin-left: 10px;
@@ -144,7 +146,7 @@ body {
     margin: 4px 0;
 }
 
-.nav-item-list{
+.nav-item-list {
     width: 200px;
 }
 
@@ -176,10 +178,13 @@ body {
     display: block;
     padding: 16px;
     position: fixed;
-    bottom: 16px; /* 将按钮定位在页面底部 */
-    left: 16px; /* 将按钮定位在页面右侧 */
+    bottom: 16px;
+    /* 将按钮定位在页面底部 */
+    left: 16px;
+    /* 将按钮定位在页面右侧 */
     z-index: 2;
 }
+
 .line .menu,
 .line .menu::before,
 .line .menu::after {
@@ -191,42 +196,47 @@ body {
     transition: background ease .3s, top ease .3s .3s, transform ease .3s;
     width: 20px;
 }
+
 .line .menu {
     left: 18px;
     top: 27px;
 }
 
-.burger-link-logout{
+.burger-link-logout {
     background-color: #ffe3c2;
     border: none;
     font-size: 20px;
     font-weight: 100;
 }
 
-.burger-link-logout:hover{
+.burger-link-logout:hover {
     background-color: #ffffff;
-    
+
 }
 
 .line .menu::before {
     top: -6px;
 }
+
 .line .menu::after {
     top: 6px;
 }
 
 /*點選選單變叉叉*/
-#menu:checked + .line .menu {
+#menu:checked+.line .menu {
     background: transparent;
 }
-#menu:checked + .line .menu::before {
+
+#menu:checked+.line .menu::before {
     transform: rotate(45deg);
 }
-#menu:checked + .line .menu::after {
+
+#menu:checked+.line .menu::after {
     transform: rotate(-45deg);
 }
-#menu:checked + .line .menu::before,
-#menu:checked + .line .menu::after {
+
+#menu:checked+.line .menu::before,
+#menu:checked+.line .menu::after {
     top: 0;
     transition: top ease .3s, transform ease .3s .3s;
 }
@@ -234,24 +244,32 @@ body {
 /*
 選單開合
 */
-#menu:checked ~ .menu-list {
-    height: 200px; /* 展开时设置高度 */
-    overflow: visible; /* 确保菜单展开时内容可见 */
+#menu:checked~.menu-list {
+    height: 200px;
+    /* 展开时设置高度 */
+    overflow: visible;
+    /* 确保菜单展开时内容可见 */
 }
 
 .menu-list {
-    width: 200px; /* 设置菜单宽度 */
-    height: 0; /* 初始高度为0，完全隐藏 */
+    width: 200px;
+    /* 设置菜单宽度 */
+    height: 0;
+    /* 初始高度为0，完全隐藏 */
     background: #ffe3c2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
     position: fixed;
-    bottom: 75px; /* 定位在按钮的上方 */
-    left: 16px; /* 与按钮右对齐 */
+    bottom: 75px;
+    /* 定位在按钮的上方 */
+    left: 16px;
+    /* 与按钮右对齐 */
     z-index: 1;
     transition: all .6s;
-    overflow: hidden; /* 初始状态下隐藏内容 */
+    overflow: hidden;
+    /* 初始状态下隐藏内容 */
     border-radius: 10px;
 }
+
 /*
 選單向外推
 */
@@ -259,13 +277,18 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: center; /* 居中菜单项 */
-    padding-top: 10px; /* 顶部间距 */
+    text-align: center;
+    /* 居中菜单项 */
+    padding-top: 10px;
+    /* 顶部间距 */
 }
+
 .menu-list ul>li {
     display: block;
-    padding: 10px 0; /* 添加内边距，增加可点击区域 */
+    padding: 10px 0;
+    /* 添加内边距，增加可点击区域 */
 }
+
 /*
 隱藏核許框
 */
@@ -312,7 +335,7 @@ input#menu {
     margin: 0 0 20px;
 }
 
-.auth-form-field-name{
+.auth-form-field-name {
     display: block;
     margin: 10px 0 0;
     font-size: 15px;
@@ -330,7 +353,7 @@ input#menu {
     letter-spacing: 1px;
 }
 
-.auth-form-control::placeholder{
+.auth-form-control::placeholder {
     font-size: 12px;
     font-weight: 100;
     color: #a7833c;
@@ -339,8 +362,8 @@ input#menu {
 .auth-form-control:focus {
     outline: none;
 }
-    
-.auth-form-control:-webkit-autofill{
+
+.auth-form-control:-webkit-autofill {
     box-shadow: inset 0 0 0 2000px #fffcf5;
 }
 
@@ -396,9 +419,11 @@ input#menu {
     align-items: center;
     padding-left: 15px;
 }
-.page-title{
+
+.page-title {
     font-size: 80px;
 }
+
 .modify {
     display: flex;
     justify-content: center;
@@ -411,6 +436,7 @@ input#menu {
     cursor: pointer;
     font-size: 16px;
 }
+
 .btn-modify:active {
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
 }
@@ -514,6 +540,7 @@ div.container {
     cursor: pointer;
     transition: box-shadow 0.3s ease;
 }
+
 .turntable-wrap .light span:nth-of-type(odd):before {
     background: #d7a945;
     animation: white-to-yellow 1s linear reverse infinite;
@@ -638,4 +665,129 @@ div.container {
     border-style: solid;
     border-color: transparent transparent #b9a046 transparent;
     border-width: 25px 10px 25px 10px;
+}
+
+/*home*/
+.home-container {
+    position: relative;
+}
+
+.home-title {
+    position: absolute;
+    width: 348px;
+    height: 40px;
+    left: calc(50% - 348px/2 + 153px);
+    top: 20px;
+
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    /* identical to box height, or 40px */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #7F5E19;
+
+}
+
+.rectangle1 {
+
+    position: absolute;
+    width: calc(100% - 220px);
+    height: 300px;
+    margin-left: 220px;
+    top: 100px;
+
+    background: #DBCEB4;
+    opacity: 0.8;
+
+
+}
+
+.rectangle2 {
+
+    position: absolute;
+    width: calc(100% - 220px);
+    height: 300px;
+    margin-left: 220px;
+    top: 400px;
+
+    background: #887757;
+    opacity: 0.8;
+
+
+}
+
+.rectangle3 {
+
+    position: absolute;
+    width: calc(100% - 220px);
+    height: 300px;
+    margin-left: 220px;
+    top: 700px;
+
+    background: #B8A37A;
+    opacity: 0.8;
+
+
+}
+
+.small-title {
+
+    position: absolute;
+
+    font-family: 'Alegreya';
+    font-style: bold;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 100%;
+    /* or 40px */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+
+    color: #000000;
+
+
+}
+
+.home-context {
+
+    position: absolute;
+
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    /* or 23px */
+    letter-spacing: 0.1em;
+
+    color: #000000;
+
+}
+
+.home-btn {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    position: relative;
+    width: 60px;
+    height: 120px;
+    border: none;
+    background: #CAAF77;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+
+}
+.home-btn:hover {
+    background-color: #a28c51; /* 悬停时的背景色 */
 }

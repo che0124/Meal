@@ -58,6 +58,9 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{{ route('post_user.index') }}">
+                        <img id="joinlightLogo"
+                            src="http://localhost:8080/Meal/public/images/list%20%E6%B7%BA.svg" alt="飯局淺logo"
+                            height="20px" width="50px" />
                         <span class="nav-title">我的飯局</span>
                     </a>
                 </div>
@@ -76,23 +79,23 @@
                     </a>
                 </div>
 
-                    <input type="checkbox" id="menu">
-                    <label for="menu" class="line">
-                        <div class="menu"></div>
-                    </label>
+                <input type="checkbox" id="menu">
+                <label for="menu" class="line">
+                    <div class="menu"></div>
+                </label>
 
-                    <div class="menu-list">
-                        <ul>
-                            <li>選單2</li>
-                            <li>選單3</li>
-                            <li>
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <input class="burger-link-logout" type="submit" value="logout">
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="menu-list">
+                    <ul>
+                        <li>選單2</li>
+                        <li>選單3</li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <input class="burger-link-logout" type="submit" value="logout">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -100,6 +103,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 
 </html>
