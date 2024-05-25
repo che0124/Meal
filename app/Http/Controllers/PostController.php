@@ -31,9 +31,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        if (is_null(Auth::user())) {
-            return redirect(route('login'));
-        }
         return view('posts.create');
     }
 
@@ -49,6 +46,12 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->user_id = $request->user()->id;
         $post->save();
+
+        $post_user = new PostUser;
+        $post_user->post_id = $post->id;
+        $post_user->user_id = $request->user()->id;
+        $post_user->save();
+        
         return redirect(route('posts.show', ['post' => $post]));
     }
 
@@ -65,8 +68,13 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Request $request, Post $post)
     {
+        $user = $request->user();
+        if(is_null($user) || $user->cannot('update', $post)){
+            return redirect(route('posts.show', $post->id));
+        }  
+
         return view('posts.edit', ['post' => $post]);
     }
 

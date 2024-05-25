@@ -1,386 +1,57 @@
 @extends('layouts.app')
-<script>
-window.onload = function() {
-    var baglightLogo = document.getElementById('baglightLogo');
-    if (baglightLogo) {
-        baglightLogo.src = "http://localhost:8080/Meal/public/images/surpride%20%E6%B7%B12.svg";
-    }
-};
-</script>
+
 @section('content')
-<div class="container">
-    <h1 class="page-title">驚喜包</h1>
-    <head>
-        <title>驚喜包轉盤</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-            html,
-            body {
-                height: 100%;
-            }
-
-            ul {
-                list-style: none;
-            }
-
-            @keyframes white-to-yellow {
-                0% {
-                    background: #fff;
-                }
-
-                100% {
-                    background: #d7a945;
-                }
-            }
-
-            @keyframes heartbeat {
-                0% {
-                    transform: scale(1);
-                }
-
-                25% {
-                    transform: scale(0.8);
-                }
-
-                50% {
-                    transform: scale(1.2);
-                }
-
-                75% {
-                    transform: scale(0.9);
-                }
-
-                100% {
-                    transform: scale(1);
-                }
-            }
-
-            .turntable-wrap {
-                position: relative;
-                overflow: hidden;
-                margin: 50px;
-                width: 340px;
-                height: 340px;
-                border: 7px solid #b2a98d;
-                border-radius: 50%;
-                box-shadow: 0 0 20px #b2a98d;
-            }
-
-            .turntable-wrap .light {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: #e0ddd1;
-                animation: rotate 5s linear infinite;
-            }
-
-            .turntable-wrap .light span {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                width: 10px;
-                height: 100%;
-                border-radius: 50%;
-                transform-origin: center center;
-            }
-
-            .turntable-wrap .light span:before {
-                content: '';
-                position: absolute;
-                top: 5px;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-            }
-
-            .turntable-wrap .light span:nth-of-type(even):before {
-                background: #fff;
-                animation: white-to-yellow 1s linear infinite;
-            }
-
-            .turntable-wrap .light span:nth-of-type(odd):before {
-                background: #d7a945;
-                animation: white-to-yellow 1s linear reverse infinite;
-            }
-
-            .turntable-wrap .turntable {
-                position: absolute;
-                margin: 20px;
-                width: 300px;
-                height: 300px;
-                border-radius: 50%;
-                background: #fff;
-            }
-
-            .turntable-wrap .turntable .bg {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                border: 1px solid #dfd8be;
-                border-radius: 50%;
-                transform: rotate(72deg);
-            }
-
-            .turntable-wrap .turntable .bg li {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                width: 1px;
-                height: 100%;
-                background: #dfd8be;
-                transform-origin: center center;
-                /*transform: rotate(36deg);*/
-            }
-
-            .turntable-wrap .turntable .gift {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                transform: rotate(63deg);
-            }
-
-            .turntable-wrap .turntable .gift li {
-                position: absolute;
-                top: 5%;
-                left: 5%;
-                width: 45%;
-                height: 45%;
-                transform-origin: right bottom;
-            }
-
-            .turntable-wrap .turntable .gift li span {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                display: block;
-                width: 50px;
-                height: 70px;
-                margin: auto;
-                background: yellow;
-                transform: rotate(-60deg);
-                text-align: center;
-                line-height: 80px;
-                border-radius: 5px;
-                background: #f23c3c;
-                color: #fff;
-                font-size: 24px;
-            }
-
-            .turntable-wrap .turntable .gift li:not(.no-gift) span:before {
-                content: '';
-                position: absolute;
-                top: 15px;
-                left: 0;
-                width: 50px;
-                height: 1px;
-                background: #fff;
-            }
-
-            .turntable-wrap .turntable .gift li.no-gift span {
-                background: #fff;
-                line-height: 70px;
-                color: #bfa74f;
-                font-size: 12px;
-            }
-
-            .turntable-wrap .pointer {
-                box-sizing: border-box;
-                position: absolute;
-                top: 50%;
-                left: 0;
-                right: 0;
-                margin: -23px auto;
-                width: 46px;
-                height: 46px;
-                border-radius: 50%;
-                background: #fff;
-                border: 5px solid #fff;
-                box-shadow: 0 0 0 5px #b9a046;
-                text-align: center;
-                line-height: 16px;
-                color: #b9a046;
-                font-size: 14px;
-                font-weight: 700;
-                cursor: pointer;
-            }
-
-            .turntable-wrap .pointer:before {
-                content: '';
-                position: absolute;
-                top: -58px;
-                left: 0;
-                right: 0;
-                margin: 0 auto;
-                width: 0;
-                border-style: solid;
-                border-color: transparent transparent #b9a046 transparent;
-                border-width: 25px 10px 25px 10px;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="turntable-wrap">
-            <div class="light" id="turntable_light"></div>
-            <div class="turntable" id="turntable">
-                <ul class="bg" id="turntable_bg"></ul>
-                <ul class="gift" id="turntable_gift"></ul>
-            </div>
-            <div class="pointer disabled" id="turntable_pointer">點擊開始</div>
-        </div>
-
-        <script>
-            let turntable = {
-                itemNum: 10, // 轉盤平均分幾塊
-
-                lightNum: 18, // 燈
-                light: null, // 燈容器
-
-                turntable: null, // 轉盤
-
-                bg: null, // 轉盤背景
-
-                gift: null, // 中獎結果圖
-
-                pointer: null, // 指針
-
-                lottery: [], // 中獎
-
-                typeMap: { 1: '1', 2: '2',  3: '3' , 4: '4' , 5: '5' , 6: '6' , 7: '7' , 8: '8' , 9: '9', 10: '10' },
-                typeClassMap: { 1: 'no-gift', 2: 'no-gift' ,  3: 'no-gift' , 4: 'no-gift' , 5: 'no-gift' , 6: 'no-gift' , 7: 'no-gift' , 8: 'no-gift' , 9: 'no-gift', 10: 'no-gift'  },
-
-                isGoing: false, // 遊戲是否開始
-
-                init() {
-                    if (!this.lottery.length) {
-                        this.pointer.style.display = 'none';
-                        throw new Error('請設置中獎結果數據');
-                    }
-
-                    // 燈初始化
-                    let lightFragment = document.createDocumentFragment();
-                    for (let i = 0; i < this.lightNum; i++) {
-                        let lightItem = document.createElement('span');
-                        let deg = (360 / this.lightNum) * i
-                        lightItem.style.transform = `rotate(${deg}deg)`;
-                        lightFragment.appendChild(lightItem);
-                    }
-                    this.light.appendChild(lightFragment);
-
-                    // 初始化轉盤背景、中獎圖
-                    let bgFragment = document.createDocumentFragment();
-                    let bgItemWidth = this.bg.offsetWidth / this.num;
-                    let giftFragment = document.createDocumentFragment();
-                    for (let i = 0; i < this.itemNum; i++) {
-                        let bgItem = document.createElement('li');
-                        let deg = (360 / this.itemNum) * i
-                        bgItem.style.transform = `rotate(${deg}deg)`;
-                        bgFragment.appendChild(bgItem);
-
-                        let giftItem = document.createElement('li');
-                        giftItem.style.transform = `rotate(${deg}deg)`;
-                        giftItem.className = this.typeClassMap[this.lottery[i].type];
-                        let span = document.createElement('span');
-                        span.innerHTML = this.typeMap[this.lottery[i].type];
-                        giftItem.appendChild(span);
-                        giftFragment.appendChild(giftItem)
-                    }
-                    this.bg.appendChild(bgFragment);
-                    this.gift.appendChild(giftFragment);
-
-                    
-                    this.pointer.onclick = this.gameStart.bind(this)
-                },
-
-                gameStart() {
-                    if (this.isGoing) {
-                        return
-                    }
-                    this.isGoing = true;
-
-                    // 隨機中獎結果
-                    // 1-100隨機數
-                    let randomRate = ~~(Math.random() * 100) // ~~ == Math.floor()
-                    // 中獎概率範圍
-                    let num = 0
-                    this.lottery.forEach(item => {
-                        item.min = num;
-                        num += item.rate;
-                        item.max = num;
-                    })
-                    
-                    let res = this.lottery.filter(item => {
-                        return randomRate >= item.min && randomRate < item.max;
-                    })[0];
-                    
-
-                    // 轉五圈，轉1圈用時1s
-                    let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length); 
-                    let rotate = rotateItemDeg + 5 * 360;
-                    let rotateSpeed = (rotateItemDeg / 360 * 1 + 5).toFixed(2);
-                    // 重置轉盤
-                    this.turntable.removeAttribute('style');
-                    // 旋轉動畫
-                    setTimeout(() => {
-                        this.turntable.style.transform = `rotate(${rotate}deg)`;
-                        this.turntable.style.transition = `transform ${rotateSpeed}s ease-out`;
-                    }, 10)
-
-                    // 顯示結果
-                    setTimeout(() => {
-                        this.isGoing = false;
-                        console.log('結果：', randomRate, res, this.typeMap[res.type]);
-                    }, rotateSpeed * 1000);
-                }
-            }
-
-            let lottery = [
-                {
-                    location: 1, // 位置
-                    type: 1, // 中獎
-                    rate: 10,
-                },
-                {
-                    location: 2,
-                    type: 2, // 未中獎
-                    rate: 10
-                },
-                { location: 3, type: 3, rate: 10 },
-                { location: 4, type: 4, rate: 10 },
-                { location: 5, type: 5, rate: 10 },
-                { location: 6, type: 6, rate: 10 },
-                { location: 7, type: 7, rate: 10 },
-                { location: 8, type: 8, rate: 10 },
-                { location: 9, type: 9, rate: 10 },
-                { location: 10, type: 10, rate: 10 }
-            ];
-
-            turntable.turntable = document.querySelector('#turntable');
-            turntable.light = document.querySelector('#turntable_light');
-            turntable.bg = document.querySelector('#turntable_bg');
-            turntable.gift = document.querySelector('#turntable_gift');
-            turntable.pointer = document.querySelector('#turntable_pointer');
-            turntable.lottery = lottery;
-            turntable.init();
-        </script>
-    </body>
-</div>
+    <div class="container">
+        <h1 class="page-title">驚喜包</h1>
+    </div>
 @endsection
+
+@push('scripts')
+    <script>
+        window.onload = function() {
+            var surpriseSVG = document.getElementById('surpriseSVG');
+            if (surpriseSVG) {
+                // Clear existing content
+                surpriseSVG.innerHTML = '';
+
+                // Add new SVG content
+                surpriseSVG.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M11.1 7.19043H4C3.05719 7.19043 2.58579 7.19043 2.29289 7.48332C2 7.77622 2 8.24762 2 9.19043V11.0234C2 11.9662 2 12.4377 2.29289 12.7305C2.5452 12.9829 2.92998 13.0178 3.63447 13.0227H11.1V7.19043ZM5.33333 14.8227V20.1904C5.33333 21.1332 5.33333 21.6046 5.62623 21.8975C5.91912 22.1904 6.39052 22.1904 7.33333 22.1904H11.1V14.8227H5.33333ZM12.9 22.1904H16.6667C17.6095 22.1904 18.0809 22.1904 18.3738 21.8975C18.6667 21.6046 18.6667 21.1332 18.6667 20.1904V14.8227H12.9V22.1904ZM20.7724 13.0227C21.0648 13.0198 21.2388 13.0069 21.3827 12.9473C21.6277 12.8458 21.8224 12.6511 21.9239 12.4061C22 12.2223 22 11.9894 22 11.5234V9.19043C22 8.24762 22 7.77622 21.7071 7.48332C21.4142 7.19043 20.9428 7.19043 20 7.19043H12.9V13.0227H20.7724Z"
+                        fill="currentColor" />
+                    <path
+                        d="M16.2645 6.12593L17.8184 5.69084C18.517 5.49523 19 4.85846 19 4.13298C19 3.06172 17.9776 2.28627 16.946 2.57512L16.6334 2.66265C15.2274 3.05634 13.9216 3.74582 12.8036 4.68496L12 5.36V6.2H15.7253C15.9076 6.2 16.089 6.17508 16.2645 6.12593Z"
+                        fill="currentColor" />
+                    <path
+                        d="M7.73546 6.12593L6.18158 5.69084C5.48297 5.49523 5 4.85846 5 4.13298C5 3.06172 6.0224 2.28627 7.05398 2.57512L7.3666 2.66265C8.77264 3.05634 10.0784 3.74582 11.1964 4.68496L12 5.36V6.2H8.27472C8.09243 6.2 7.91099 6.17508 7.73546 6.12593Z"
+                        fill="currentColor" />
+                </svg>`;
+
+                var navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        surpriseSVG.innerHTML = `
+                        <svg id="surpriseSVG" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M2 9C2 8.05719 2 7.58579 2.29289 7.29289C2.58579 7 3.05719 7 4 7H20C20.9428 7 21.4142 7 21.7071 7.29289C22 7.58579 22 8.05719 22 9V11.5833C22 12.2064 22 12.5179 21.866 12.75C21.7783 12.902 21.652 13.0283 21.5 13.116C21.2679 13.25 20.9564 13.25 20.3333 13.25V13.25C19.7103 13.25 19.3987 13.25 19.1667 13.384C19.0146 13.4717 18.8884 13.598 18.8006 13.75C18.6667 13.9821 18.6667 14.2936 18.6667 14.9167V20C18.6667 20.9428 18.6667 21.4142 18.3738 21.7071C18.0809 22 17.6095 22 16.6667 22H7.33333C6.39052 22 5.91912 22 5.62623 21.7071C5.33333 21.4142 5.33333 20.9428 5.33333 20V14.9167C5.33333 14.2936 5.33333 13.9821 5.19936 13.75C5.11159 13.598 4.98535 13.4717 4.83333 13.384C4.60128 13.25 4.28974 13.25 3.66667 13.25V13.25C3.04359 13.25 2.73205 13.25 2.5 13.116C2.34798 13.0283 2.22174 12.902 2.13397 12.75C2 12.5179 2 12.2064 2 11.5833V9Z"
+                                stroke="currentColor" stroke-width="2" />
+                            <path d="M4 13.25H20" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path d="M12 7L12 21" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path
+                                d="M12 6L11.1214 5.12144C10.0551 4.05514 8.75521 3.25174 7.3246 2.77487V2.77487C6.18099 2.39366 5 3.24487 5 4.45035V4.63246C5 5.44914 5.52259 6.1742 6.29737 6.43246L8 7"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <path
+                                d="M12 6L12.8786 5.12144C13.9449 4.05514 15.2448 3.25174 16.6754 2.77487V2.77487C17.819 2.39366 19 3.24487 19 4.45035V4.63246C19 5.44914 18.4774 6.1742 17.7026 6.43246L16 7"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>`;
+                    });
+                });
+
+            }
+        };
+    </script>
+@endpush
