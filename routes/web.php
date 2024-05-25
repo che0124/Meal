@@ -10,6 +10,10 @@ use App\Http\Controllers\PostUserController;
     
 Auth::routes();
 
+Route::get('/meal', function(){
+    return view('heroSection');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     
@@ -25,10 +29,4 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('post_user', PostUserController::class);
 });
 
-// Route::get('/modify/{user}', [ModifyController::class, 'modify'])->name('modify');
-
-
-Route::get('/test', function(){
-    return view('home');
-});
 
