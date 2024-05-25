@@ -24,16 +24,19 @@ body {
     color:#8B5E34;
 }
 
+
 .page-title{
     margin: 20px 0;
     color: #4B2E20;
     font-weight: 900;
+
 }
 
-.page-label{
+.page-label {
     font-size: 25px;
     margin: 4px 0;
 }
+
 
 .link{
     display: block;
@@ -42,7 +45,8 @@ body {
     text-decoration: none;
     color:#8B5E34;
 }
-.link:hover{
+
+.link:hover {
     font-weight: 600;
 }
 
@@ -225,7 +229,7 @@ body {
     align-items: start;
 }
 
-.form-name-textarea{
+.form-name-textarea {
     flex: 0 0 120px;
     font-weight: bold;
     margin-left: 10px;
@@ -295,7 +299,6 @@ body {
 .profile-link:hover{
     background-color: #b58c68a2;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -531,6 +534,134 @@ ul {
     border-width: 25px 10px 25px 10px;
 }
 
+
+/*
+|--------------------------------------------------------------------------
+| home                                         
+|--------------------------------------------------------------------------
+*/
+.home-container {
+    position: relative;
+}
+
+.home-title {
+    position: absolute;
+    width: 348px;
+    height: 40px;
+    left: calc(50% - 348px/2 + 153px);
+    top: 20px;
+
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    /* identical to box height, or 40px */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #7F5E19;
+
+}
+
+.rectangle1 {
+
+    position: absolute;
+    width: calc(100% - 220px);
+    height: 300px;
+    margin-left: 220px;
+    top: 100px;
+
+    background: #DBCEB4;
+    opacity: 0.8;
+
+
+}
+
+.rectangle2 {
+
+    position: absolute;
+    width: calc(100% - 220px);
+    height: 300px;
+    margin-left: 220px;
+    top: 400px;
+
+    background: #887757;
+    opacity: 0.8;
+
+
+}
+
+.rectangle3 {
+
+    position: absolute;
+    width: calc(100% - 220px);
+    height: 300px;
+    margin-left: 220px;
+    top: 700px;
+
+    background: #B8A37A;
+    opacity: 0.8;
+
+
+}
+
+.small-title {
+
+    position: absolute;
+
+    font-family: 'Alegreya';
+    font-style: bold;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 100%;
+    /* or 40px */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+
+    color: #000000;
+
+
+}
+
+.home-context {
+
+    position: absolute;
+
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    /* or 23px */
+    letter-spacing: 0.1em;
+
+    color: #000000;
+
+}
+
+.home-btn {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    position: relative;
+    width: 60px;
+    height: 120px;
+    border: none;
+    background: #CAAF77;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+
+}
+.home-btn:hover {
+    background-color: #a28c51; /* 悬停时的背景色 */
 
 /*
 |--------------------------------------------------------------------------

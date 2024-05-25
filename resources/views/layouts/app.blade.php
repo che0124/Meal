@@ -191,7 +191,6 @@
                                         <path d="M3 21L23 21" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" />
                                     </svg>
-
                                 </div>
                             </div>
                             <div class="nav-link-title">
