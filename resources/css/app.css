@@ -299,7 +299,7 @@ body {
 
 /*
 |--------------------------------------------------------------------------
-| surprise                                       
+| turntable                                       
 |--------------------------------------------------------------------------
 */
 
@@ -529,6 +529,28 @@ ul {
     border-style: solid;
     border-color: transparent transparent #b9a046 transparent;
     border-width: 25px 10px 25px 10px;
+}
+
+.position {
+    display: flex;
+}
+
+#food-list {
+    margin-top: 130px;
+    margin-left: 50px;
+    flex-wrap: wrap;
+}
+
+.food-item {
+    font-size: 20px;
+    margin-bottom: 10px;
+    transition: font-size 0.3s ease; 
+} 
+
+.highlight {
+    font-size: 25px;
+    color: red;
+    transition: font-size 0.3s ease;
 }
 
 

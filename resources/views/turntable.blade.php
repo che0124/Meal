@@ -2,15 +2,35 @@
 
 @section('content')
     <div class="container">
-        <h1 class="page-title">驚喜包</h1>
-        
-        <div class="turntable-wrap">
-            <div class="light" id="turntable_light"></div>
-            <div class="turntable" id="turntable">
-                <ul class="bg" id="turntable_bg"></ul>
-                <ul class="gift" id="turntable_gift"></ul>
+        <h1 class="page-title">吃什麼好勒?</h1>
+        <div class = "position">
+            <div class="turntable-wrap">
+                <div class="light" id="turntable_light"></div>
+                <div class="turntable" id="turntable">
+                    <ul class="bg" id="turntable_bg"></ul>
+                    <ul class="gift" id="turntable_gift"></ul>
+                </div>
+                <div class="pointer disabled" id="turntable_pointer">點擊開始</div>
             </div>
-            <div class="pointer disabled" id="turntable_pointer">點擊開始</div>
+
+            <div>
+                <ul id="food-list">
+                    <li class="food-item" id="food-1">1: 火鍋</li>
+                    <li class="food-item" id="food-2">2: 拉麵</li>
+                    <li class="food-item" id="food-3">3: 漢堡</li>
+                    <li class="food-item" id="food-4">4: 披薩</li>
+                    <li class="food-item" id="food-5">5: 全家</li>
+                </ul>
+            </div>
+            <div>
+                <ul id="food-list">
+                    <li class="food-item" id="food-6">6: 壽司</li>
+                    <li class="food-item" id="food-7">7: 韓式</li>
+                    <li class="food-item" id="food-8">8: 壽喜燒</li>
+                    <li class="food-item" id="food-9">9: 鐵板燒</li>
+                    <li class="food-item" id="food-10">10: 義大利麵</li>
+                </ul>
+            </div>
         </div>
 
         <script>
@@ -121,7 +141,7 @@
 
 
                     // 轉五圈，轉1圈用時1s
-                    let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length);
+                    let rotateItemDeg = ((res.location - 1) * (360 / this.lottery.length)) + (180 / this.lottery.length);
                     let rotate = rotateItemDeg + 5 * 360;
                     let rotateSpeed = (rotateItemDeg / 360 * 1 + 5).toFixed(2);
                     // 重置轉盤
@@ -135,44 +155,25 @@
                     // 顯示結果
                     setTimeout(() => {
                         this.isGoing = false;
+                        let resultText = this.typeMap[res.type];
+                        document.querySelectorAll('.food-item').forEach(item => {
+                            item.classList.remove('highlight');
+                        });
+                        let resultElement = document.getElementById(`food-${res.type}`);
+                        resultElement.classList.add('highlight');
                         console.log('結果：', randomRate, res, this.typeMap[res.type]);
                     }, rotateSpeed * 1000);
                 }
             }
 
             let lottery = [{
-                    location: 1, // 位置
-                    type: 1, // 中獎
+                    location: 10, // 位置
+                    type: 10, // 中獎
                     rate: 10,
                 },
                 {
-                    location: 2,
-                    type: 2, // 未中獎
-                    rate: 10
-                },
-                {
-                    location: 3,
-                    type: 3,
-                    rate: 10
-                },
-                {
-                    location: 4,
-                    type: 4,
-                    rate: 10
-                },
-                {
-                    location: 5,
-                    type: 5,
-                    rate: 10
-                },
-                {
-                    location: 6,
-                    type: 6,
-                    rate: 10
-                },
-                {
-                    location: 7,
-                    type: 7,
+                    location: 9,
+                    type: 9, // 未中獎
                     rate: 10
                 },
                 {
@@ -181,13 +182,38 @@
                     rate: 10
                 },
                 {
-                    location: 9,
-                    type: 9,
+                    location: 7,
+                    type: 7,
                     rate: 10
                 },
                 {
-                    location: 10,
-                    type: 10,
+                    location: 6,
+                    type: 6,
+                    rate: 10
+                },
+                {
+                    location: 5,
+                    type: 5,
+                    rate: 10
+                },
+                {
+                    location: 4,
+                    type: 4,
+                    rate: 10
+                },
+                {
+                    location: 3,
+                    type: 3,
+                    rate: 10
+                },
+                {
+                    location: 2,
+                    type: 2,
+                    rate: 10
+                },
+                {
+                    location: 1,
+                    type: 1,
                     rate: 10
                 }
             ];
