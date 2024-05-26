@@ -51,13 +51,14 @@ class PostUserController extends Controller
         $binding = [
             'post_user'=>$post_user,
         ];
+        
         return redirect(route('post_user.show', $binding));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(PostUser $post_user)
+    public function show()
     {
         $user = Auth::user();
         $post_users = PostUser::where('user_id', $user->id)->get();
