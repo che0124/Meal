@@ -7,43 +7,43 @@
 <head>
 
     <style>
-        .ccontainer {
+        div.ccontainer {
             height: 100%;
-            margin-left: 220px; 
+            /* margin-left: 220px;  */
             /* padding: 10px 80px 30px 0px;   */
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center; 
-            align-content: flex-start;
-            row-gap: 50px;
-            column-gap:40px;
-
+            flex-wrap: wrap;   
+            justify-content:center;  
+            align-content: center;
+            margin-left: 270px;  
+            margin-top: 40px;
+            row-gap: 50px; 
         }
-
         h1 {
             font-size: 30px;
             font-family: 'cwTeXYen', sans-serif;
             text-align: center;
             /* padding: 70px ; */
             margin-top: 90px;
+            margin-top: 115px;
             margin-left: 270px;
-
+            /* color:#4B2E20; */
+            font-weight:900;
+        
 
         }
 
 
         div.p1{
             /* position: absolute; */
-            padding: 60px;
-            
+            padding: 60px;            
             background-color: #ffdd99;
-
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             border-radius: 20px;
             display: block;
             width: 25%;
             height: 0px;
+            margin:10px;
             /* height: auto; */
         }
 
@@ -100,7 +100,7 @@
 
         img.restauraunt {
             position: absolute;
-            top: 10px;
+            top: 30px;
             left: 725px;
             margin-top: px;
             height: 80px;
@@ -116,9 +116,8 @@
 
     <h1>所有飯局</h1>
     <div class="ccontainer">
-        <div class="circle"></div>
         <img class=restauraunt src=http://localhost:8080/Meal/public/images/restaurant.svg alt="標題" />
-        <!-- <img class=donut src=http://localhost:8080/Meal/public/images/donut.svg alt="標題" />  -->
+        <!-- <div class="colorlayer"></div> -->
         @foreach($posts as $post)
         <div class="p1">
             <p2>
@@ -132,6 +131,7 @@
 
             </a>
         </div>
+        
 
 
 

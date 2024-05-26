@@ -54,11 +54,6 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link" href="{{ route('post_user.index') }}">
-                        <span class="nav-title">我的飯局</span>
-                    </a>
-                </div>
-                <div class="nav-item">
                     <a class="nav-link" href="#">
                         <span class="nav-title">通知</span>
                     </a>
