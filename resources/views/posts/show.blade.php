@@ -27,6 +27,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);  */
             z-index: 1;
+            left:75px;
         }
 
         h1 {
@@ -34,12 +35,12 @@
             width: 220px;
             margin-top: 0px;
             margin-bottom: 200px;
-            /* margin-top:50px; */
             border-radius: 20px;
             background:#cc6600;
             margin-left: auto;
             letter-spacing: 0.5px;
             margin-right: auto;
+            color:black;
             font-size: 30px;
             text-align: center;
             line-height: 2.2;
@@ -129,6 +130,7 @@
         
         p{
             margin-left:20px;
+            color:black;
         }
     </style>
 </head>
