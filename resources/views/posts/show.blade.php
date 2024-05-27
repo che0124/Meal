@@ -1,175 +1,158 @@
 @extends('layouts.app')
 
 @section('content')
+    <!DOCTYPE html>
+    <html>
 
-<!DOCTYPE html>
-<html>
+    <head>
+        <style>
+            body {
+                margin-left: 220px
+            }
 
-<head>
-    <style>
-        body {
-            margin-left: 220px;
-            /* background: #ffeccf; */
-        }
+            .container_s{
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-        div.lay {
-            background: #ffd699;
-            /* display: flex; */
-            flex-direction: column;
-            /* justify-content: center; */
-            /* align-items: center; */
-            top: 30px;
-            width: 290px;
-            height: 350px;
-            padding: 30px 10px;
-            border-radius: 8px;
-            position: relative;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);  */
-            z-index: 1;
-            left:75px;
-        }
+            }
 
-        h1 {
-            height: 20%;
-            width: 220px;
-            margin-top: 0px;
-            margin-bottom: 200px;
-            border-radius: 20px;
-            background:#cc6600;
-            margin-left: auto;
-            letter-spacing: 0.5px;
-            margin-right: auto;
-            color:black;
-            font-size: 30px;
-            text-align: center;
-            line-height: 2.2;
-        }
-
-        p.rest {
-            /* padding-top: 20px; */
-            /* background-color: green; */
-            display: block;
-            margin-top: -175px;
-            margin-left: 50px;
-            margin-right: 30px;
-            font-size: 20px;
-            font-weight:500;
-            letter-spacing: 0.5px;
-            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);   */
-            /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
-            border-radius: 10px; 
-
-            /* width: 25%; */
-            /* height: 0px; */
-        }
-
-        img.mouth {
-            position: absolute;
-            width: 83%;
-            /* 设置宽度为父容器的100% */
-            height: auto;
-            /* 设置高度为父容器的100% */
-            object-fit: cover;
-            /* bottom: 0; */
-            /* height: 300px; */
-            top: 0px;
-            z-index: 0;
-        }
+            .background {
+                position: absolute;
+                background-image: url('https://i.pinimg.com/originals/95/db/dd/95dbdd16dcf11d3fd60c4e19b963b8c0.jpg');
+                background-size: cover;
+                background-position: center;
+                opacity: 0.3;
+                width: 100%;
+                height: 100vh;
+                z-index: 1;
+            }
 
 
-         input { 
-            z-index: 1000;
-            display: block;
-            /* margin: 10px 0; */
-            width: 95%;
-            line-height: 40px;
-            border-radius: 27px;
-            background-color: #cc6600;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            border: none;
-            font-size: medium;
-            font-weight: 700;
-            color:white;
-            letter-spacing: 1px;
-            /* text-align: center; */
-            margin-left:auto;
-        }
-        input:hover{
-            background-color:#cc6600;
-            cursor:pointer;
-        }
-        input:active{
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-            transform:translate(2px 4px);
-        }
-        div.buttom {
-            position: absolute; 
-            top: 370px;
-            left: 745px; 
-            transform: translateX(-50%);
-            z-index: 1001;
-            padding: 10px;
-            border-radius: 8px;
-            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); */
-            width: 10%; 
-        }
-        div.eat{
-            position: absolute; 
-            top: 380px;
-            left: 750px; 
-            transform: translateX(-50%);
-            z-index: 1001;
-            font-weight:100px;
-            font-size:medium;
-            width: 15%; 
-            background-color: rgba(204, 102, 0, 0.8);
-            border-radius:30px;
+            .lay {
+                background: #fef8f2;
+                border: 1px solid #dddddd00;
+                position: relative;
+                flex-direction: column;
+                width: 40%;
+                height: 40%;
+                padding: 30px 10px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1;
+                align-items: center;
+                text-align: center;
 
-        }
-        
-        p{
-            margin-left:20px;
-            color:black;
-        }
-    </style>
-</head>
+            }
 
-<body>
-    <div class="container">
-        <!-- <img class=eat src=http://localhost:8080/Meal/public/images/cutlery.svg alt="標題" /> -->
-        <!-- <img class=eat1 src=http://localhost:8080/Meal/public/images/cutlery.svg alt="標題" /> -->
-        <!-- <img class=bell src=http://localhost:8080/Meal/public/images/bell.svg alt="標題" /> -->
+            h1 {
+                height: 20%;
+                width: 90%;
+                border-radius: 20px;
+                background:  #A67B5B;
+                margin: auto;
+                letter-spacing: 2px;
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+                line-height: 2.2;
+            }
 
-        <div class="lay">
-            <h1>{{ $post->title }}</h1>
-            <p class="rest">
-                餐廳:{{ $post->restaurant }}<br><br>
+            .rest {
+                font-size: 23px;
+                font-weight: 500;
+                letter-spacing: 2px;
+                margin: auto;
+                margin-top: 50px;
+                color: #4B2E20;
+            }
 
-                時間:{{ $post->time }} <br><br>
-                備註:{{ $post->content }}
-            </p>
-        </div>
+            input {
+                display: block;
+                width: 95%;
+                line-height: 40px;
+                border-radius: 25px;
+                background-color: #A67B5B;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                border: none;
+                font-size: 18px;
+                font-weight: 700;
+                color: white;
+                letter-spacing: 1px;
+            }
 
+            input:hover {
+                background-color: #7A5230;
+                cursor: pointer;
+            }
 
-        @if (!$exist)
+            input:active {
+                box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+                transform: translate(2px 4px);
+            }
 
-        <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
-            @csrf
-            <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
-            <div class=buttom>
-                <input type="submit" value="join">
+            div.button {
+                position: relative;
+                z-index: 1;
+                padding: 10px;
+                border-radius: 8px;
+                width: 200px;
+                margin: auto;
+            }
+
+            .eat {
+                z-index: 1;
+                height: 5%;
+                width: 40%;
+                border-radius: 15px;
+                background-color: #7A5230;
+                margin-top: 20px;
+                color: #fff;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            p {
+                color: #fff;
+                margin-top: 2.3px;
+                font-weight: 300
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container_s">
+            <div class="background"></div>
+            <div class="lay">
+                <h1>{{ $post->title }}</h1>
+                <p class="rest">
+                    餐廳: {{ $post->restaurant }}<br><br>
+                    時間: {{ $post->time }} <br><br>
+                    備註: {{ $post->content }}
+                </p>
             </div>
-        </form>
-        @else
-        <div class="eat">
-        <p>你已經參加此飯局了!</p>
+
+            @if (!$exist)
+                <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
+                    @csrf
+                    <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                    <div class=button>
+                        <input type="submit" value="join">
+                    </div>
+                </form>
+            @else
+                <div class="eat">
+                    <p>已參加此飯局!</p>
+                </div>
+            @endif
         </div>
-        @endif
+    </body>
 
-    </div>
-    <img class=mouth src=http://localhost:8080/Meal/public/images/clipart2544596.svg alt="標題" />
-</body>
-
-</html>
+    </html>
 @endsection

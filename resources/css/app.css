@@ -567,8 +567,8 @@ ul {
     color: #8B5E34;
     font-weight: 600;
     padding: 5px;
-    background-color: #fff; /* 白色底 */
-    border: 1px solid #ddd; /* 灰色邊框 */
+    background-color: #fbd287; /* 白色底 */
+    border: 1px solid #ddddddeb; /* 灰色邊框 */
     border-radius: 10px; /* 圓角 */
     position: relative;
     right: 8%;
@@ -578,8 +578,8 @@ ul {
 }
 
 .food-item.highlight img {
-    width: 92px;
-    height: 92px;
+    width: 95px;
+    height: 95px;
 }
 
 /*
