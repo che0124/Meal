@@ -696,13 +696,14 @@ ul {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 150px;
+    padding: 0 50px;
 }
 
 .rectangle1,
 .rectangle2,
 .rectangle3 {
     display: flex;
+    flex-direction: row;
     align-items: center;
     height: 350px;
     padding: 20px;
@@ -738,6 +739,7 @@ ul {
     display: flex;
     letter-spacing: 0.1em;
     color: #000000;
+    justify-content: center;
 }
 
 .home-context {
