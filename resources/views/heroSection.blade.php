@@ -21,7 +21,7 @@
             <header class="header">
                 <div class="header-item"> <a class="nav-link-brand" href="{{ url('#') }}">
                         <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px"
-                            width="100px" />
+                            width="100px" style="float: right" />
                     </a></div>
                 <div class="header-item">
                     <h1 class="home-title">覓得你的專屬飯友</h1>
