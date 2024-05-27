@@ -289,7 +289,10 @@
                         bgFragment.appendChild(bgItem);
 
                         let giftItem = document.createElement('li');
-                        giftItem.style.transform = `rotate(${deg}deg)`;
+                        giftItem.style.transform = `rotate(${deg}deg) translate(0, 0%)`;
+
+
+
                         giftItem.className = this.typeClassMap[this.lottery[i].type];
                         let span = document.createElement('span');
                         span.innerHTML = this.typeMap[this.lottery[i].type];
@@ -326,8 +329,9 @@
                     
 
                     // 轉五圈，轉1圈用時1s
-                    let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length); 
+                    let rotateItemDeg = (res.location - 1) * (360 / this.lottery.length) + (360 / this.lottery.length) / 2;
                     let rotate = rotateItemDeg + 5 * 360;
+
                     let rotateSpeed = (rotateItemDeg / 360 * 1 + 5).toFixed(2);
                     // 重置轉盤
                     this.turntable.removeAttribute('style');
