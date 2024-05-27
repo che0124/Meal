@@ -2,33 +2,57 @@
 
 @section('content')
     <div class="container">
-        <h1 class="page-title">吃什麼好勒?</h1>
         <div class = "position">
-            <div class="turntable-wrap">
-                <div class="light" id="turntable_light"></div>
-                <div class="turntable" id="turntable">
-                    <ul class="bg" id="turntable_bg"></ul>
-                    <ul class="gift" id="turntable_gift"></ul>
+            <div>
+                <div>
+                    <h1 class="page-title">吃什麼好勒?</h1>
                 </div>
-                <div class="pointer disabled" id="turntable_pointer">點擊開始</div>
+                <div class="turntable-wrap">
+                    <div class="light" id="turntable_light"></div>
+                    <div class="turntable" id="turntable">
+                        <ul class="bg" id="turntable_bg"></ul>
+                        <ul class="gift" id="turntable_gift"></ul>
+                    </div>
+                    <div class="pointer disabled" id="turntable_pointer">點擊開始</div>
+                </div>
             </div>
 
             <div>
                 <ul id="food-list">
-                    <li class="food-item" id="food-1">1: 火鍋</li>
-                    <li class="food-item" id="food-2">2: 拉麵</li>
-                    <li class="food-item" id="food-3">3: 漢堡</li>
-                    <li class="food-item" id="food-4">4: 披薩</li>
-                    <li class="food-item" id="food-5">5: 全家</li>
+                    <li class="food-item" id="food-1">1: 火鍋
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/hotpot.svg" alt="火鍋" height="80px" width="80px">
+                    </li>
+                    <li class="food-item" id="food-2">2: 拉麵
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/ramen.svg" alt="拉麵" height="80px" width="80px">
+                    </li>
+                    <li class="food-item" id="food-3">3: 漢堡
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/hamburger.svg" alt="漢堡" height="82px" width="82px">
+                    </li>
+                    <li class="food-item" id="food-4">4: 披薩
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/pizza.svg" alt="披薩" height="82px" width="82px">
+                    </li>
+                    <li class="food-item" id="food-5">5: 全家
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/family.svg" alt="全家" height="82px" width="82px">
+                    </li>
                 </ul>
             </div>
             <div>
                 <ul id="food-list">
-                    <li class="food-item" id="food-6">6: 壽司</li>
-                    <li class="food-item" id="food-7">7: 韓式</li>
-                    <li class="food-item" id="food-8">8: 壽喜燒</li>
-                    <li class="food-item" id="food-9">9: 鐵板燒</li>
-                    <li class="food-item" id="food-10">10: 義大利麵</li>
+                    <li class="food-item" id="food-6">6: 壽司
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/sushi.svg" alt="壽司" height="80px" width="80px">
+                    </li>
+                    <li class="food-item" id="food-7">7: 韓式
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/korea.svg" alt="韓式" height="82px" width="82px">
+                    </li>
+                    <li class="food-item" id="food-8">8: 壽喜燒
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/sukiyaki.svg" alt="壽喜燒" height="78px" width="78px">
+                    </li>
+                    <li class="food-item" id="food-9">9: 鐵板燒
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/teppanyaki.svg" alt="鐵板燒" height="72px" width="75px">
+                    </li>
+                    <li class="food-item" id="food-10">10: 義大利麵
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/pasta.svg" alt="義大利麵" height="82px" width="82px">
+                    </li>
                 </ul>
             </div>
         </div>
@@ -36,19 +60,11 @@
         <script>
             let turntable = {
                 itemNum: 10, // 轉盤平均分幾塊
-
                 lightNum: 18, // 燈
                 light: null, // 燈容器
-
                 turntable: null, // 轉盤
-
                 bg: null, // 轉盤背景
-
-                gift: null, // 中獎結果圖
-
                 pointer: null, // 指針
-
-                lottery: [], // 中獎
 
                 typeMap: {
                     1: '1',
@@ -167,13 +183,13 @@
             }
 
             let lottery = [{
-                    location: 10, // 位置
-                    type: 10, // 中獎
+                    location: 10, 
+                    type: 10, 
                     rate: 10,
                 },
                 {
                     location: 9,
-                    type: 9, // 未中獎
+                    type: 9, 
                     rate: 10
                 },
                 {
