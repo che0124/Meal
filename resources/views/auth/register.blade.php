@@ -23,7 +23,7 @@
             <div class="auth-form">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-                    <div class="auth-   form-item">
+                    <div class="auth-form-item">
                         <label for="name" class="auth-form-field-name">{{ __('Name') }}</label>
 
                         <div class="form-textbox">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
 
-                    <div class="auth-   form-item">
+                    <div class="auth-form-item">
                         <label for="email"
                             class="auth-form-field-name">{{ __('Email Address') }}</label>
 
@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="auth-   form-item">
+                    <div class="auth-form-item">
                         <label for="password" class="auth-form-field-name">{{ __('Password') }}</label>
 
                         <div class="form-textbox">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <div class="auth-   form-item">
+                    <div class="auth-form-item">
                         <label for="password-confirm"
                             class="auth-form-field-name">{{ __('Confirm Password') }}</label>
 
@@ -82,7 +82,7 @@
                         </div>
                     </div>
 
-                    <div class="auth-   form-item">
+                    <div class="auth-form-item">
                         <div class="form-submit">
                             <button type="submit" class="auth-btn-primary">
                                 {{ __('Register') }}

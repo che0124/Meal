@@ -1,0 +1,24 @@
+.container {
+    position: relative;
+}
+.home-title{
+position: absolute;
+width: 348px;
+height: 40px;
+left: calc(50% - 348px/2 + 153px);
+top: 41px;
+
+font-family: 'ABeeZee';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 100%;
+/* identical to box height, or 40px */
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.1em;
+
+color: #39795b;
+
+}

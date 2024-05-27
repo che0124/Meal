@@ -82,7 +82,7 @@
 
                             @if (Route::has('register'))
                                 <p>Don't have an account?
-                                    <a class="auth-btn-link" href="{{ route('register') }}">
+                                    <a class="signup" href="{{ route('register') }}">
                                         {{ __('Sign up') }}
                                     </a>
                                 </p>    
