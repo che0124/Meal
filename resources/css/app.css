@@ -7,7 +7,7 @@ body {
     height: 100%;
     background-color: #fef8f2;
     font-family: "Noto Sans TC", sans-serif;
-    
+
 }
 
 
@@ -17,15 +17,15 @@ body {
 | content                                               
 |--------------------------------------------------------------------------
 */
-.container{ 
+.container {
     height: 100%;
     margin-left: 244px;
     padding: 30px 50px 30px;
-    color:#8B5E34;
+    color: #8B5E34;
 }
 
 
-.page-title{
+.page-title {
     margin: 20px 0;
     color: #4B2E20;
     font-weight: 900;
@@ -38,12 +38,12 @@ body {
 }
 
 
-.link{
+.link {
     display: block;
     padding: 10px 0 10px 10px;
     font-size: 20px;
     text-decoration: none;
-    color:#8B5E34;
+    color: #8B5E34;
 }
 
 .link:hover {
@@ -75,14 +75,13 @@ body {
     display: block;
 }
 
-.nav-item-list{
-}
+.nav-item-list {}
 
 .nav-link-title {
     padding-left: 16px;
 }
 
-.nav-title{
+.nav-title {
     font-weight: 500;
 }
 
@@ -95,7 +94,8 @@ body {
     color: #63310e;
 }
 
-.nav-link:hover, .nav-link-last:hover {
+.nav-link:hover,
+.nav-link-last:hover {
     background-color: #fff1d9;
     border-radius: 8px;
     transition: 0.5s;
@@ -104,27 +104,27 @@ body {
 .nav-link:hover svg,
 .nav-link-last:hover svg {
     transform: scale(1.05);
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
-.nav-link.active .nav-title{
+.nav-link.active .nav-title {
     font-weight: 700;
 }
 
-.nav-link:active svg{
+.nav-link:active svg {
     transform: scale(0.9);
-
 }
 
-.nav-link:active .nav-link-icon-title{
+.nav-link:active .nav-link-icon-title {
     opacity: 0.7;
 }
 
 
-.nav-link-icon-title{
+.nav-link-icon-title {
     display: flex;
-    
+
 }
+
 .nav-link-icon {
     width: auto;
     height: 24px;
@@ -149,7 +149,8 @@ body {
 .popup-menu {
     display: none;
     position: absolute;
-    bottom: 60px; /* Adjust as needed */
+    bottom: 60px;
+    /* Adjust as needed */
     background-color: #444;
     color: white;
     padding: 8px;
@@ -286,7 +287,7 @@ body {
     font-weight: 600;
 }
 
-.profile-link{
+.profile-link {
     padding: 5px 15px;
     border-radius: 10px;
     color: #fef8f2;
@@ -296,13 +297,13 @@ body {
     text-decoration: none;
 }
 
-.profile-link:hover{
+.profile-link:hover {
     background-color: #b58c68a2;
 }
 
 /*
 |--------------------------------------------------------------------------
-| surprise                                       
+| turntable                                       
 |--------------------------------------------------------------------------
 */
 
@@ -310,6 +311,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 ul {
     list-style: none;
 }
@@ -534,134 +536,214 @@ ul {
     border-width: 25px 10px 25px 10px;
 }
 
+.position {
+    display: flex;
+}
+
+#food-list {
+    margin-top: 130px;
+    margin-left: 50px;
+    flex-wrap: wrap;
+}
+
+.food-item {
+    font-size: 20px;
+    margin-bottom: 10px;
+    transition: font-size 0.3s ease; 
+} 
+
+.highlight {
+    font-size: 25px;
+    color: red;
+    transition: font-size 0.3s ease;
+}
+
 
 /*
 |--------------------------------------------------------------------------
-| home                                         
+| HeroSection                                         
 |--------------------------------------------------------------------------
 */
-.home-container {
+/* header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 10px 20px;
+    background-color: #FFF1D6;
+    color: white;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.header .user-actions a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-login {
+    display: block;
+    color: #CAAF77;
+    border:2px solid;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.header-signup {
+    display: block;
+    color: #FFF1D6;
+    background-color: #CAAF77;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.placeholder {
+    width: 20px;
+}
+
+/* herosection */
+.heroSection {
     position: relative;
+    text-align: center;
+    margin: 70px 0;
+    color: #8B5E34;
+    float: right;
+    width: calc(100% - 220px);;
+}
+
+.section-container {
+    width: 100%;
 }
 
 .home-title {
-    position: absolute;
-    width: 348px;
+    display: block;
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #7F5E19;
+}
+
+
+.small-title {
+    display: flex;
+    width: 100%;
     height: 40px;
-    left: calc(50% - 348px/2 + 153px);
-    top: 20px;
+    align-items: center;
 
     font-family: 'ABeeZee';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 100%;
-    /* identical to box height, or 40px */
+    letter-spacing: 0.1em;
+    color: #7F5E19;
+}
+
+.rectangle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 150px;
+}
+
+.rectangle1,
+.rectangle2,
+.rectangle3 {
     display: flex;
     align-items: center;
-    text-align: center;
-    letter-spacing: 0.1em;
-
-    color: #7F5E19;
-
+    height: 350px;
+    padding: 20px;
+    opacity: 0.8;
 }
 
 .rectangle1 {
-
-    position: absolute;
-    width: calc(100% - 220px);
-    height: 300px;
-    margin-left: 220px;
-    top: 100px;
-
     background: #DBCEB4;
-    opacity: 0.8;
-
-
 }
 
 .rectangle2 {
-
-    position: absolute;
-    width: calc(100% - 220px);
-    height: 300px;
-    margin-left: 220px;
-    top: 400px;
-
     background: #887757;
-    opacity: 0.8;
-
-
 }
 
 .rectangle3 {
-
-    position: absolute;
-    width: calc(100% - 220px);
-    height: 300px;
-    margin-left: 220px;
-    top: 700px;
-
     background: #B8A37A;
-    opacity: 0.8;
+}
 
-
+.rect-item.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .small-title {
-
-    position: absolute;
+    align-items: center;
 
     font-family: 'Alegreya';
     font-style: bold;
     font-weight: 700;
     font-size: 35px;
     line-height: 100%;
-    /* or 40px */
     display: flex;
-    align-items: center;
     letter-spacing: 0.1em;
-
     color: #000000;
-
-
 }
 
 .home-context {
-
-    position: absolute;
-
     font-family: 'ABeeZee';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 1.5;
-    /* or 23px */
     letter-spacing: 0.1em;
-
     color: #000000;
-
 }
 
 .home-btn {
-
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     gap: 10px;
-
-    position: relative;
     width: 60px;
     height: 120px;
     border: none;
     background: #CAAF77;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
-
+    font-size: 17px;
+    font-weight: 700;
 }
+
 .home-btn:hover {
-    background-color: #a28c51; /* 悬停时的背景色 */
+    transform: scale(1.05);
+    background-color: #ffdc7d;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.section-img {
+    width: 400px;
+    height: 226px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -704,7 +786,7 @@ ul {
     margin: 0 0 20px;
 }
 
-.auth-form-field-name{
+.auth-form-field-name {
     display: block;
     margin: 10px 0 0;
     font-size: 15px;
@@ -722,7 +804,7 @@ ul {
     letter-spacing: 1px;
 }
 
-.auth-form-control::placeholder{
+.auth-form-control::placeholder {
     font-size: 12px;
     font-weight: 100;
     color: #a7833c;
@@ -731,8 +813,8 @@ ul {
 .auth-form-control:focus {
     outline: none;
 }
-    
-.auth-form-control:-webkit-autofill{
+
+.auth-form-control:-webkit-autofill {
     box-shadow: inset 0 0 0 2000px #fffcf5;
 }
 
@@ -776,6 +858,7 @@ ul {
     font-weight: 500;
     text-decoration: none;
 }
+
 .signup {
     margin: 16px 0;
     color: #a7833c;

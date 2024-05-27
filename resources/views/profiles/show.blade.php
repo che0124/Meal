@@ -4,17 +4,16 @@
     <div class="container">
         <div class="profile-info">
             <div class="profile-item">
-                {{$user->id}}
-                <span id="userName">{{ $profile->username }}</span>
+                <strong>姓名：</strong> <span id="userName">{{ $user->name }}</span>
             </div>
             <div class="profile-item">
-            <span id="userEmail">{{ $profile->bio }}</span>
+                <strong>信箱：</strong> <span id="userEmail">{{ $user->email }}</span>
             </div>
             <div class="profile-item">
                 <strong>加入日期：</strong> <span id="userJoined">{{ $user->created_at->format('M d, Y') }}</span>
             </div>
         </div>
-        <a href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}" class="profile-link">編輯個人檔案</a>
+        <a href="{{ route('profiles.edit', ['profile' => $user->id]) }}" class="profile-link">編輯個人檔案</a>
     </div>
 @endsection
 
