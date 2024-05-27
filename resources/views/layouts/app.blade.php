@@ -21,7 +21,7 @@
             <div class="nav-brand">
                 <a class="nav-link-brand" href="{{ url('/') }}">
                     <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px"
-                        width="100px" />
+                        width="100px">
                 </a>
             </div>
 
