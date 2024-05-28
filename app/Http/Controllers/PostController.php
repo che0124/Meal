@@ -85,6 +85,7 @@ class PostController extends Controller
     {
         $post->restaurant = $request->input('restaurant');
         $post->time = $request->input('time');
+        $post->date = $request->input('date');
         $post->content = $request->input('content');
         $post->save();
 
