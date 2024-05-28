@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_id',
     ];
 
     /**
@@ -31,6 +32,16 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->profile()->create();
+            $user->update(['profile_id' => $user->profile->id]);
+        });
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -44,7 +55,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
     
     public function profile()
     {

@@ -1,168 +1,128 @@
 @extends('layouts.app')
 
 @section('content')
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
+    <head>
 
-    <style>
-        div.ccontainer {
-            height: 100%;
-            /* margin-left: 220px;  */
-            /* padding: 10px 80px 30px 0px;   */
-            display: flex;
-            flex-wrap: wrap;   
-            justify-content:center;  
-            align-content: center;
-            margin-left: 270px;  
-            margin-top: 40px;
-            row-gap: 50px; 
-        }
-        h1 {
-            font-size: 30px;
-            font-family: 'cwTeXYen', sans-serif;
-            text-align: center;
-            /* padding: 70px ; */
-            margin-top: 90px;
-            margin-top: 115px;
-            margin-left: 270px;
-            /* color:#4B2E20; */
-            font-weight:900;
-        
+        <style>
+            .title {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                height: 50px;
+                width: 100%;
+                margin: 20px 0
+            }
 
-        }
+            .title-item {
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+
+            .title-item img {
+                height: 100%;
+                width: auto;
+            }
+
+            .page-title {
+                margin-left: 20px;
+            }
 
 
-        div.p1{
-            /* position: absolute; */
-            padding: 60px;            
-            background-color: #ffdd99;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            display: block;
-            width: 25%;
-            height: 0px;
-            margin:10px;
-            /* height: auto; */
-        }
+            .all-posts {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding-right: 100px;
+            }
 
-        a.tit {
-            text-decoration: none;
-            color: black;
-            font-size: 25px;
-            font-weight: 600;
-            padding: 0px;
-            text-align: center;
-            display: block;
-            margin-left: 0px;
-            /* 向左移动 */
-            margin-top: -50px;
+            .post-container {
+                background-color: #be9a7883;
+                border-radius: 10px;
+                height: 100%;
+                width: 100%;
+            }
+
+            .post-link {
+                display: block;
+                width: 30%;
+                height: 200px;
+                text-decoration: none;
+                font-size: 23px;
+                font-weight: 600;
+                margin: 10px 10px;
+            }
+
+            .post-link:hover {
+                transform: scale(1.05);
+                transition: transform 0.3s ease;
+            }
 
 
-        }
+            .post-container .post {
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+            }
 
-        a.tit1 {
-            text-decoration: none;
-            font-size: 23px;
-            display: block;
-            color: white;
-            font-weight: 600;
-            text-align: center;
-            display: block;
-            margin-top: px;
-        }
+            .post .post-title {
+                display: flex;
+                justify-content: start;
+                text-decoration: none;
+                color: black;
+                font-size: 25px;
+                font-weight: 600;
+                text-align: center;
+            }
+        </style>
+    </head>
 
-        p2 {
-            background-color: #F8981D;
-            border-radius: 10px;
-            width: 130px;
-            height: 40px;
-            display: block;
-            position: relative;
-            left: -30px;
-            top: -50px;
 
-        }
+    <body>
 
-        /*  
-         
-        img.donut {
-            position: absolute;
-            top: 30px;
-            left: 900px;
-            margin-top: px;
-            height: 200px;
-            width: auto;
-            transform: rotate(320deg);
-            
-        }*/
-
-        img.restauraunt {
-            position: absolute;
-            top: 30px;
-            left: 725px;
-            margin-top: px;
-            height: 80px;
-            /* 设置高度 */
-            width: auto;
-        }
-    </style>
-
-</head>
-<!--  -->
-
-<body>
-
-    <h1>所有飯局</h1>
-    <div class="ccontainer">
-        {{-- <svg height="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M2.11011 25C2.11011 25.7956 2.42618 26.5587 2.98879 27.1213C3.5514 27.6839 4.31446 28 5.11011 28C5.90576 28 6.66882 27.6839 7.23143 27.1213C7.79404 26.5587 8.11011 25.7956 8.11011 25V14H2.11011V25Z"
-                fill="black" />
-            <path
-                d="M15.1101 25C15.1101 25.7956 15.4262 26.5587 15.9888 27.1213C16.5514 27.6839 17.3145 28 18.1101 28C18.9058 28 19.6688 27.6839 20.2314 27.1213C20.794 26.5587 21.1101 25.7956 21.1101 25V14H15.1101V25Z"
-                fill="black" />
-            <path
-                d="M8.11011 8H6.11011V1H4.11011V8H2.11011V1H0.110107V10H4.11011V13H6.11011V10H10.1101V1H8.11011V8Z"
-                fill="black" />
-            <path
-                d="M18.1101 0C17.0492 0 16.0318 0.421427 15.2817 1.17157C14.5315 1.92172 14.1101 2.93913 14.1101 4V7C14.113 7.88456 14.409 8.74321 14.9518 9.44164C15.4946 10.1401 16.2536 10.6389 17.1101 10.86V13H19.1101V10.86C19.9666 10.6389 20.7256 10.1401 21.2684 9.44164C21.8112 8.74321 22.1072 7.88456 22.1101 7V4C22.1101 2.93913 21.6887 1.92172 20.9385 1.17157C20.1884 0.421427 19.171 0 18.1101 0Z"
-                fill="black" />
-        </svg> --}}
-        <img class=restauraunt src=http://localhost:8080/Meal/public/images/restaurant.svg alt="標題" />
-        <!-- <div class="colorlayer"></div> -->
-        @foreach($posts as $post)
-        <div class="p1">
-            <p2>
-                <a class=tit1 href="{{ route('posts.show', ['post'=>$post]) }}">
-                    {{$post->time}}
-                </a>
-            </p2>
-
-            <a class=tit href="{{ route('posts.show', ['post'=>$post]) }}">
-                {{ $post->title }}
-
-            </a>
+        <div class="container">
+            <div class="join-container">
+                <div class="title">
+                    <div class="title-item">
+                        <img src=http://localhost:8080/Meal/public/images/restaurant.svg />
+                    </div>
+                    <div class="title-item">
+                        <h1 class="page-title">我要假奔</h1>
+                    </div>
+                </div>
+                <div class="all-posts">
+                    @foreach ($posts as $post)
+                        @if (!in_array($post->id, $userPostIds))
+                            <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
+                                <div class="post-container">
+                                    <div class="post">
+                                        <div class="post-title">
+                                            {{ $post->title }}
+                                        </div>
+                                        <div class="post-title">
+                                            {{ $post->restaurant }}
+                                        </div>
+                                        <div class="post-title">
+                                            {{ $post->time }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
-        
-
-
-
-        @endforeach
-
-    </div>
 
 
 
 
-</body>
+    </body>
 
-</html>
-
-
-
-
+    </html>
 @endsection
 
 @push('scripts')

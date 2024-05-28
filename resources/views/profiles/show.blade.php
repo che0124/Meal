@@ -2,19 +2,61 @@
 
 @section('content')
     <div class="container">
-        <div class="profile-info">
-            <div class="profile-item">
-                {{$user->id}}
-                <span id="userName">{{ $profile->username }}</span>
+        <div class="profile">
+            <div class="profile-avatar">
+                <div class="avatar">
+                    <img src="{{ asset('storage/' . $profile->avatar->image) }}" alt="image">
+                </div>
             </div>
-            <div class="profile-item">
-            <span id="userEmail">{{ $profile->bio }}</span>
-            </div>
-            <div class="profile-item">
-                <strong>加入日期：</strong> <span id="userJoined">{{ $user->created_at->format('M d, Y') }}</span>
+            <div class="profile-item-container">
+                <div class="profile-item">
+                    <div class="profile-name">
+                        @if ($profile->username)
+                            <span class="profile-title username">{{ $profile->username }}</span>
+                        @else
+                            <span class="profile-title">使用者尚未填寫使用者名稱</span>
+                        @endif
+                        <span class="profile-title name">{{ $profile->user->name }}</span>
+                    </div>
+                </div>
+
+                <div class="profile-item">
+                    @if ($profile->gender)
+                        <span class="profile-title">性別:</span>
+                        <span class="profile-title">{{ $profile->gender }}</span>
+                    @else
+                        <span class="profile-title">使用者尚未填寫個人性別</span>
+                    @endif
+                </div>
+                <div class="profile-item">
+                    @if ($profile->birthday)
+                        <span class="profile-title">生日:</span>
+                        <span class="profile-title">{{ $profile->birthday }}</span>
+                    @else
+                        <span class="profile-title">使用者尚未填寫生日</span>
+                    @endif
+                </div>
+
+                <div class="profile-item">
+                    @if ($profile->bio)
+                        <span class="profile-title">個人簡介: </span>
+                        <span class="profile-title">{{ $profile->bio }}</span>
+                    @else
+                        <span class="profile-title">使用者尚未填寫個人簡介</span>
+                    @endif
+                </div>
+
+                <div class="profile-item">
+                    <span class="profile-title">加入日期：</span>
+                    <span>{{ $user->created_at->format('M d, Y') }}</span>
+                </div>
+
+                <div class="profile-item btn">
+                    <a class="profile-link" href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}">編輯個人檔案</a>
+                </div>
+
             </div>
         </div>
-        <a href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}" class="profile-link">編輯個人檔案</a>
     </div>
 @endsection
 
