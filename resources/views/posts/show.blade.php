@@ -6,10 +6,6 @@
 
     <head>
         <style>
-            body {
-                margin-left: 220px
-            }
-
             .show-container{
                 position: relative;
                 width: 100%;
