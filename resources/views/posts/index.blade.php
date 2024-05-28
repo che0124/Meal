@@ -106,6 +106,9 @@
                                             {{ $post->restaurant }}
                                         </div>
                                         <div class="post-title">
+                                            {{ $post->date }}
+                                        </div>
+                                        <div class="post-title">
                                             {{ $post->time }}
                                         </div>
                                     </div>
