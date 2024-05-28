@@ -34,6 +34,7 @@ class PostController extends Controller
         if (is_null(Auth::user())) {
             return redirect(route('login'));
         }
+
         return view('posts.create');
     }
 
@@ -45,10 +46,17 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
+        $post->date = $request->input('date');
         $post->time = $request->input('time');
         $post->content = $request->input('content');
         $post->user_id = $request->user()->id;
         $post->save();
+
+        $post_user = new PostUser; 
+        $post_user->post_id = $post->id;
+        $post_user->user_id = $post->user->id;
+        $post_user->save();
+
         return redirect(route('posts.show', ['post' => $post]));
     }
 

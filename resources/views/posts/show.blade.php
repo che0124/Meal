@@ -143,8 +143,9 @@
             <div class="lay">
                 <h1>{{ $post->title }}</h1>
                 <p class="rest">
-                    餐廳: {{ $post->restaurant }}<br><br>
-                    時間: {{ $post->time }} <br><br>
+                    餐廳: {{ $post->restaurant }}<br>
+                    日期: {{ $post->date }} <br>
+                    時間: {{ $post->time }} <br>
                     備註: {{ $post->content }}
                 </p>
             </div>
