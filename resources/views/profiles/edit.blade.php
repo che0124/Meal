@@ -8,7 +8,7 @@
                 <div class="profile-container">
                     <div class="profile-avatar-edit">
                         <div class="avatar">
-                            <img src="{{ asset('storage/' . $profile->avatar->image) }}" alt="image">
+                            <img src="{{ asset('storage/' . $profile->avatar->image) }}">
                         </div>
                     </div>
                     <div class="profile-item-edit">

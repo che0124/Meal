@@ -5,7 +5,7 @@
         <div class="profile">
             <div class="profile-avatar">
                 <div class="avatar">
-                    <img src="{{ asset('storage/' . $profile->avatar->image) }}" alt="image">
+                    <img src="{{ asset('storage/' . $profile->avatar->image) }}">
                 </div>
             </div>
             <div class="profile-item-container">
@@ -22,7 +22,7 @@
 
                 <div class="profile-item">
                     @if ($profile->gender)
-                        <span class="profile-title">性別:</span>
+                        <span class="profile-title">性別 : </span>
                         <span class="profile-title">{{ $profile->gender }}</span>
                     @else
                         <span class="profile-title">使用者尚未填寫個人性別</span>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="profile-item">
                     @if ($profile->birthday)
-                        <span class="profile-title">生日:</span>
+                        <span class="profile-title">生日 : </span>
                         <span class="profile-title">{{ $profile->birthday }}</span>
                     @else
                         <span class="profile-title">使用者尚未填寫生日</span>
@@ -39,7 +39,7 @@
 
                 <div class="profile-item">
                     @if ($profile->bio)
-                        <span class="profile-title">個人簡介: </span>
+                        <span class="profile-title">個人簡介 : </span>
                         <span class="profile-title">{{ $profile->bio }}</span>
                     @else
                         <span class="profile-title">使用者尚未填寫個人簡介</span>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="profile-item">
-                    <span class="profile-title">加入日期：</span>
+                    <span class="profile-title">加入日期 ：</span>
                     <span>{{ $user->created_at->format('M d, Y') }}</span>
                 </div>
 

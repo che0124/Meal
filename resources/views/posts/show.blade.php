@@ -6,7 +6,7 @@
 
     <head>
         <style>
-            .show-container{
+            .show-container {
                 position: relative;
                 width: 100%;
                 height: 100vh;
@@ -35,47 +35,51 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: rgba(0, 0, 0, 0.2); /* 半透明的黑色 */
+                background-color: rgba(0, 0, 0, 0.2);
                 z-index: 0;
             }
 
-
-            .lay {
+            .title{
+                color: #4B2E20;
+                font-size: 25px;
+                font-weight: 900;
+            }
+            .post-data-container {
                 background: #fef8f2;
                 border: 1px solid #dddddd00;
                 position: relative;
                 flex-direction: column;
-                width: 40%;
-                height: 40%;
-                padding: 30px 10px;
+                padding: 30px 50px;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 z-index: 1;
                 align-items: center;
                 text-align: center;
-
+                display: flex;
             }
 
-            h1 {
-                height: 20%;
-                width: 90%;
-                border-radius: 20px;
-                background:  #A67B5B;
-                margin: auto;
-                letter-spacing: 2px;
-                color: #fff;
-                font-size: 30px;
-                text-align: center;
-                line-height: 2.2;
+            .show-item-container {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                border-radius: 10px;
+                margin: 10px 0;
+                color: #8B5E34;
             }
 
-            .rest {
-                font-size: 23px;
+            .show-item {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
+                font-size: 20px
+            }
+
+            .show-item span {
                 font-weight: 500;
-                letter-spacing: 2px;
-                margin: auto;
-                margin-top: 50px;
-                color: #4B2E20;
+            }
+
+            .data {
+                margin: 0 10px;
             }
 
             input {
@@ -103,7 +107,6 @@
             }
 
             .button {
-                position: relative;
                 z-index: 1;
                 padding: 10px;
                 border-radius: 8px;
@@ -112,22 +115,12 @@
             }
 
             .eat {
-                z-index: 1;
-                height: 5%;
-                width: 40%;
                 border-radius: 15px;
                 background-color: #7A5230;
-                margin-top: 20px;
                 color: #fff;
-                font-size: 20px;
+                font-size: 18px;
                 text-align: center;
-            }
-
-            p {
-                color: #fff;
-                margin-top: 2.3px;
-                font-weight: 300
-
+                padding: 3px 20px;
             }
         </style>
     </head>
@@ -136,29 +129,39 @@
         <div class="show-container">
             <div class="background"></div>
             <div class="overlay"></div>
-            <div class="lay">
-                <h1>{{ $post->title }}</h1>
-                <p class="rest">
-                    餐廳: {{ $post->restaurant }}<br>
-                    日期: {{ $post->date }} <br>
-                    時間: {{ $post->time }} <br>
-                    備註: {{ $post->content }}
-                </p>
+            <div class="post-data-container">
+                <div class="title">{{ $post->title }}</div>
+                <div class="show-item-container">
+                    <div class="show-item">
+                        <span>餐廳 : </span>
+                        <span class="data">{{ $post->restaurant }}</span>
+                    </div>
+                    <div class="show-item">
+                        <span>日期 : </span>
+                        <span class="data">{{ $post->date }}</span>
+                    </div>
+                    <div class="show-item">
+                        <span>時間 : </span>
+                        <span class="data">{{ $post->time }}</span>
+                    </div>
+                    <div class="show-item">
+                        <span>備註 : </span>
+                        <span class="data">{{ $post->content }}</span>
+                    </div>
+                </div>
+                @if (!$exist)
+                    <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
+                        @csrf
+                        <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                        <div class=button>
+                            <input type="submit" value="join">
+                        </div>
+                    </form>
+                @else
+                    <div class="eat"><span>已參加此飯局!</span></div>
+                @endif
             </div>
 
-            @if (!$exist)
-                <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
-                    @csrf
-                    <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
-                    <div class=button>
-                        <input type="submit" value="join">
-                    </div>
-                </form>
-            @else
-                <div class="eat">
-                    <p>已參加此飯局!</p>
-                </div>
-            @endif
         </div>
     </body>
 
