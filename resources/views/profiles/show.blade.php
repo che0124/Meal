@@ -2,20 +2,6 @@
 
 @section('content')
     <div class="container">
-<<<<<<< HEAD
-        <div class="profile-info">
-            <div class="profile-item">
-                <strong>姓名：</strong> <span id="userName">{{ $user->name }}</span>
-            </div>
-            <div class="profile-item">
-                <strong>信箱：</strong> <span id="userEmail">{{ $user->email }}</span>
-            </div>
-            <div class="profile-item">
-                <strong>加入日期：</strong> <span id="userJoined">{{ $user->created_at->format('M d, Y') }}</span>
-            </div>
-        </div>
-        <a href="{{ route('profiles.edit', ['profile' => $user->id]) }}" class="profile-link">編輯個人檔案</a>
-=======
         <div class="profile">
             <div class="profile-avatar">
                 <div class="avatar">
@@ -71,7 +57,6 @@
 
             </div>
         </div>
->>>>>>> eb7a5dad32c542ede0b90f213e574b577fd647cc
     </div>
 @endsection
 
