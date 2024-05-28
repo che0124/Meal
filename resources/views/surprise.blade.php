@@ -1,10 +1,78 @@
 @extends('layouts.app')
 
 @section('content')
+<body>
+<style>
+        .container {
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #randomButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        #randomRestaurant {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
     <div class="container">
         <h1 class="page-title">驚喜包</h1>
+    <!-- 在模板中添加一个按钮 -->
+    <button id="randomButton">驚喜按鈕</button>
 
-    </div>
+<!-- 输出隨機選擇的餐廳 -->
+<div id="random"></div>
+@php
+    // 将集合转换为数组
+    $postsArray = $posts->toArray();
+    // 如果集合不为空
+    if (!empty($postsArray)) {
+        // 随机选择一个项目
+        $randomIndex = array_rand($postsArray);
+        $randomPost = $postsArray[$randomIndex];
+    }
+@endphp
+
+  <!-- JavaScript 代码 -->
+  
+ <!-- JavaScript 代码 -->
+<script>
+    // 将 PHP 变量传递到 JavaScript 中
+    var postsArray = @json($postsArray);
+    var randomPost = @json($randomPost);
+
+    // 定义一个函数用于获取随机数据并更新页面显示
+    function getRandom() {
+        // 如果 postsArray 不为空，则重新随机选择一个项目
+        if (postsArray.length > 0) {
+            var randomIndex = Math.floor(Math.random() * postsArray.length);
+            randomPost = postsArray[randomIndex];
+        } else {
+            randomPost = { restaurant: 'No restaurants found', time: 'No time found' };
+        }
+
+        // 将随机选择的餐厅显示在页面上
+        document.getElementById('random').innerHTML = '<div style="text-align: center; font-size: 32px;">' + randomPost.restaurant + '<br>' + randomPost.time + '<br><br></div>';
+    }
+
+    // 当按钮被点击时触发事件
+    document.getElementById('randomButton').addEventListener('click', function() {
+        // 调用函数获取随机数据并更新页面显示
+        getRandom();
+    });
+
+</script>
+
+
+</div>
+    </body>
 @endsection
 @push('scripts')
     <script>
@@ -50,8 +118,6 @@
                         </svg>`;
                     });
                 });
-
             }
         };
-    </script>
-@endpush
+    </script>   
