@@ -39,11 +39,12 @@
                 z-index: 0;
             }
 
-            .title{
+            .title {
                 color: #4B2E20;
                 font-size: 25px;
                 font-weight: 900;
             }
+
             .post-data-container {
                 background: #fef8f2;
                 border: 1px solid #dddddd00;
@@ -147,6 +148,11 @@
                     <div class="show-item">
                         <span>備註 : </span>
                         <span class="data">{{ $post->content }}</span>
+                    </div>
+                    <div class="show-item">
+                        @foreach ($avatars as $avatar)
+                            <img class="user-avatar" src="{{ asset('storage/' . $avatar) }}">
+                        @endforeach
                     </div>
                 </div>
                 @if (!$exist)
