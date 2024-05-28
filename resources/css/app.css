@@ -17,10 +17,20 @@ body {
 | content                                               
 |--------------------------------------------------------------------------
 */
+.grid-container {
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-auto-flow: row dense;
+}
+
+
+.grid-item-2 {
+    grid-column: 2;
+}
+
 .container {
     height: 100%;
-    margin-left: 244px;
-    padding: 30px 50px 40px;
+    padding: 30px;
     color: #8B5E34;
 }
 
@@ -55,16 +65,20 @@ body {
 | navbar                                            
 |--------------------------------------------------------------------------
 */
+
+
+
 .navbar {
     display: flex;
     flex-direction: column;
-    position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
-    height: 100vh;
+    width: 250px;
+    height: 100%;
     border-right: 1px solid #D2B48C;
-    padding: 10px;
+    box-sizing: border-box;
+    position: fixed;
+    padding: 20px;
 }
 
 .nav-brand {
@@ -87,7 +101,6 @@ body {
 
 .nav-link {
     display: block;
-    padding: 12px;
     margin: 4px 0;
     text-decoration: none;
     font-size: 18px;
@@ -122,7 +135,8 @@ body {
 
 .nav-link-icon-title {
     display: flex;
-
+    padding: 12px;
+    margin: 4px 0;
 }
 
 .nav-link-icon {
@@ -138,7 +152,6 @@ body {
 }
 
 .nav-link-last {
-    display: block;
     padding: 12px;
     margin: 4px 0;
     text-decoration: none;
@@ -184,6 +197,38 @@ body {
     color: #fff;
 }
 
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 90px auto;
+    }
+
+    .navbar {
+        width: auto;
+    }
+
+    .nav-title {
+        display: none;
+    }
+
+    .nav-link-title {
+        display: none;
+    }
+
+    .nav-link-brand {
+        text-align: center;
+    }
+
+    .nav-brand {
+        padding: 0;
+    }
+
+    #logo {
+        content: url('http://localhost:8080/Meal/public/images/smallLogo.svg');
+        width: auto;
+        height: auto;
+    }
+
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -424,7 +469,7 @@ body {
 }
 
 /* Popup Menu Styles */
-#change-photo{
+#change-photo {
     color: #f5f5f5;
     background-color: #39affd;
     border-radius: 10px;
@@ -475,7 +520,7 @@ body {
     font-weight: 500;
 }
 
-.avatar-title{
+.avatar-title {
     color: #f5f5f5;
     background-color: #ffffff00;
     border: none;
@@ -677,17 +722,20 @@ body {
     font-size: 15px;
     text-align: center;
     margin-bottom: 10px;
-    transition: font-size 0.3s ease; 
+    transition: font-size 0.3s ease;
     margin-top: 120px;
     padding: 5px;
-    background-color: #fff; /* 白色底 */
-    border: 1px solid #ddd; /* 灰色邊框 */
-    border-radius: 10px; /* 圓角 */
-    margin: 5px 0; /*上下間距 */
+    background-color: #fff;
+    /* 白色底 */
+    border: 1px solid #ddd;
+    /* 灰色邊框 */
+    border-radius: 10px;
+    /* 圓角 */
+    margin: 5px 0;
+    /*上下間距 */
     height: 100px;
     width: 100px
-
-} 
+}
 
 /* 選中項目放大 */
 .highlight {
@@ -695,9 +743,12 @@ body {
     color: #8B5E34;
     font-weight: 600;
     padding: 5px;
-    background-color: #fbd287; /* 白色底 */
-    border: 1px solid #ddddddeb; /* 灰色邊框 */
-    border-radius: 10px; /* 圓角 */
+    background-color: #fbd287;
+    /* 白色底 */
+    border: 1px solid #ddddddeb;
+    /* 灰色邊框 */
+    border-radius: 10px;
+    /* 圓角 */
     position: relative;
     right: 8%;
     height: 130px;
@@ -745,7 +796,7 @@ body {
 .header-login {
     display: block;
     color: #CAAF77;
-    border:2px solid;
+    border: 2px solid;
     border-radius: 20px;
     padding: 5px 20px;
 }
