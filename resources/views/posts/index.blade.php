@@ -19,7 +19,7 @@
             .title-item {
                 display: flex;
                 align-items: center;
-                height: 100%;
+                /* height: 100%; */
             }
 
             .title-item img {
@@ -37,10 +37,20 @@
                 flex-wrap: wrap;
                 align-items: center;
                 padding-right: 100px;
+                gap: 20px;
             }
 
             .post-container {
-                background-color: #be9a7883;
+                background-color: #ad9386e9;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                height: 100%;
+                width: 100%;
+            }
+
+            .post-container:hover {
+                background-color: #998377e9;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
                 border-radius: 10px;
                 height: 100%;
                 width: 100%;
@@ -68,11 +78,21 @@
                 padding: 30px;
             }
 
-            .post .post-title {
+            .post-title {
                 display: flex;
                 justify-content: start;
                 text-decoration: none;
-                color: black;
+                color: #4B2E20;
+                font-size: 25px;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            .post-content {
+                display: flex;
+                justify-content: start;
+                text-decoration: none;
+                color: white;
                 font-size: 25px;
                 font-weight: 600;
                 text-align: center;
@@ -84,36 +104,41 @@
     <body>
 
         <div class="container">
-            <div class="join-container">
-                <div class="title">
-                    <div class="title-item">
-                        <img src=http://localhost:8080/Meal/public/images/restaurant.svg />
-                    </div>
-                    <div class="title-item">
-                        <h1 class="page-title">我要假奔</h1>
-                    </div>
+            <div class="title">
+                <div class="title-item">
+                    <svg width="28" height="33" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.11011 8H6.11011V1H4.11011V8H2.11011V1H0.110107V10H4.11011V14H2.11011V25C2.11011 25.7956 2.42618 26.5587 2.98879 27.1213C3.5514 27.6839 4.31446 28 5.11011 28C5.90576 28 6.66882 27.6839 7.23143 27.1213C7.79404 26.5587 8.11011 25.7956 8.11011 25V14H6.11011V10H10.1101V1H8.11011V8ZM6.11011 25C6.11011 25.2652 6.00475 25.5196 5.81721 25.7071C5.62968 25.8946 5.37532 26 5.11011 26C4.84489 26 4.59054 25.8946 4.403 25.7071C4.21546 25.5196 4.11011 25.2652 4.11011 25V16H6.11011V25Z"
+                            fill="#4B2E20" />
+                        <path
+                            d="M22.1101 7V4C22.1101 2.93913 21.6887 1.92172 20.9385 1.17157C20.1884 0.421427 19.171 0 18.1101 0C17.0492 0 16.0318 0.421427 15.2817 1.17157C14.5315 1.92172 14.1101 2.93913 14.1101 4V7C14.113 7.88456 14.409 8.74321 14.9518 9.44164C15.4946 10.1401 16.2536 10.6389 17.1101 10.86V14H15.1101V25C15.1101 25.7956 15.4262 26.5587 15.9888 27.1213C16.5514 27.6839 17.3145 28 18.1101 28C18.9058 28 19.6688 27.6839 20.2314 27.1213C20.794 26.5587 21.1101 25.7956 21.1101 25V14H19.1101V10.86C19.9666 10.6389 20.7256 10.1401 21.2684 9.44164C21.8112 8.74321 22.1072 7.88456 22.1101 7ZM19.1101 25C19.1101 25.2652 19.0048 25.5196 18.8172 25.7071C18.6297 25.8946 18.3753 26 18.1101 26C17.8449 26 17.5905 25.8946 17.403 25.7071C17.2155 25.5196 17.1101 25.2652 17.1101 25V16H19.1101V25ZM16.1101 7V4C16.1101 3.46957 16.3208 2.96086 16.6959 2.58579C17.071 2.21071 17.5797 2 18.1101 2C18.6405 2 19.1492 2.21071 19.5243 2.58579C19.8994 2.96086 20.1101 3.46957 20.1101 4V7C20.1101 7.53043 19.8994 8.03914 19.5243 8.41421C19.1492 8.78929 18.6405 9 18.1101 9C17.5797 9 17.071 8.78929 16.6959 8.41421C16.3208 8.03914 16.1101 7.53043 16.1101 7Z"
+                            fill="#4B2E20" />
+                    </svg>
                 </div>
-                <div class="all-posts">
-                    @foreach ($posts as $post)
-                        @if (!in_array($post->id, $userPostIds))
-                            <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
-                                <div class="post-container">
-                                    <div class="post">
-                                        <div class="post-title">
-                                            {{ $post->title }}
-                                        </div>
-                                        <div class="post-title">
-                                            {{ $post->restaurant }}
-                                        </div>
-                                        <div class="post-title">
-                                            {{ $post->time }}
-                                        </div>
+                <div class="title-item">
+                    <h1 class="page-title">我要假奔</h1>
+                </div>
+            </div>
+            <div class="all-posts">
+                @foreach ($posts as $post)
+                    @if (!in_array($post->id, $userPostIds))
+                        <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
+                            <div class="post-container">
+                                <div class="post">
+                                    <div class="post-title">
+                                        {{ $post->title }}
+                                    </div>
+                                    <div class="post-content">
+                                        {{ $post->restaurant }}
+                                    </div>
+                                    <div class="post-content">
+                                        {{ $post->time }}
                                     </div>
                                 </div>
-                            </a>
-                        @endif
-                    @endforeach
-                </div>
+                            </div>
+                        </a>
+                    @endif
+                @endforeach
             </div>
         </div>
 
