@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -13,7 +13,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles.index', ['users' => User::cursor()]);
+        return view('profiles.index', ['users' => User::all()]);
     }
 
     /**
@@ -23,42 +23,49 @@ class ProfileController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $user = User::find($id);
-        $profile = User::find($id);
- 
-        return view('profiles.show', ['profile' => $profile, 'user'=>$user]);
+        $user = User::findOrFail($id);
+        return view('profiles.show', ['user' => $user]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        $profile = User::find($id);
-        return view('profiles.edit', ['profile'=>$profile]);
+        $user = Auth::user();
+        return view('profiles.edit', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            // 'username' => 'nullable|string|max:255|unique:users,username,' . $user->id,
+            'bio' => 'nullable|string|max:1000',
+        ]);
+
+        $user->update($validated);
+
+        return redirect()->route('profiles.show', ['profile' => $user->id])->with('success', 'Profile updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.

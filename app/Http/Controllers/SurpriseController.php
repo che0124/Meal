@@ -9,6 +9,10 @@ class SurpriseController extends Controller
 {
     public function surprise()
     {
-        return view('surprise', ['posts' => Post::cursor()]);
+        $post = Post::inRandomOrder()->first();
+
+    
+        return view('surprise', ['post' => $post]);
+        
     }
 }

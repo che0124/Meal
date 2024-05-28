@@ -91,6 +91,7 @@ class PostController extends Controller
 
         return redirect(route('posts.show', ['post' => $post]));
     }
+    
 
     /**
      * Remove the specified resource from storage.

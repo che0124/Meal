@@ -275,8 +275,10 @@ body {
 | profile                                               
 |--------------------------------------------------------------------------
 */
+/*
 .profile-info {
-    margin-top: 20px;
+    margin-top: 60px;
+    margin-left:400px;
 }
 
 .profile-item {
@@ -295,12 +297,17 @@ body {
     font-weight: 600;
     background-color: #917053ae;
     text-decoration: none;
+    
+    margin-left:400px;
+    margin-top:100px;
+    display: inline-block;
 }
 
 .profile-link:hover {
     background-color: #b58c68a2;
+    
 }
-
+*/
 /*
 |--------------------------------------------------------------------------
 | turntable                                       

@@ -1,24 +1,86 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="profile-info">
-            <div class="profile-item">
-                {{$user->id}}
-                <span id="userName">{{ $profile->username }}</span>
-            </div>
-            <div class="profile-item">
-            <span id="userEmail">{{ $profile->bio }}</span>
-            </div>
-            <div class="profile-item">
-                <strong>加入日期：</strong> <span id="userJoined">{{ $user->created_at->format('M d, Y') }}</span>
-            </div>
-        </div>
-        <a href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}" class="profile-link">編輯個人檔案</a>
-    </div>
-@endsection
+<style>
+    div.profile-info {
+        margin-top: -400px;
+        margin-left: 330px;
+        font-weight: 600;
+        z-index: 10001;
+        color: black;
+        z-index: 1001;
+        position: absolute;
 
-@push('scripts')
+    }
+
+    .profile-item {
+        margin-bottom: 35px;
+    }
+
+    .profile-item span {
+        font-weight: 600;
+
+    }
+
+    .profile-link {
+        padding: 5px 15px;
+        border-radius: 10px;
+        color: #fef8f2;
+        font-size: 14px;
+        font-weight: 600;
+        background-color: #917053ae;
+        text-decoration: none;
+        margin-left: -370px;
+        margin-top: 400px;
+        /* display: inline-block;  */
+        position: absolute;
+        z-index: 1001;
+    }
+
+    .profile-link:hover {
+        background-color: #b58c68a2;
+
+    }
+
+    img.clipboard {
+        /* position:absolute; */
+        margin-left: 160px;
+        margin-top: -30px;
+        width: 600px;
+        height: auto;
+
+
+    }
+</style>
+@section('content')
+<div class="container">
+    <img class="clipboard" src="http://localhost:8080/Meal/public/images/clipboard.svg" alt="user interface icons">
+
+    <div class="profile-info">
+
+        <div class="profile-item">
+            <strong>姓名：</strong> <span id="userName">{{ $user->name }}</span>
+
+        </div>
+        <div class="profile-item">
+            <strong>信箱：</strong> <span id="userEmail">{{ $user->email }}</span>
+        </div>
+        
+        <!-- <div class="profile-item"> -->
+            <!-- <strong>個人介紹:</strong> {{ $user->bio }} -->
+        <!-- </div> -->
+
+        <div class="profile-item">
+            <strong>加入日期：</strong> <span id="userJoined">{{ $user->created_at->format('M d, Y') }}</span>
+        </div>
+        <div class="profile-item">
+            <strong>mbti：</strong> <span id="mbti">{{ $user->mbti }}</span>
+    </div>
+
+    <a href="{{ route('profiles.edit', ['profile' => $user->id]) }}" class="profile-link">編輯個人檔案</a>
+    </img>
+    @endsection
+
+    @push('scripts')
     <script>
         window.onload = function() {
             var profileSVG = document.getElementById('profileSVG');
@@ -54,4 +116,4 @@
             }
         };
     </script>
-@endpush
+    @endpush

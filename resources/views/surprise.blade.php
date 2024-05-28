@@ -3,8 +3,24 @@
 @section('content')
     <div class="container">
         <h1 class="page-title">驚喜包</h1>
+        @if($post)
+            <h2>{{ $post->title }}</h2>
+            <p>餐廳: {{ $post->restaurant }}</p>
+            <p>時間: {{ $post->time }}</p>
+            <p>備註: {{ $post->content }}</p>
+        @else
+            <p>目前沒有可用的帖子。</p>
+        @endif
 
-    </div>
+        <form action="{{ route('posts.join', ['post' => $post->id]) }}" method="POST">
+            @csrf
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
+            <input type="submit" value="join">
+        </form>
+        
+    </div>    
+</body>
+</html>
 @endsection
 @push('scripts')
     <script>

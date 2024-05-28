@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->nullable;
             $table->string('bio', 100)->nullable();
+            $table->string('mbti')->nullable;
             $table->timestamps();
         });
     }
