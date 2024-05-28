@@ -446,7 +446,6 @@ ul {
     height: 100%;
     background: #dfd8be;
     transform-origin: center center;
-    /*transform: rotate(36deg);*/
 }
 
 .turntable-wrap .turntable .gift {
@@ -499,7 +498,7 @@ ul {
     background: #fff;
     line-height: 70px;
     color: #bfa74f;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .turntable-wrap .pointer {
@@ -541,23 +540,47 @@ ul {
 }
 
 #food-list {
-    margin-top: 130px;
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 32px;
     flex-wrap: wrap;
 }
 
 .food-item {
-    font-size: 20px;
+    font-size: 15px;
+    text-align: center;
     margin-bottom: 10px;
     transition: font-size 0.3s ease; 
+    margin-top: 120px;
+    padding: 5px;
+    background-color: #fff; /* 白色底 */
+    border: 1px solid #ddd; /* 灰色邊框 */
+    border-radius: 10px; /* 圓角 */
+    margin: 5px 0; /*上下間距 */
+    height: 100px;
+    width: 100px
+
 } 
 
+/* 選中項目放大 */
 .highlight {
-    font-size: 25px;
-    color: red;
-    transition: font-size 0.3s ease;
+    font-size: 20px;
+    color: #8B5E34;
+    font-weight: 600;
+    padding: 5px;
+    background-color: #fbd287; /* 白色底 */
+    border: 1px solid #ddddddeb; /* 灰色邊框 */
+    border-radius: 10px; /* 圓角 */
+    position: relative;
+    right: 8%;
+    height: 130px;
+    width: 130px;
+    transition: font-size, height, width 0.1s step-start;
 }
 
+.food-item.highlight img {
+    width: 95px;
+    height: 95px;
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -771,6 +794,7 @@ ul {
 
 .form-title {
     margin: 50px 0;
+    
 }
 
 .auth-form {
