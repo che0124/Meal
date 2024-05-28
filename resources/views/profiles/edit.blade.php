@@ -28,11 +28,11 @@
                             <!-- Popup Menu -->
                             <div id="avatar-container" class="avatar-container hidden">
                                 <div class="avatar-menu">
-                                    <div class="avatar-item">變更大頭貼</div>
+                                    <div class="avatar-menu-title">變更大頭貼</div>
                                     <div class="avatar-button-container">
-                                        <button class="avatar-item" style="color:#0095f6;">上傳相片</button>
-                                        <button class="avatar-item" style="color: #ed4956;">移除目前的大頭貼照</button>
-                                        <button class="avatar-item">取消</button>
+                                        <label class="avatar-title" for="avatar" style="color:#0095f6;">上傳相片</label>
+                                        <button class="avatar-title" style="color: #ed4956;">移除目前的大頭貼照</button>
+                                        <button class="avatar-title">取消</button>
                                     </div>
 
                                     <form id="profile-form" action="{{ route('profile.avatar') }}" method="POST"
@@ -86,8 +86,10 @@
             var changePhoto = document.getElementById("change-photo");
             var photoMenu = document.getElementById("avatar-container");
             var overlay = document.getElementById("overlay");
-            var removePhotoButton = document.getElementById("remove-photo");
-            var cancelButton = document.getElementById("cancel");
+            var removePhotoButton = document.querySelector(
+                ".avatar-button-container button:nth-child(2)"); // 假设 "移除目前的大頭貼照" 是第二个按钮
+            var cancelButton = document.querySelector(
+                ".avatar-button-container button:nth-child(3)"); // 假设 "取消" 是第三个按钮
 
             // Show the menu and overlay when clicking "變更相片"
             changePhoto.addEventListener("click", function(event) {
@@ -118,11 +120,13 @@
             });
         });
 
+
         document.addEventListener("DOMContentLoaded", function() {
             var avatarInput = document.getElementById("avatar");
 
             avatarInput.addEventListener("change", function() {
-                this.submit();
+                var profileForm = document.getElementById("profile-form");
+                profileForm.submit();
             });
         });
     </script>

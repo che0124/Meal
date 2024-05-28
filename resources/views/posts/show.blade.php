@@ -140,10 +140,6 @@
 
     <body>
         <div class="container">
-            <!-- <img class=eat src=http://localhost:8080/Meal/public/images/cutlery.svg alt="標題" /> -->
-            <!-- <img class=eat1 src=http://localhost:8080/Meal/public/images/cutlery.svg alt="標題" /> -->
-            <!-- <img class=bell src=http://localhost:8080/Meal/public/images/bell.svg alt="標題" /> -->
-
             <div class="lay">
                 <h1>{{ $post->title }}</h1>
                 <p class="rest">
