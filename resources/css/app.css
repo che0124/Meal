@@ -400,6 +400,7 @@ body {
     font-weight: 700;
 }
 
+
 .profile-item-edit .profile-title {
     text-align: right;
 }
@@ -452,6 +453,9 @@ body {
 .profile-link:hover {
     background-color: #b58c68a2;
 }
+
+
+
 
 /* Overlay Styles */
 #overlay {
