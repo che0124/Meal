@@ -10,7 +10,7 @@
                 margin-left: 220px
             }
 
-            .container_s{
+            .show-container{
                 position: relative;
                 width: 100%;
                 height: 100vh;
@@ -96,7 +96,7 @@
                 transform: translate(2px 4px);
             }
 
-            div.button {
+            .button {
                 position: relative;
                 z-index: 1;
                 padding: 10px;
@@ -127,7 +127,7 @@
     </head>
 
     <body>
-        <div class="container_s">
+        <div class="show-container">
             <div class="background"></div>
             <div class="lay">
                 <h1>{{ $post->title }}</h1>
