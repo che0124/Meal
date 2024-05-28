@@ -535,6 +535,224 @@ body {
     color: #8B5E34;
 }
 
+.turntable-wrap .turntable .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #dfd8be;
+    border-radius: 50%;
+    transform: rotate(72deg);
+}
+
+.turntable-wrap .turntable .bg li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 1px;
+    height: 100%;
+    background: #dfd8be;
+    transform-origin: center center;
+}
+
+.turntable-wrap .turntable .gift {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: rotate(63deg);
+}
+
+.turntable-wrap .turntable .gift li {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 45%;
+    height: 45%;
+    transform-origin: right bottom;
+}
+
+.turntable-wrap .turntable .gift li span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 50px;
+    height: 70px;
+    margin: auto;
+    background: yellow;
+    transform: rotate(-60deg);
+    text-align: center;
+    line-height: 80px;
+    border-radius: 5px;
+    background: #f23c3c;
+    color: #fff;
+    font-size: 24px;
+}
+
+.turntable-wrap .turntable .gift li:not(.no-gift) span:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 50px;
+    height: 1px;
+    background: #fff;
+}
+
+.turntable-wrap .turntable .gift li.no-gift span {
+    background: #fff;
+    line-height: 70px;
+    color: #bfa74f;
+    font-size: 18px;
+}
+
+.turntable-wrap .pointer {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: -23px auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #fff;
+    border: 5px solid #fff;
+    box-shadow: 0 0 0 5px #b9a046;
+    text-align: center;
+    line-height: 16px;
+    color: #b9a046;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.turntable-wrap .pointer:before {
+    content: '';
+    position: absolute;
+    top: -58px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    border-style: solid;
+    border-color: transparent transparent #b9a046 transparent;
+    border-width: 25px 10px 25px 10px;
+}
+
+.position {
+    display: flex;
+}
+
+#food-list {
+    margin-top: 10px;
+    margin-left: 32px;
+    flex-wrap: wrap;
+}
+
+.food-item {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: font-size 0.3s ease; 
+    margin-top: 120px;
+    padding: 5px;
+    background-color: #fff; /* 白色底 */
+    border: 1px solid #ddd; /* 灰色邊框 */
+    border-radius: 10px; /* 圓角 */
+    margin: 5px 0; /*上下間距 */
+    height: 100px;
+    width: 100px
+
+} 
+
+/* 選中項目放大 */
+.highlight {
+    font-size: 20px;
+    color: #8B5E34;
+    font-weight: 600;
+    padding: 5px;
+    background-color: #fbd287; /* 白色底 */
+    border: 1px solid #ddddddeb; /* 灰色邊框 */
+    border-radius: 10px; /* 圓角 */
+    position: relative;
+    right: 8%;
+    height: 130px;
+    width: 130px;
+    transition: font-size, height, width 0.1s step-start;
+}
+
+.food-item.highlight img {
+    width: 95px;
+    height: 95px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| HeroSection                                         
+|--------------------------------------------------------------------------
+*/
+/* header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 10px 20px;
+    background-color: #FFF1D6;
+    color: white;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.header .user-actions a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-login {
+    display: block;
+    color: #CAAF77;
+    border:2px solid;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.header-signup {
+    display: block;
+    color: #FFF1D6;
+    background-color: #CAAF77;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.placeholder {
+    width: 20px;
+}
+
+/* herosection */
+.heroSection {
+    position: relative;
+    text-align: center;
+    margin: 70px 0;
+    color: #8B5E34;
+}
+
 .section-container {
     width: 100%;
 }
