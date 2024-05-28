@@ -7,6 +7,7 @@ use App\Http\Controllers\SurpriseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostUserController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 Auth::routes();
@@ -22,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/turntable', function () {
         return view('turntable');
     })->name('turntable');
+
+    Route::put('/profile/avatar', [ProfileController::class, 'avatar'])->name('profile.avatar');
 
     Route::resource('profiles', ProfileController::class);
     Route::resource('posts', PostController::class);
