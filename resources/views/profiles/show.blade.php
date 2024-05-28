@@ -95,6 +95,5 @@
                 });
             }
         };
-@endpush
     </script>
-    @endpush
+@endpush

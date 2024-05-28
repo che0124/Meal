@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="rect-item">
-                        <button onclick="location.href='{{ route('posts.create') }}'" class="home-btn"
+                        <button class="home-btn"
                             style="left: 1025px; top: 100px">
                             創<br>建<br>飯<br>局
                         </button>
@@ -63,7 +63,7 @@
             <div class="rectangle2">
                 <div class="rectangle-container">
                     <div class="rect-item">
-                        <button onclick="location.href='{{ route('surprise') }}'" class="home-btn"
+                        <button  class="home-btn"
                             style="left: 70px; top: 100px">
                             驚<br>喜<br>包
                         </button>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="rect-item">
-                        <button onclick="location.href='{{ route('posts.index') }}'" class="home-btn"
+                        <button class="home-btn"
                             style="left: 1025px; top: 100px">
                             加<br>入<br>飯<br>局
                         </button>

@@ -74,8 +74,9 @@
                 text-decoration: none;
                 color: black;
                 font-size: 25px;
-                font-weight: 600;
+                font-weight: 400;
                 text-align: center;
+                padding-top:;
             }
         </style>
     </head>
