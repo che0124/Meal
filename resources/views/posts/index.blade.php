@@ -1,142 +1,128 @@
 @extends('layouts.app')
 
 @section('content')
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
+    <head>
 
-    <style>
-        div.ccontainer {
-            height: 100%;
-            /* margin-left: 220px;  */
-            /* padding: 10px 80px 30px 0px;   */
-            display: flex;
-            flex-wrap: wrap;   
-            justify-content:center;  
-            align-content: center;
-            margin-left: 270px;  
-            margin-top: 40px;
-            row-gap: 50px; 
-        }
-        h1 {
-            font-size: 30px;
-            font-family: 'cwTeXYen', sans-serif;
-            text-align: center;
-            /* padding: 70px ; */
-            margin-top: 90px;
-            margin-top: 115px;
-            margin-left: 270px;
-            /* color:#4B2E20; */
-            font-weight:900;
-        
+        <style>
+            .title {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                height: 50px;
+                width: 100%;
+                margin: 20px 0
+            }
 
-        }
+            .title-item {
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+
+            .title-item img {
+                height: 100%;
+                width: auto;
+            }
+
+            .page-title {
+                margin-left: 20px;
+            }
 
 
-        div.p1{
-            /* position: absolute; */
-            padding: 60px;            
-            background-color: #ffdd99;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            display: block;
-            width: 25%;
-            height: 0px;
-            margin:10px;
-            /* height: auto; */
-        }
+            .all-posts {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                padding-right: 100px;
+            }
 
-        a.tit {
-            text-decoration: none;
-            color: black;
-            font-size: 25px;
-            font-weight: 600;
-            padding: 0px;
-            text-align: center;
-            display: block;
-            margin-left: 0px;
-            /* 向左移动 */
-            margin-top: -50px;
+            .post-container {
+                background-color: #be9a7883;
+                border-radius: 10px;
+                height: 100%;
+                width: 100%;
+            }
+
+            .post-link {
+                display: block;
+                width: 30%;
+                height: 200px;
+                text-decoration: none;
+                font-size: 23px;
+                font-weight: 600;
+                margin: 10px 10px;
+            }
+
+            .post-link:hover {
+                transform: scale(1.05);
+                transition: transform 0.3s ease;
+            }
 
 
-        }
+            .post-container .post {
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+            }
 
-        a.tit1 {
-            text-decoration: none;
-            font-size: 23px;
-            display: block;
-            color: white;
-            font-weight: 600;
-            text-align: center;
-            display: block;
-            margin-top: px;
-        }
+            .post .post-title {
+                display: flex;
+                justify-content: start;
+                text-decoration: none;
+                color: black;
+                font-size: 25px;
+                font-weight: 600;
+                text-align: center;
+            }
+        </style>
+    </head>
 
-        p2 {
-            background-color: #F8981D;
-            border-radius: 10px;
-            width: 130px;
-            height: 40px;
-            display: block;
-            position: relative;
-            left: -30px;
-            top: -50px;
 
-        }
+    <body>
 
-    
-
-        img.restauraunt {
-            position: absolute;
-            top: 30px;
-            left: 725px;
-            margin-top: px;
-            height: 80px;
-            /* 设置高度 */
-            width: auto;
-        }
-    </style>
-
-</head>
-<!--  -->
-
-<body>
-
-    <h1>所有飯局</h1>
-    <div class="ccontainer">
-        <img class=restauraunt src=http://localhost:8080/Meal/public/images/restaurant.svg alt="標題" />
-        @foreach($posts as $post)
-        <div class="p1">
-            <p2>
-                <a class=tit1 href="{{ route('posts.show', ['post'=>$post]) }}">
-                    {{$post->time}}
-                </a>
-            </p2>
-
-            <a class=tit href="{{ route('posts.show', ['post'=>$post]) }}">
-                {{ $post->title }}
-
-            </a>
+        <div class="container">
+            <div class="join-container">
+                <div class="title">
+                    <div class="title-item">
+                        <img src=http://localhost:8080/Meal/public/images/restaurant.svg />
+                    </div>
+                    <div class="title-item">
+                        <h1 class="page-title">我要假奔</h1>
+                    </div>
+                </div>
+                <div class="all-posts">
+                    @foreach ($posts as $post)
+                        @if (!in_array($post->id, $userPostIds))
+                            <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
+                                <div class="post-container">
+                                    <div class="post">
+                                        <div class="post-title">
+                                            {{ $post->title }}
+                                        </div>
+                                        <div class="post-title">
+                                            {{ $post->restaurant }}
+                                        </div>
+                                        <div class="post-title">
+                                            {{ $post->time }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
-        
-
-
-
-        @endforeach
-
-    </div>
 
 
 
 
-</body>
+    </body>
 
-</html>
-
-
-
-
+    </html>
 @endsection
 
 @push('scripts')

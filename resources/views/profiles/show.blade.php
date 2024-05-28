@@ -1,82 +1,64 @@
 @extends('layouts.app')
 
-<style>
-    div.profile-info {
-        margin-top: -400px;
-        margin-left: 330px;
-        font-weight: 600;
-        z-index: 10001;
-        color: black;
-        z-index: 1001;
-        position: absolute;
-
-    }
-
-    .profile-item {
-        margin-bottom: 35px;
-    }
-
-    .profile-item span {
-        font-weight: 600;
-
-    }
-
-    .profile-link {
-        padding: 5px 15px;
-        border-radius: 10px;
-        color: #fef8f2;
-        font-size: 14px;
-        font-weight: 600;
-        background-color: #917053ae;
-        text-decoration: none;
-        margin-left: 60px;
-        margin-top: 10px;
-        /* display: inline-block;  */
-        position: absolute; 
-        z-index: 1001;
-    }
-
-    .profile-link:hover {
-        background-color: #b58c68a2;
-
-    }
-
-    img.clipboard {
-        /* position:absolute;  */
-        margin-left: 160px;
-        margin-top: -30px;
-        width: 600px;
-        height: auto;
-    }
-</style>
 @section('content')
-<div class="container">
-    <img class="clipboard" src="http://localhost:8080/Meal/public/images/clipboard.svg" alt="user interface icons">
+    <div class="container">
+        <div class="profile">
+            <div class="profile-avatar">
+                <div class="avatar">
+                    <img src="{{ asset('storage/' . $profile->avatar->image) }}" alt="image">
+                </div>
+            </div>
+            <div class="profile-item-container">
+                <div class="profile-item">
+                    <div class="profile-name">
+                        @if ($profile->username)
+                            <span class="profile-title username">{{ $profile->username }}</span>
+                        @else
+                            <span class="profile-title">使用者尚未填寫使用者名稱</span>
+                        @endif
+                        <span class="profile-title name">{{ $profile->user->name }}</span>
+                    </div>
+                </div>
 
-    <div class="profile-info">
+                <div class="profile-item">
+                    @if ($profile->gender)
+                        <span class="profile-title">性別:</span>
+                        <span class="profile-title">{{ $profile->gender }}</span>
+                    @else
+                        <span class="profile-title">使用者尚未填寫個人性別</span>
+                    @endif
+                </div>
+                <div class="profile-item">
+                    @if ($profile->birthday)
+                        <span class="profile-title">生日:</span>
+                        <span class="profile-title">{{ $profile->birthday }}</span>
+                    @else
+                        <span class="profile-title">使用者尚未填寫生日</span>
+                    @endif
+                </div>
 
-        <div class="profile-item">
-            <strong>姓名：</strong> <span id="userName">{{ $user->name }}</span>
+                <div class="profile-item">
+                    @if ($profile->bio)
+                        <span class="profile-title">個人簡介: </span>
+                        <span class="profile-title">{{ $profile->bio }}</span>
+                    @else
+                        <span class="profile-title">使用者尚未填寫個人簡介</span>
+                    @endif
+                </div>
 
+                <div class="profile-item">
+                    <span class="profile-title">加入日期：</span>
+                    <span>{{ $user->created_at->format('M d, Y') }}</span>
+                </div>
+
+                <div class="profile-item btn">
+                    <a class="profile-link" href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}">編輯個人檔案</a>
+                </div>
+
+            </div>
         </div>
-        <div class="profile-item">
-            <strong>信箱：</strong> <span id="userEmail">{{ $user->email }}</span>
-        </div>
-        
-        <!-- <div class="profile-item"> -->
-            <!-- <strong>個人介紹:</strong> {{ $user->bio }} -->
-        <!-- </div> -->
-
-        <div class="profile-item">
-            <strong>加入日期：</strong> <span id="userJoined">{{ $user->created_at->format('M d, Y') }}</span>
-        </div>
-        <div class="profile-item">
-            <strong>mbti：</strong> <span id="mbti">{{ $user->mbti }}</span>
     </div>
-
-    <a href="{{ route('profiles.edit', ['profile' => $user->id]) }}" class="profile-link">編輯個人檔案</a>
-    </img>
-    @endsection
+@endsection
 
     @push('scripts')
     <script>
@@ -113,5 +95,6 @@
                 });
             }
         };
+@endpush
     </script>
     @endpush
