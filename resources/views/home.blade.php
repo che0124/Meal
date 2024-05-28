@@ -96,7 +96,7 @@
                     <div class="rect-item">
                         <button onclick="location.href='{{ route('posts.index') }}'" class="home-btn"
                             style="left: 1025px; top: 100px">
-                            加<br>入<br>飯<br>局
+                            我<br>要<br>假<br>奔
                         </button>
                     </div>
                 </div>

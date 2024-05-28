@@ -22,14 +22,8 @@
                 <div class="header-item">
                     <a class="nav-link-brand" href="#">
                         <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px"
-<<<<<<< HEAD
                             width="100px" style="float: right" />
                     </a></div>
-=======
-                            width="100px" />
-                    </a>
-                </div>
->>>>>>> eb7a5dad32c542ede0b90f213e574b577fd647cc
                 <div class="header-item">
                     <h1 class="home-title">覓得你的專屬飯友</h1>
                 </div>

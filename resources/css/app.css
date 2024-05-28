@@ -788,7 +788,6 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    top: 70px;
 }
 .home {
     position: relative;
