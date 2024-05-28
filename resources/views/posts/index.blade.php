@@ -41,15 +41,19 @@
             }
 
             .post-container {
-                background-color: #ad9386e9;
+                background-color: #fff;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
                 border-radius: 10px;
                 height: 100%;
                 width: 100%;
+                overflow: hidden;
+                display: flex;
+                text-align: center;
+                flex-direction: column;
             }
 
             .post-container:hover {
-                background-color: #998377e9;
+                background-color: #bc9e8da0;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
                 border-radius: 10px;
                 height: 100%;
@@ -79,23 +83,26 @@
             }
 
             .post-title {
-                display: flex;
-                justify-content: start;
                 text-decoration: none;
-                color: #4B2E20;
+                background-color: #8c4c1fba;
+                color: #fff;
                 font-size: 25px;
-                font-weight: 600;
+                font-weight: bold;
                 text-align: center;
+                padding: 10px;
             }
 
             .post-content {
                 display: flex;
                 justify-content: start;
                 text-decoration: none;
-                color: white;
-                font-size: 25px;
+                color: #4B2E20;
+                font-size: 20px;
                 font-weight: 600;
                 text-align: center;
+                margin: auto;
+                margin-top: 20px;
+                margin-bottom: 10px;
             }
         </style>
     </head>
@@ -124,16 +131,14 @@
                     @if (!in_array($post->id, $userPostIds))
                         <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
                             <div class="post-container">
-                                <div class="post">
-                                    <div class="post-title">
-                                        {{ $post->title }}
-                                    </div>
-                                    <div class="post-content">
-                                        {{ $post->restaurant }}
-                                    </div>
-                                    <div class="post-content">
-                                        {{ $post->time }}
-                                    </div>
+                                <div class="post-title">
+                                    {{ $post->title }}
+                                </div>
+                                <div class="post-content">
+                                    {{ $post->restaurant }}
+                                </div>
+                                <div class="post-content">
+                                    {{ $post->time }}
                                 </div>
                             </div>
                         </a>
@@ -141,10 +146,6 @@
                 @endforeach
             </div>
         </div>
-
-
-
-
     </body>
 
     </html>

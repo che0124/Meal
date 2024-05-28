@@ -39,7 +39,7 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: rgba(0, 0, 0, 0.3); /* 半透明的黑色 */
+                background-color: rgba(0, 0, 0, 0.2); /* 半透明的黑色 */
                 z-index: 0;
             }
 
