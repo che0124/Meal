@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Profile;
+use App\Models\Avatar;
 use App\Models\Post;
 use App\Models\PostUser;
 
@@ -52,7 +55,7 @@ class PostController extends Controller
         $post->user_id = $request->user()->id;
         $post->save();
 
-        $post_user = new PostUser; 
+        $post_user = new PostUser;
         $post_user->post_id = $post->id;
         $post_user->user_id = $post->user->id;
         $post_user->save();
@@ -66,8 +69,23 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $exist = PostUser::where('user_id', Auth::user()->id)->where('post_id', $post->id)->exists();
+        $post_user = PostUser::where('post_id', $post->id)->get();
 
-        return view('posts.show', ['post' => $post, 'exist' => $exist]);
+        $avatars = [];
+        foreach ($post_user as $postUser) {
+            $user = User::find($postUser->user_id);
+            if ($user->profile) {  // Check if profile exists
+                $avatar = $user->profile->avatar;  // Access avatar model (if applicable)
+                if ($avatar) {  // Check if avatar exists
+                    $avatars[] = $avatar->image;  // Access image from avatar model
+                } else {
+                    $avatars[] = null;  // Handle case where avatar is missing
+                }
+            } else {
+                $avatars[] = null;  // Handle case where profile is missing
+            }
+        }
+        return view('posts.show', ['post' => $post, 'exist' => $exist, 'avatars' => $avatars]);
     }
 
     /**
