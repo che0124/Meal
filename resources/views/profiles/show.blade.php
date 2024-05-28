@@ -29,10 +29,10 @@
         font-weight: 600;
         background-color: #917053ae;
         text-decoration: none;
-        margin-left: -370px;
-        margin-top: 400px;
+        margin-left: 60px;
+        margin-top: 10px;
         /* display: inline-block;  */
-        position: absolute;
+        position: absolute; 
         z-index: 1001;
     }
 
@@ -42,13 +42,11 @@
     }
 
     img.clipboard {
-        /* position:absolute; */
+        /* position:absolute;  */
         margin-left: 160px;
         margin-top: -30px;
         width: 600px;
         height: auto;
-
-
     }
 </style>
 @section('content')

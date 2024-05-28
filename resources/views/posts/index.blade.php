@@ -85,18 +85,7 @@
 
         }
 
-        /*  
-         
-        img.donut {
-            position: absolute;
-            top: 30px;
-            left: 900px;
-            margin-top: px;
-            height: 200px;
-            width: auto;
-            transform: rotate(320deg);
-            
-        }*/
+    
 
         img.restauraunt {
             position: absolute;
@@ -117,7 +106,6 @@
     <h1>所有飯局</h1>
     <div class="ccontainer">
         <img class=restauraunt src=http://localhost:8080/Meal/public/images/restaurant.svg alt="標題" />
-        <!-- <div class="colorlayer"></div> -->
         @foreach($posts as $post)
         <div class="p1">
             <p2>

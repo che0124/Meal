@@ -41,13 +41,12 @@
 @endphp
 
   <!-- JavaScript 代码 -->
-  
+
  <!-- JavaScript 代码 -->
 <script>
     // 将 PHP 变量传递到 JavaScript 中
     var postsArray = @json($postsArray);
     var randomPost = @json($randomPost);
-
     // 定义一个函数用于获取随机数据并更新页面显示
     function getRandom() {
         // 如果 postsArray 不为空，则重新随机选择一个项目
@@ -57,23 +56,19 @@
         } else {
             randomPost = { restaurant: 'No restaurants found', time: 'No time found' };
         }
-
         // 将随机选择的餐厅显示在页面上
         document.getElementById('random').innerHTML = '<div style="text-align: center; font-size: 32px;">' + randomPost.restaurant + '<br>' + randomPost.time + '<br><br></div>';
     }
-
     // 当按钮被点击时触发事件
     document.getElementById('randomButton').addEventListener('click', function() {
         // 调用函数获取随机数据并更新页面显示
         getRandom();
     });
-
 </script>
-
-
-</div>
-    </body>
+    </div>
+</body>
 @endsection
+
 @push('scripts')
     <script>
         window.onload = function() {
