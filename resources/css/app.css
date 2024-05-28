@@ -19,7 +19,7 @@ body {
 */
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 250px auto;
     grid-auto-flow: row dense;
 }
 
@@ -30,7 +30,7 @@ body {
 
 .container {
     height: 100%;
-    padding: 30px 50px 40px;
+    padding: 30px;
     color: #8B5E34;
 }
 
@@ -196,20 +196,29 @@ body {
     font-size: 16px;
     color: #fff;
 }
+
 @media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 90px auto;
+    }
+
     .navbar {
         width: auto;
     }
-    .nav-title{
+
+    .nav-title {
         display: none;
     }
+
     .nav-link-title {
         display: none;
     }
-    .nav-link-brand{
+
+    .nav-link-brand {
         text-align: center;
     }
-    .nav-brand{
+
+    .nav-brand {
         padding: 0;
     }
 
