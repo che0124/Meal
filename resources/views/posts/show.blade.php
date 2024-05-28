@@ -33,6 +33,16 @@
                 z-index: 1;
             }
 
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.2); /* 半透明的黑色 */
+                z-index: 0;
+            }
+
 
             .lay {
                 background: #fef8f2;
@@ -129,6 +139,7 @@
     <body>
         <div class="show-container">
             <div class="background"></div>
+            <div class="overlay"></div>
             <div class="lay">
                 <h1>{{ $post->title }}</h1>
                 <p class="rest">
