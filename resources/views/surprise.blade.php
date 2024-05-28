@@ -5,6 +5,7 @@
 <style>
         .container {
             text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         #randomButton {
             padding: 10px 20px;
