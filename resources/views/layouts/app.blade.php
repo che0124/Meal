@@ -282,6 +282,8 @@
             var form = document.getElementById('logoutForm');
             form.submit();
         });
+
+        //font
     </script>
     </div>
     @stack('scripts')

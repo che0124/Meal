@@ -138,7 +138,7 @@
                                     {{ $post->restaurant }}
                                 </div>
                                 <div class="post-content">
-                                    {{ $post->time }}
+                                    {{ $post->date }}
                                 </div>
                             </div>
                         </a>
