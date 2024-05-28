@@ -454,9 +454,6 @@ body {
     background-color: #b58c68a2;
 }
 
-
-
-
 /* Overlay Styles */
 #overlay {
     position: fixed;
@@ -534,7 +531,6 @@ body {
 .hidden {
     display: none;
 }
-
 
 /*
 |--------------------------------------------------------------------------
@@ -1163,6 +1159,7 @@ ul {
     width: 110px;
     height: 110px;
 }
+
 
 .btn-modify {
     margin-left: 500px;

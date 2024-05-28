@@ -13,7 +13,7 @@
                 justify-content: start;
                 height: 50px;
                 width: 100%;
-                margin: 20px 0
+                margin: 20px
             }
 
             .title-item {
@@ -36,7 +36,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                padding-right: 100px;
+                padding-left: 15px;
                 gap: 20px;
             }
 
