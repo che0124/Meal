@@ -21,33 +21,27 @@
                 <div class="profile-container">
                     <div class="profile-item-edit">
                         <div class="profile-img-edit">
-                            <div id="change-photo-label">變更相片</div>
-                            <form id="#profile-form" action="{{ route('profile.avatar') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @method('PUT')
-                                @csrf
-                                <input type="file" id="avatar" name="avatar" accept=".png, .jpg, .jpeg"
-                                    onchange="previewImage(this)" />
-                                <button type="submit">test</button>
-                            </form>
+                            <div id="change-photo" role="button" tablindex="0">變更相片</div>
                             <!-- Overlay -->
                             <div id="overlay" class="hidden"></div>
 
                             <!-- Popup Menu -->
                             <div id="avatar-container" class="avatar-container hidden">
                                 <div class="avatar-menu">
-                                    <div class="avatar-item">
-                                        <span>變更大頭貼</span>
+                                    <div class="avatar-item">變更大頭貼</div>
+                                    <div class="avatar-button-container">
+                                        <button class="avatar-item" style="color:#0095f6;">上傳相片</button>
+                                        <button class="avatar-item" style="color: #ed4956;">移除目前的大頭貼照</button>
+                                        <button class="avatar-item">取消</button>
                                     </div>
-                                    <div class="avatar-item">
-                                        <label for="avatar" type="button" id="upload-photo">上傳相片</label>
-                                    </div>
-                                    <div class="avatar-item">
-                                        <div id="remove-photo">移除目前的大頭貼照</div>
-                                    </div>
-                                    <div class="avatar-item">
-                                        <div id="cancel">取消</div>
-                                    </div>
+
+                                    <form id="profile-form" action="{{ route('profile.avatar') }}" method="POST"
+                                        enctype="multipart/form-data" hidden>
+                                        @method('PUT')
+                                        @csrf
+                                        <input type="file" id="avatar" name="avatar" accept="image/jpeg,image/png" />
+                                        <button type="submit">test</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -89,15 +83,14 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var changePhotoLabel = document.getElementById("change-photo-label");
+            var changePhoto = document.getElementById("change-photo");
             var photoMenu = document.getElementById("avatar-container");
             var overlay = document.getElementById("overlay");
             var removePhotoButton = document.getElementById("remove-photo");
             var cancelButton = document.getElementById("cancel");
 
             // Show the menu and overlay when clicking "變更相片"
-            changePhotoLabel.addEventListener("click", function(event) {
-                event.preventDefault();
+            changePhoto.addEventListener("click", function(event) {
                 photoMenu.classList.remove("hidden");
                 overlay.classList.remove("hidden");
             });
@@ -110,7 +103,7 @@
 
             // Hide the menu and overlay when clicking outside of the menu
             document.addEventListener("click", function(event) {
-                if (!photoMenu.contains(event.target) && !changePhotoLabel.contains(event.target)) {
+                if (!photoMenu.contains(event.target) && !changePhoto.contains(event.target)) {
                     photoMenu.classList.add("hidden");
                     overlay.classList.add("hidden");
                 }
@@ -129,8 +122,7 @@
             var avatarInput = document.getElementById("avatar");
 
             avatarInput.addEventListener("change", function() {
-                // 当文件上传框的值发生变化时触发
-                this.submit(); // 提交表单
+                this.submit();
             });
         });
     </script>
