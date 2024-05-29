@@ -22,9 +22,8 @@
                 <div class="header-item">
                     <a class="nav-link-brand" href="#">
                         <img src="http://localhost:8080/Meal/public/images/logo.svg" alt="logo" height="40px"
-                            width="100px" />
-                    </a>
-                </div>
+                            width="100px" style="float: right" />
+                    </a></div>
                 <div class="header-item">
                     <h1 class="home-title">覓得你的專屬飯友</h1>
                 </div>
@@ -38,23 +37,23 @@
             <div class="rectangle1">
                 <div class="rectangle-container">
                     <div class="rect-item">
-                        <img src="{{ asset('images\home-create.jpg') }}" class="section-img" />
+                        <img src="{{ asset('images\friend.jpg') }}" class="section-img" />
                     </div>
                     <div class="rect-item content">
-                        <div class="small-title" style="width: 504.4px; height: 75.06px; left: 500px; top: 35px;">
-                            <h3 class="section-title">好餓喔， 揪人一起吃！</h2>
+                        <div class="small-title" style="width: 900px; height: 75.06px; left: 500px; top: 35px;">
+                            <h3 class="section-title">帶你離開一成不變的生活！</h2>
                         </div>
                         <div class="home-context" style="width: 565px; height: 141px; left: 500px; top: 120px">
-                            交友圈逐漸固定，生活變得枯燥乏味？<br>
-                            創建專屬飯局，一起改變現狀吧！<br>
-                            無論是想認識新朋友，還是尋找口味相同的夥伴，<br>
-                            交給『Meal 覓友』，幫你打破生活的沉悶。<br>
+                            你是否發現交友圈逐漸固定，生活變得枯燥乏味？<br>
+                            是時候加入我們，改變現狀了！<br>
+                            無論你是想認識新朋友，還是尋找口味相同的夥伴，<br>
+                            『Meal 覓友』都能幫助你打破生活的沉悶，探索全新旅程。
                         </div>
                     </div>
                     <div class="rect-item">
-                        <button onclick="location.href='{{ route('posts.create') }}'" class="home-btn"
+                        <button onclick="location.href='{{ route('register') }}'" class="home-btn"
                             style="left: 1025px; top: 100px">
-                            創<br>建<br>飯<br>局
+                            創<br>建<br>帳<br>號
                         </button>
                     </div>
                 </div>
@@ -63,26 +62,26 @@
             <div class="rectangle2">
                 <div class="rectangle-container">
                     <div class="rect-item">
-                        <button onclick="location.href='{{ route('surprise') }}'" class="home-btn"
+                        <button onclick="location.href='{{ route('register') }}'" class="home-btn"
                             style="left: 70px; top: 100px">
-                            驚<br>喜<br>包
+                            開<br>始<br>體<br>驗
                         </button>
                     </div>
 
                     <div class="rect-item content">
-                        <div class="small-title" style="width: 504.4px; height: 75.06px; left: 500px; top: 35px;">
-                            <h3 class="section-title">好無聊，來點驚喜吧！</h3>
+                        <div class="small-title" style="width: 900px; height: 75.06px; left: 500px; top: 35px;">
+                            <h3 class="section-title">隨時都能感受驚喜的魅力！</h3>
                         </div>
                         <div class="home-context" style="width: 565px; height: 141px; left: 180px; top: 120px">
-                            厭倦了制式化的交友方式嗎？<br>
-                            『Meal 覓友』提供全新的驚喜包體驗，<br>
-                            每次見面都是未知的探索，為生活增添無限趣味，<br>
-                            現在就開始享受全新的交友世界吧！
+                            你是否厭倦了制式化的交友方式？<br>
+                            加入『Meal 覓友』，即可享受如開驚喜包般的浪漫體驗。<br>
+                            每次見面都是未知的探索，為你的生活增添無限趣味，<br>
+                            一起沉浸在這個充滿驚喜和浪漫的交友新世界吧！
                         </div>
                     </div>
 
                     <div class="rect-item">
-                        <img src="{{ asset('images\home-surprise.jpg') }}" class="section-img" />
+                        <img src="{{ asset('images\new.jpg') }}" class="section-img" />
                     </div>
                 </div>
             </div>
@@ -90,23 +89,23 @@
             <div class="rectangle3">
                 <div class="rectangle-container">
                     <div class="rect-item">
-                        <img src="{{ asset('images\home-join.jpg') }}" class="section-img" />
+                        <img src="{{ asset('images\phone.jpg') }}" class="section-img" />
                     </div>
                     <div class="rect-item content">
-                        <div class="small-title" style="width: 504.4px; height: 75.06px; left: 500px; top: 35px;">
-                            <span class="section-title">隨便啦，我就想吃飯！</span>
+                        <div class="small-title" style="width: 900px; height: 75.06px; left: 500px; top: 35px;">
+                            <span class="section-title">毋須學習，簡單上手！</span>
                         </div>
                         <div class="home-context" style="width: 565px; height: 141px; left: 500px; top: 120px">
-                            時間彈性，不挑餐廳，還是找不到飯友？<br>
-                            現在就加入已有的飯局吧！<br>
-                            『Meal 覓友』帶你走入他人的世界，<br>
-                            無論何人何時何地，都可以開啟一場交友盛宴！
+                            你是否疲於適應複雜繁瑣的交友過程？<br>
+                            在這個快節奏的時代，認識新夥伴應該是輕鬆愉快的，<br>
+                            『Meal 覓友』為你提供最直觀的操作介面，<br>
+                            省去複雜的過程，只需幾步操作，快速開啟你的交友之旅！
                         </div>
                     </div>
                     <div class="rect-item">
-                        <button onclick="location.href='{{ route('posts.index') }}'" class="home-btn"
+                        <button onclick="location.href='{{ route('register') }}'" class="home-btn"
                             style="left: 1025px; top: 100px">
-                            加<br>入<br>飯<br>局
+                            立<br>即<br>加<br>入
                         </button>
                     </div>
                 </div>

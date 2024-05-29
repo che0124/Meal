@@ -81,7 +81,7 @@
 
                     // 将随机选择的餐厅显示在页面上
                     document.getElementById('random').innerHTML = '<div style="text-align: center; font-size: 32px;">' + randomPost
-                        .restaurant + '<br>' + randomPost.date + '<br>'+ randomPost.time +'<br></div>';
+                        .restaurant + '<br>' + randomPost.time + '<br><br></div>';
                 }
 
                 // 当按钮被点击时触发事件
@@ -95,7 +95,6 @@
         </div>
     </body>
 @endsection
-
 @push('scripts')
     <script>
         window.onload = function() {
