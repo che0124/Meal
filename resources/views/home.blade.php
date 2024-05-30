@@ -3,14 +3,29 @@
 @section('content')
     <div class="container">
         <h1 class="page-title">我的飯局</h1>
-        <hr>
         @foreach ($posts as $post)
             @if (in_array($post->id, $userPostIds))
-                <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->restaurant }}</a>
-                <hr>
+                <div class="post">
+                    <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->restaurant }}</a>
+                    <div class="avatarShow-container">
+                        <div class="user-list">
+                            <div class="avatar-relative">
+                                <a href="{{ route('profiles.index') }}">
+                                    @foreach ($avatars as $index => $avatar)
+                                        @if ($index < 3)
+                                            <div class="avatarShow" style=" transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
+                                                <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}">
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
         @endforeach
-    </div>
+    </div> 
 @endsection
 
 @push('scripts')
@@ -44,3 +59,4 @@
         });
     </script>
 @endpush
+

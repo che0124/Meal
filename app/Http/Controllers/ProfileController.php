@@ -15,7 +15,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles.index', ['users' => User::cursor()]);
+        return view('profiles.index', ['profiles' => User::cursor()]);
     }
 
     /**

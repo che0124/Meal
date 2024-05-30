@@ -189,7 +189,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item" id="logout">
-                                    <span class="nav-title">登出</span>
+                                    <span>登出</span>
                                     <form action="{{ route('logout') }}" method="POST" style="display: none;"
                                         id="logoutForm">
                                         @csrf
