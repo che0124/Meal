@@ -30,16 +30,22 @@ class HomeController extends Controller
         $user = Auth::user();
         $posts = Post::all();
         $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
-
+        
         $avatars = [];
         foreach ($posts as $post) {
-            $post_user = PostUser::where('post_id', $post->id)->get();
-            foreach ($post_user as $postUser) {
+            $postUsers = PostUser::where('post_id', $post->id)->get();
+            foreach ($postUsers as $postUser) {
                 $user = User::find($postUser->user_id);
-                $avatars[] = $user->profile->avatar;
+                if ($user && $user->profile) {
+                    if (!isset($avatars[$post->id])) {
+                        $avatars[$post->id] = []; // 初始化为数组
+                    }
+                    $avatars[$post->id][] = $user->profile->avatar;
+                }
             }
         }
-
+        // dd($avatars);
+        
         return view('home', [
             'posts' => $posts,
             'userPostIds' => $userPostIds,
