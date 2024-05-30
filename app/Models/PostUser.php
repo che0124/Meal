@@ -10,4 +10,14 @@ class PostUser extends Model
     use HasFactory;
 
     protected $table = 'post_user';
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
