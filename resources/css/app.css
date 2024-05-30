@@ -66,21 +66,25 @@ body {
 .avatarShow-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
-.avatarShow {
-    position: absolute;
+.user-list {
+    display: flex;
+    justify-content: end;
 }
-
-.user-list {}
 
 .avatar-relative {
-    display: flex;
     position: relative;
     width: 75px;
     height: 35PX;
 }
+
+.avatarShow {
+    position: absolute;
+    right: 0;
+}
+
 
 .user-list a {
     display: block;
@@ -274,8 +278,8 @@ body {
 .post {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #b58c6873;
-    width: 50%;
     padding: 10px 20px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -391,7 +395,7 @@ user
     box-sizing: border-box;
 }
 
-.form-control-textarea:hover{
+.form-control-textarea:hover {
     border: 2px solid #573b22;
 }
 

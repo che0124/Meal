@@ -13,7 +13,7 @@
                                 <a href="{{ route('profiles.index') }}">
                                     @foreach ($avatars[$post->id] as $index => $avatar)
                                         @if ($index < 3)
-                                            <div class="avatarShow" style="transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
+                                            <div class="avatarShow" style="transform: translate({{ -($index * 20) }}px); z-index: {{ $index +1 }};">
                                                 <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}"
                                                     alt="User Avatar">
                                             </div>
