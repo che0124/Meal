@@ -11,10 +11,11 @@
                         <div class="user-list">
                             <div class="avatar-relative">
                                 <a href="{{ route('profiles.index') }}">
-                                    @foreach ($avatars as $index => $avatar)
+                                    @foreach ($avatars[$post->id] as $index => $avatar)
                                         @if ($index < 3)
-                                            <div class="avatarShow" style=" transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
-                                                <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}">
+                                            <div class="avatarShow" style="transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
+                                                <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}"
+                                                    alt="User Avatar">
                                             </div>
                                         @endif
                                     @endforeach
@@ -25,7 +26,8 @@
                 </div>
             @endif
         @endforeach
-    </div> 
+
+    </div>
 @endsection
 
 @push('scripts')
@@ -59,4 +61,3 @@
         });
     </script>
 @endpush
-

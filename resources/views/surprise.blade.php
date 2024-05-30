@@ -151,7 +151,7 @@
                     <span>驚喜包</span>
                 </div>
                 <div id="random">
-                    @if ($postUsers->count() > 0)
+                    @if ($randomPost != null)
                         <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
                         <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
                         <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
@@ -159,7 +159,7 @@
                         {{ __('No more restaurant') }}
                     @endif
                 </div>
-                @if ($postUsers->count() > 0)
+                @if ($randomPost != null)
                     <div class="button-list">
                         <div class="button-item">
                             <div class="button">
