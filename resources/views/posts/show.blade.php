@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <!DOCTYPE html>
     <html>
 
@@ -26,7 +25,7 @@
                 opacity: 0.3;
                 width: 100%;
                 height: 100vh;
-                z-index: 1;
+                z-index: 0;
             }
 
             .overlay {
@@ -40,9 +39,11 @@
             }
 
             .title {
-                color: #4B2E20;
-                font-size: 35px;
-                font-weight: 900;
+                color: #8B5E34;
+                font-size: 30px;
+                font-weight: 700;
+                line-height: 2.5;
+
             }
 
             .post-data-container {
@@ -73,7 +74,8 @@
                 justify-content: center;
                 align-items: center;
                 margin-bottom: 10px;
-                font-size: 25px
+                font-size: 25px;
+                font-weight: 700;
             }
 
             .show-item span {
@@ -109,12 +111,12 @@
             }
 
             .button {
-                z-index: 1;
+                text-align: center;
                 padding: 10px;
                 border-radius: 8px;
                 width: 200px;
                 margin: auto;
-                text-align: center;
+                z-index: 1;
             }
 
             .eat {
@@ -122,7 +124,7 @@
                 border-radius: 15px;
                 background-color: #7A5230;
                 color: #fff;
-                font-size: 18px;
+                font-size: 20px;
                 padding: 3px 20px;
             }
         </style>
@@ -173,17 +175,17 @@
                         </span>
                     </div>
                 </div>
-                    @if (!$exist)
-                        <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
-                            @csrf
-                            <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
-                            <div class=button>
-                                <input type="submit" value="join">
-                            </div>
-                        </form>
-                    @else
-                        <div class="eat"><span>已參加此飯局!</span></div>
-                    @endif
+                @if (!$exist)
+                    <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
+                        @csrf
+                        <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                        <div class=button>
+                            <input type="submit" value="加入飯局">
+                        </div>
+                    </form>
+                @else
+                    <div class="eat"><span>已參加此飯局!</span></div>
+                @endif
 
             </div>
     </body>

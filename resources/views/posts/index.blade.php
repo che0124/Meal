@@ -96,7 +96,7 @@
                 display: flex;
                 justify-content: start;
                 text-decoration: none;
-                color: #4B2E20;
+                color: #69412d;
                 font-size: 20px;
                 font-weight: 600;
                 text-align: center;

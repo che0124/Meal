@@ -30,7 +30,7 @@
                 <div class="nav-item-list">
                     <!-- 首頁 -->
                     <div class="nav-item">
-                        <a class="nav-link {{ Request::is('/home') ? 'active' : '' }}" href="{{ url('/home') }}">
+                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">
                             <div class="nav-link-icon-title">
                                 <div class="nav-link-icon">
                                     <svg aria-label="首頁" id="homeSVG" fill="currentColor" height="24"
