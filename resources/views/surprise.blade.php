@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
     <style>
@@ -44,7 +43,7 @@
             align-items: center;
             justify-content: start;
             overflow: hidden;
-                background: #fef8f2;
+            background: #fef8f2;
             width: 30%;
             height: 55%;
             border-radius: 10px;
@@ -66,16 +65,19 @@
 
         #random {
             text-align: start;
-            margin-top: 30px;
+            margin-top: 10px;
             font-size: 25px;
             color: #8B5E34;
             line-height: 2;
         }
 
+        #post-title {
+            text-align: center; 
+        }
+
         .button-list {
             display: flex;
             width: 100%;
-            margin-top: 50px;
             padding: 10px;
         }
 
@@ -153,6 +155,7 @@
                 </div>
                 <div id="random">
                     @if ($randomPost != null)
+                        <div id="post-title"><span>{{ $randomPost->title }}</span></div>
                         <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
                         <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
                         <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
