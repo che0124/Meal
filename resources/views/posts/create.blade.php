@@ -20,9 +20,9 @@
 
                 <div class="form-item">
                     <label for="date" class="form-field-name">日期 :</label>
-                    <input type="date" class="form-control" name="date" />
+                    <input type="date" class="time-form-control" name="date" />
                     <label for="time" class="form-field-name">時間 :</label>
-                    <input type="time" class="form-control" id="time" name="time"
+                    <input type="time" class="time-form-control" id="time" name="time"
                         value="<?= date('H') . ':00' ?>">
                 </div>
 
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-item-btn">
-                    <input class="btn-primary" type="submit" value="submit" />
+                    <input class="btn-primary" type="submit" value="送出" />
                 </div>
             </form>
         </div>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="page-title">編輯個人檔案</h1>
-        <div class="form">
+        <div class="edit-form">
             <div class="profile-edit">
                 <div class="profile-container">
                     <div class="profile-avatar-edit">
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="form-item-btn">
-                    <input class="btn-primary" type="submit" value="submit" />
+                    <input class="btn-primary" type="submit" value="提交" />
                 </div>
             </form>
         </div>
