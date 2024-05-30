@@ -60,14 +60,18 @@ body {
     font-weight: 600;
 }
 
+.user-avatar {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
 /*
 |--------------------------------------------------------------------------
 | navbar                                            
 |--------------------------------------------------------------------------
 */
-
-
-
 .navbar {
     display: flex;
     flex-direction: column;
@@ -89,8 +93,6 @@ body {
     display: block;
 }
 
-.nav-item-list {}
-
 .nav-link-title {
     padding-left: 16px;
 }
@@ -107,8 +109,7 @@ body {
     color: #63310e;
 }
 
-.nav-link:hover,
-.nav-link-last:hover {
+.nav-link:hover {
     background-color: #fff1d9;
     border-radius: 8px;
     transition: 0.5s;
@@ -152,7 +153,6 @@ body {
 }
 
 .nav-link-last {
-    padding: 12px;
     margin: 4px 0;
     text-decoration: none;
     font-size: 18px;
@@ -170,7 +170,6 @@ body {
     border: 1px solid #555;
     border-radius: 20px;
     width: 100%;
-    z-index: 10;
 }
 
 .menu-item-container {
@@ -454,9 +453,6 @@ body {
     background-color: #b58c68a2;
 }
 
-
-
-
 /* Overlay Styles */
 #overlay {
     position: fixed;
@@ -535,7 +531,6 @@ body {
     display: none;
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | HeroSection                                         
@@ -595,170 +590,6 @@ body {
     text-align: center;
     margin: 70px 0;
     color: #8B5E34;
-}
-
-.turntable-wrap .turntable .bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    border: 1px solid #dfd8be;
-    border-radius: 50%;
-    transform: rotate(72deg);
-}
-
-.turntable-wrap .turntable .bg li {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 1px;
-    height: 100%;
-    background: #dfd8be;
-    transform-origin: center center;
-}
-
-.turntable-wrap .turntable .gift {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform: rotate(63deg);
-}
-
-.turntable-wrap .turntable .gift li {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 45%;
-    height: 45%;
-    transform-origin: right bottom;
-}
-
-.turntable-wrap .turntable .gift li span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: 50px;
-    height: 70px;
-    margin: auto;
-    background: yellow;
-    transform: rotate(-60deg);
-    text-align: center;
-    line-height: 80px;
-    border-radius: 5px;
-    background: #f23c3c;
-    color: #fff;
-    font-size: 24px;
-}
-
-.turntable-wrap .turntable .gift li:not(.no-gift) span:before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 0;
-    width: 50px;
-    height: 1px;
-    background: #fff;
-}
-
-.turntable-wrap .turntable .gift li.no-gift span {
-    background: #fff;
-    line-height: 70px;
-    color: #bfa74f;
-    font-size: 18px;
-}
-
-.turntable-wrap .pointer {
-    box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    margin: -23px auto;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: #fff;
-    border: 5px solid #fff;
-    box-shadow: 0 0 0 5px #b9a046;
-    text-align: center;
-    line-height: 16px;
-    color: #b9a046;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.turntable-wrap .pointer:before {
-    content: '';
-    position: absolute;
-    top: -58px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 0;
-    border-style: solid;
-    border-color: transparent transparent #b9a046 transparent;
-    border-width: 25px 10px 25px 10px;
-}
-
-.position {
-    display: flex;
-}
-
-#food-list {
-    margin-top: 10px;
-    margin-left: 32px;
-    flex-wrap: wrap;
-}
-
-.food-item {
-    font-size: 15px;
-    text-align: center;
-    margin-bottom: 10px;
-    transition: font-size 0.3s ease;
-    margin-top: 120px;
-    padding: 5px;
-    background-color: #fff;
-    /* 白色底 */
-    border: 1px solid #ddd;
-    /* 灰色邊框 */
-    border-radius: 10px;
-    /* 圓角 */
-    margin: 5px 0;
-    /*上下間距 */
-    height: 100px;
-    width: 115px
-}
-
-/* 選中項目放大 */
-.highlight {
-    font-size: 20px;
-    color: #8B5E34;
-    font-weight: 600;
-    padding: 5px;
-    background-color: #fbd287;
-    /* 白色底 */
-    border: 1px solid #ddddddeb;
-    /* 灰色邊框 */
-    border-radius: 10px;
-    /* 圓角 */
-    position: relative;
-    right: 8%;
-    height: 130px;
-    width: 130px;
-    transition: font-size, height, width 0.1s step-start;
-}
-
-.food-item.highlight img {
-    width: 95px;
-    height: 95px;
 }
 
 /*
@@ -1086,7 +917,6 @@ ul {
     0% {
         background: #fff;
     }
-
     100% {
         background: #d7a945;
     }
@@ -1096,19 +926,15 @@ ul {
     0% {
         transform: scale(1);
     }
-
     25% {
         transform: scale(0.8);
     }
-
     50% {
         transform: scale(1.2);
     }
-
     75% {
         transform: scale(0.9);
     }
-
     100% {
         transform: scale(1);
     }
@@ -1118,8 +944,8 @@ ul {
     position: relative;
     overflow: hidden;
     margin: 50px;
-    width: 340px;
-    height: 340px;
+    width: 510px;
+    height: 510px;
     border: 7px solid #b2a98d;
     border-radius: 50%;
     box-shadow: 0 0 20px #b2a98d;
@@ -1150,30 +976,18 @@ ul {
 .turntable-wrap .light span:before {
     content: '';
     position: absolute;
-    top: 5px;
+    top: 12px;
     left: 0;
     right: 0;
-    margin: 0 auto;
-    width: 10px;
-    height: 10px;
+    margin: auto;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
 }
 
 .turntable-wrap .light span:nth-of-type(even):before {
     background: #fff;
     animation: white-to-yellow 1s linear infinite;
-}
-
-
-.btn-modify {
-    margin-left: 500px;
-    margin-top: 250px;
-    width: 120px;
-    height: 40px;
-    background-color: #9f7135;
-    border: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
 }
 
 .turntable-wrap .light span:nth-of-type(odd):before {
@@ -1183,9 +997,9 @@ ul {
 
 .turntable-wrap .turntable {
     position: absolute;
-    margin: 20px;
-    width: 300px;
-    height: 300px;
+    margin: 42px;
+    width: 420px;
+    height: 420px;
     border-radius: 50%;
     background: #fff;
 }
@@ -1212,7 +1026,6 @@ ul {
     height: 100%;
     background: #dfd8be;
     transform-origin: center center;
-    /*transform: rotate(36deg);*/
 }
 
 .turntable-wrap .turntable .gift {
@@ -1241,12 +1054,10 @@ ul {
     width: 50px;
     height: 70px;
     margin: auto;
-    background: yellow;
     transform: rotate(-60deg);
     text-align: center;
     line-height: 80px;
     border-radius: 5px;
-    background: #f23c3c;
     color: #fff;
     font-size: 24px;
 }
@@ -1263,9 +1074,9 @@ ul {
 
 .turntable-wrap .turntable .gift li.no-gift span {
     background: #fff;
-    line-height: 70px;
+    line-height: 80px;
     color: #bfa74f;
-    font-size: 12px;
+    font-size: 25px;
 }
 
 .turntable-wrap .pointer {
@@ -1274,17 +1085,17 @@ ul {
     top: 50%;
     left: 0;
     right: 0;
-    margin: -23px auto;
-    width: 46px;
-    height: 46px;
+    margin: -32px auto;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: #fff;
     border: 5px solid #fff;
     box-shadow: 0 0 0 5px #b9a046;
     text-align: center;
-    line-height: 16px;
+    line-height: 22px;
     color: #b9a046;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -1307,19 +1118,54 @@ ul {
 }
 
 #food-list {
-    margin-top: 130px;
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 32px;
     flex-wrap: wrap;
 }
 
 .food-item {
     font-size: 20px;
+    text-align: center;
     margin-bottom: 10px;
     transition: font-size 0.3s ease;
+    margin-top: 120px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 5px 0;
+    height: 120px;
+    width: 120px;
 }
 
 .highlight {
     font-size: 25px;
-    color: red;
-    transition: font-size 0.3s ease;
+    color: #8B5E34;
+    font-weight: 600;
+    padding: 5px;
+    background-color: #fbd287;
+    border: 1px solid #ddddddeb;
+    border-radius: 10px;
+    position: relative;
+    right: 8%;
+    height: 150px;
+    width: 150px;
+    transition: font-size, height, width 0.1s step-start;
+}
+
+.food-item.highlight img {
+    width: 110px;
+    height: 110px;
+}
+
+
+.btn-modify {
+    margin-left: 500px;
+    margin-top: 250px;
+    width: 120px;
+    height: 40px;
+    background-color: #9f7135;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
 }

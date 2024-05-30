@@ -52,7 +52,7 @@ class PostUserController extends Controller
             'post_user'=>$post_user,
         ];
         
-        return redirect(route('post_user.show', $binding));
+        return redirect(route('postS.show', $binding));
     }
 
     /**
