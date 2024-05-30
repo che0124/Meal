@@ -62,6 +62,7 @@
             .show-item-container {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 align-items: start;
                 border-radius: 10px;
                 margin: 10px 0;
@@ -71,6 +72,7 @@
             .show-item {
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 margin-bottom: 10px;
                 font-size: 20px
             }
@@ -150,25 +152,40 @@
                         <span class="data">{{ $post->content }}</span>
                     </div>
                     <div class="show-item">
-                        @foreach ($avatars as $avatar)
-                            <img class="user-avatar" src="{{ asset('storage/' . $avatar) }}">
-                        @endforeach
+                        <span>
+                            <div class="avatarShow-container">
+                                <div class="user-list">
+                                    <div class="avatar-relative">
+                                        <a href="{{ route('profiles.index') }}" class="user-list">
+                                            @foreach ($avatars as $index => $avatar)
+                                                @if ($index < 3)
+                                                    <div class="avatarShow"
+                                                        style=" transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
+                                                        <img class="user-avatar"
+                                                            src="{{ asset('storage/' . $avatar->image) }}">
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
                     </div>
+                    @if (!$exist)
+                        <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
+                            @csrf
+                            <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                            <div class=button>
+                                <input type="submit" value="join">
+                            </div>
+                        </form>
+                    @else
+                        <div class="eat"><span>已參加此飯局!</span></div>
+                    @endif
                 </div>
-                @if (!$exist)
-                    <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
-                        @csrf
-                        <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
-                        <div class=button>
-                            <input type="submit" value="join">
-                        </div>
-                    </form>
-                @else
-                    <div class="eat"><span>已參加此飯局!</span></div>
-                @endif
-            </div>
 
-        </div>
+            </div>
     </body>
 
     </html>

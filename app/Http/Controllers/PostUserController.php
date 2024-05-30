@@ -48,11 +48,15 @@ class PostUserController extends Controller
         $post_user->post_id = (int)$request->post_id;
         $post_user->user_id = $request->user()->id;
         $post_user->save();
+
+        $post = $post_user->post;
+
         $binding = [
             'post_user'=>$post_user,
+            'post'=>$post
         ];
         
-        return redirect(route('postS.show', $binding));
+        return redirect(route('posts.show', $binding));
     }
 
     /**

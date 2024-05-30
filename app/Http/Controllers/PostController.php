@@ -74,16 +74,7 @@ class PostController extends Controller
         $avatars = [];
         foreach ($post_user as $postUser) {
             $user = User::find($postUser->user_id);
-            if ($user->profile) {  // Check if profile exists
-                $avatar = $user->profile->avatar;  // Access avatar model (if applicable)
-                if ($avatar) {  // Check if avatar exists
-                    $avatars[] = $avatar->image;  // Access image from avatar model
-                } else {
-                    $avatars[] = null;  // Handle case where avatar is missing
-                }
-            } else {
-                $avatars[] = null;  // Handle case where profile is missing
-            }
+            $avatars[] = $user->profile->avatar;
         }
         return view('posts.show', ['post' => $post, 'exist' => $exist, 'avatars' => $avatars]);
     }

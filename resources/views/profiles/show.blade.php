@@ -14,7 +14,7 @@
                         @if ($profile->username)
                             <span class="profile-title username">{{ $profile->username }}</span>
                         @else
-                            <span class="profile-title">使用者尚未填寫使用者名稱</span>
+                            <span class="profile-title">尚未填寫使用者名稱</span>
                         @endif
                         <span class="profile-title name">{{ $profile->user->name }}</span>
                     </div>
@@ -25,7 +25,7 @@
                         <span class="profile-title">性別 : </span>
                         <span class="profile-title">{{ $profile->gender }}</span>
                     @else
-                        <span class="profile-title">使用者尚未填寫個人性別</span>
+                        <span class="profile-title">尚未填寫性別</span>
                     @endif
                 </div>
                 <div class="profile-item">
@@ -33,7 +33,7 @@
                         <span class="profile-title">生日 : </span>
                         <span class="profile-title">{{ $profile->birthday }}</span>
                     @else
-                        <span class="profile-title">使用者尚未填寫生日</span>
+                        <span class="profile-title">尚未填寫生日</span>
                     @endif
                 </div>
 
@@ -42,19 +42,19 @@
                         <span class="profile-title">個人簡介 : </span>
                         <span class="profile-title">{{ $profile->bio }}</span>
                     @else
-                        <span class="profile-title">使用者尚未填寫個人簡介</span>
+                        <span class="profile-title">尚未填寫個人簡介</span>
                     @endif
                 </div>
 
                 <div class="profile-item">
-                    <span class="profile-title">加入日期 ：</span>
-                    <span>{{ $user->created_at->format('M d, Y') }}</span>
+                    <span class="profile-title">加入日期 ：{{ $user->created_at->format('M d, Y') }}</span>
                 </div>
 
-                <div class="profile-item btn">
-                    <a class="profile-link" href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}">編輯個人檔案</a>
-                </div>
-
+                @if ($profile->user == Auth::user())
+                    <div class="profile-item">
+                        <a class="profile-link" href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}">編輯個人檔案</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
