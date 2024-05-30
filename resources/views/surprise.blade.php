@@ -73,6 +73,14 @@
             line-height: 2;
         }
 
+        .random-title {
+            text-align: center;
+            font-size: 30px;
+            color: #8B5E34;
+            font-weight: 700;
+            line-height: 2.5;
+        }
+
         #randomButton {
             padding: 15px 20px;
             font-size: 20px;
@@ -142,6 +150,7 @@
             }
             // 將隨機選擇的餐廳顯示在頁面上
             document.getElementById('random').innerHTML =
+                '<div class="random-title"><span>'  + randomPost.title + '</span></div>' +
                 '<div><span>' + '餐廳地點: ' + randomPost.restaurant + '</span></div>' +
                 '<div><span>' + '用餐日期: ' + randomPost.date + '</span></div>' +
                 '<div><span>' + '用餐時間: ' + randomPost.time +'</span></div>';

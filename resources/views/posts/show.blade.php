@@ -114,14 +114,15 @@
                 border-radius: 8px;
                 width: 200px;
                 margin: auto;
+                text-align: center;
             }
 
             .eat {
+                text-align: center;
                 border-radius: 15px;
                 background-color: #7A5230;
                 color: #fff;
                 font-size: 18px;
-                text-align: center;
                 padding: 3px 20px;
             }
         </style>
@@ -171,6 +172,7 @@
                             </div>
                         </span>
                     </div>
+                </div>
                     @if (!$exist)
                         <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
                             @csrf
@@ -182,7 +184,6 @@
                     @else
                         <div class="eat"><span>已參加此飯局!</span></div>
                     @endif
-                </div>
 
             </div>
     </body>

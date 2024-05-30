@@ -6,7 +6,7 @@
         @foreach ($posts as $post)
             @if (in_array($post->id, $userPostIds))
                 <div class="post">
-                    <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->restaurant }}</a>
+                    <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
                     <div class="avatarShow-container">
                         <div class="user-list">
                             <div class="avatar-relative">
