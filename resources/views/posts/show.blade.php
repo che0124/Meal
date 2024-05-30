@@ -172,11 +172,11 @@
                         </span>
                     </div>
                     @if (!$exist)
-                        <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
+                        <form action="{{ route('post_user.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
                             <div class=button>
-                                <input type="submit" value="join">
+                                <input type="submit" value="加入飯局">
                             </div>
                         </form>
                     @else

@@ -69,10 +69,10 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $exist = PostUser::where('user_id', Auth::user()->id)->where('post_id', $post->id)->exists();
-        $post_user = PostUser::where('post_id', $post->id)->get();
+        $post_users = PostUser::where('post_id', $post->id)->get();
 
         $avatars = [];
-        foreach ($post_user as $postUser) {
+        foreach ($post_users as $postUser) {
             $user = User::find($postUser->user_id);
             $avatars[] = $user->profile->avatar;
         }

@@ -7,8 +7,6 @@
             height: 100vh;
         }
 
-
-
         .suprise_background {
             position: absolute;
             background-image: url('/images/surprisebg.svg');
@@ -36,17 +34,16 @@
             align-items: center;
             width: 100%;
             height: 100vh;
-            z-index: 1;
+            z-index: 2;
         }
 
         .back {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: start;
             overflow: hidden;
-            padding-bottom: 50px;
-            background: #fef8f2;
+                background: #fef8f2;
             width: 30%;
             height: 55%;
             border-radius: 10px;
@@ -68,28 +65,80 @@
 
         #random {
             text-align: start;
+            margin-top: 30px;
             font-size: 25px;
             color: #8B5E34;
             line-height: 2;
         }
 
+        .button-list {
+            display: flex;
+            width: 100%;
+            margin-top: 50px;
+            padding: 10px;
+        }
+
+        .button-item {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            width: 50%;
+        }
+
         #randomButton {
-            padding: 15px 20px;
-            font-size: 20px;
-            border: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            background-color: #a7833cd8;
+            height: 100%;
+            line-height: 40px;
+            text-decoration: none;
+
             color: #fffcf5;
-            font-weight: 700;
             cursor: pointer;
         }
 
-        #randomButton:hover {
-                background-color: #977737;
-                cursor: pointer;
-            }
+        .button:hover {
+            background-color: #7A5230;
+            cursor: pointer;
+        }
 
+        form {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        input {
+            display: block;
+            line-height: 40px;
+            border-radius: 25px;
+            background-color: #ffffff00;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            width: 70%;
+        }
+
+        input:hover {
+            background-color: #7A5230;
+            cursor: pointer;
+        }
+
+        input:active {
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            transform: translate(2px 4px);
+        }
+
+        .button {
+            display: block;
+            line-height: 40px;
+            border-radius: 25px;
+            background-color: #A67B5B;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: none;
+            font-size: 16px;
+            color: white;
+            width: 70%;
+            text-align: center;
+        }
     </style>
 
 
@@ -101,58 +150,39 @@
                 <div class="surprise-title">
                     <span>驚喜包</span>
                 </div>
-                <div id="random"></div>
-                <button id="randomButton">驚喜按鈕</button>
+                <div id="random">
+                    @if ($postUsers->count() > 0)
+                        <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
+                        <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
+                        <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
+                    @else
+                        {{ __('No more restaurant') }}
+                    @endif
+                </div>
+                @if ($postUsers->count() > 0)
+                    <div class="button-list">
+                        <div class="button-item">
+                            <div class="button">
+                                <a href="{{ route('surprise') }}" id="randomButton">驚喜按鈕</a>
+                            </div>
+                        </div>
+                        <div class="button-item">
+                            <div class=button>
+                                <form action="{{ route('post_user.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="post_id" id="post_id" value="{{ $randomPost->id }}">
+                                    <input type="submit" value="加入飯局">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
-    @php
-        // 將集合轉換為組數
-        $postsArray = $posts->toArray();
-        // 如果集合不為空
-        $randomPost = [
-            'restaurant' => 'No restaurants found',
-            'date' => '',
-            'time' => 'No time found',
-        ];
-        if (!empty($postsArray)) {
-            // 隨機選擇一個項目
-            $randomIndex = array_rand($postsArray);
-            $randomPost = $postsArray[$randomIndex];
-        }
-    @endphp
 @endsection
 
 @push('scripts')
-    <script>
-        // 將 PHP 變量傳遞到 JavaScript 中
-        var postsArray = @json($postsArray);
-        var randomPost = @json($randomPost);
-        // 定義一個函數用於獲取隨機數據並更新頁面顯示
-        function getRandom() {
-            // 如果 postsArray 不為空，從重新隨機選擇一個項目
-            if (postsArray.length > 0) {
-                var randomIndex = Math.floor(Math.random() * postsArray.length);
-                randomPost = postsArray[randomIndex];
-            } else {
-                randomPost = {
-                    restaurant: 'No restaurants found',
-                    time: 'No time found'
-                };
-            }
-            // 將隨機選擇的餐廳顯示在頁面上
-            document.getElementById('random').innerHTML =
-                '<div><span>' + '餐廳地點: ' + randomPost.restaurant + '</span></div>' +
-                '<div><span>' + '用餐日期: ' + randomPost.date + '</span></div>' +
-                '<div><span>' + '用餐時間: ' + randomPost.time +'</span></div>';
-
-        }
-        // 當按鈕被點擊時觸發事件
-        document.getElementById('randomButton').addEventListener('click', function() {
-            // 調用函數獲取隨機數據並更新頁面顯示
-            getRandom();
-        });
-    </script>
     <script>
         window.onload = function() {
             var surpriseSVG = document.getElementById('surpriseSVG');
