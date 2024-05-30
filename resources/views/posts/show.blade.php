@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
     <!DOCTYPE html>
     <html>
 
@@ -41,7 +41,7 @@
 
             .title {
                 color: #4B2E20;
-                font-size: 25px;
+                font-size: 35px;
                 font-weight: 900;
             }
 
@@ -50,13 +50,12 @@
                 border: 1px solid #dddddd00;
                 position: relative;
                 flex-direction: column;
-                padding: 30px 50px;
+                padding: 50px 70px;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 z-index: 1;
                 align-items: center;
                 text-align: center;
-                display: flex;
             }
 
             .show-item-container {
@@ -65,7 +64,7 @@
                 justify-content: center;
                 align-items: start;
                 border-radius: 10px;
-                margin: 10px 0;
+                margin: 15px;
                 color: #8B5E34;
             }
 
@@ -74,7 +73,7 @@
                 justify-content: center;
                 align-items: center;
                 margin-bottom: 10px;
-                font-size: 20px
+                font-size: 25px
             }
 
             .show-item span {
@@ -93,7 +92,7 @@
                 background-color: #A67B5B;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
                 border: none;
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 700;
                 color: white;
                 letter-spacing: 1px;
