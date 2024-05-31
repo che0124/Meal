@@ -10,6 +10,8 @@ use App\Models\Avatar;
 use App\Models\Post;
 use App\Models\PostUser;
 
+use Carbon\Carbon;
+
 
 class PostController extends Controller
 {
@@ -46,6 +48,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|unique:posts',
+        ]);
+
         $post = new Post;
         $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
@@ -59,7 +65,6 @@ class PostController extends Controller
         $post_user->post_id = $post->id;
         $post_user->user_id = $post->user->id;
         $post_user->save();
-
         return redirect(route('posts.show', ['post' => $post]));
     }
 

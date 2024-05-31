@@ -41,11 +41,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: start;
             overflow: hidden;
             background: #fef8f2;
-            width: 30%;
-            height: 55%;
+            width: 400px;
+            height: 450px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -79,6 +78,7 @@
             display: flex;
             width: 100%;
             padding: 10px;
+            margin-bottom: 40px;
         }
 
         .button-item {

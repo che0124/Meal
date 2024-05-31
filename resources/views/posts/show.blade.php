@@ -43,20 +43,34 @@
                 font-size: 30px;
                 font-weight: 700;
                 line-height: 2.5;
-
+                text-align: center;
             }
 
             .post-data-container {
+                position: relative;
                 background: #fef8f2;
                 border: 1px solid #dddddd00;
-                position: relative;
-                flex-direction: column;
                 padding: 50px 70px;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 z-index: 1;
-                align-items: center;
-                text-align: center;
+            }
+
+            .post-edit {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 20px 30px;
+            }
+
+            .edit-btn {
+                text-decoration: none;
+                color: #8B5E34;
+                font-size: 18px;
+            }
+
+            .edit-btn:hover {
+                font-weight: 600;
             }
 
             .show-item-container {
@@ -135,6 +149,14 @@
             <div class="background"></div>
             <div class="overlay"></div>
             <div class="post-data-container">
+                @if (!$exist)
+                    <div class="post-edit">
+                        <a href="{{ route('posts.edit', ['post' => $post]) }}" class="edit-btn">
+                            <span>編輯</span>
+                        </a>
+                    </div>
+                @endif
+
                 <div class="title">{{ $post->title }}</div>
                 <div class="show-item-container">
                     <div class="show-item">
@@ -158,11 +180,11 @@
                             <div class="avatarShow-container">
                                 <div class="user-list">
                                     <div class="avatar-relative">
-                                        <a href="{{ route('profiles.index') }}" class="user-list">
+                                        <a href="{{ route('profiles.postUsers', ['post' => $post]) }}" class="user-list">
                                             @foreach ($avatars as $index => $avatar)
                                                 @if ($index < 3)
-                                                    <div class="avatarShow"
-                                                        style=" transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
+                                                    <div class="avatarShow show"
+                                                        style="transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }}; left: 0;">
                                                         <img class="user-avatar"
                                                             src="{{ asset('storage/' . $avatar->image) }}">
                                                     </div>

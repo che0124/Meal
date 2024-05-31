@@ -27,30 +27,29 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
         $posts = Post::all();
-        $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
         
+        $postCreates = Post::where('user_id', Auth::user()->id)->get();
         $avatars = [];
         foreach ($posts as $post) {
             $postUsers = PostUser::where('post_id', $post->id)->get();
             foreach ($postUsers as $postUser) {
                 $user = User::find($postUser->user_id);
-                if ($user && $user->profile) {
-                    if (!isset($avatars[$post->id])) {
-                        $avatars[$post->id] = []; // 初始化为数组
-                    }
-                    $avatars[$post->id][] = $user->profile->avatar;
-                }
+                $avatars[$post->id][] = $user->profile->avatar;
             }
         }
-        // dd($avatars);
-        
+
+        $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
+        $postJoins = [];
+        foreach($userJoinIds as $userJoinId){
+            $postJoins[] = $userJoinId->post;
+        }
+
         return view('home', [
             'posts' => $posts,
-            'userPostIds' => $userPostIds,
+            'postCreates' => $postCreates,
+            'postJoins' => $postJoins,
             'avatars' => $avatars,
-            'profiles' => User::cursor()
         ]);
     }
 }

@@ -8,7 +8,11 @@
                 <div class="profile-container">
                     <div class="profile-avatar-edit">
                         <div class="avatar">
-                            <img src="{{ asset('storage/' . $profile->avatar->image) }}">
+                            @if ($profile->avatar->image)
+                                <img src="{{ asset('storage/' . $profile->avatar->image) }}">
+                            @else
+                                <img src="http://localhost:8080/Meal/public/images/user/user.png">
+                            @endif
                         </div>
                     </div>
                     <div class="profile-item-edit">
@@ -35,7 +39,7 @@
                                         <button class="avatar-title">取消</button>
                                     </div>
 
-                                    <form id="profile-form" action="{{ route('profile.avatar') }}" method="POST"
+                                    <form id="profile-form" action="{{ route('profiles.avatar') }}" method="POST"
                                         enctype="multipart/form-data" hidden>
                                         @method('PUT')
                                         @csrf
@@ -58,15 +62,12 @@
                 </div>
 
                 <div class="form-item">
-                    {{-- <label for="gender" class="form-field-name">性別</label>
-                    <input type="text" class="form-control" name="gender" id="gender" value="{{ $profile->gender }}"
-                        required /> --}}
-                        <label for="gender" class="form-field-name">性別:</label>
-                        <select name="gender" class="form-control" id="gender" required>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                            <option value="其他">其他</option>
-                        </select>    
+                    <label for="gender" class="form-field-name">性別 </label>
+                    <select name="gender" class="form-control" id="gender" required>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                        <option value="其他">其他</option>
+                    </select>
                 </div>
 
                 <div class="form-item">

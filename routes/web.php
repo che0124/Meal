@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 Auth::routes();
 
@@ -24,7 +25,8 @@ Route::middleware(['auth'])->group(function () {
         return view('turntable');
     })->name('turntable');
 
-    Route::put('/profile/avatar', [ProfileController::class, 'avatar'])->name('profile.avatar');
+    Route::put('/profiles/avatar', [ProfileController::class, 'avatar'])->name('profiles.avatar');
+    Route::get('/profiles/postUsers/{post}', [ProfileController::class, 'postUsers'])->name('profiles.postUsers');
 
     Route::resource('profiles', ProfileController::class);
     Route::resource('posts', PostController::class);

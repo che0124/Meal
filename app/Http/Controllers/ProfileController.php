@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
-use App\Models\Avatar;
+use App\Models\Post;
+use App\Models\PostUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles.index', ['profiles' => User::cursor()]);
+
     }
 
     /**
@@ -77,6 +78,18 @@ class ProfileController extends Controller
 
         return redirect(route('profiles.show', ['profile' => $profile]));
     }
+
+    public function postUsers($post)
+    {
+        $post = Post::find($post);
+        $post_users = PostUser::where('post_id', $post->id)->get();
+        $profiles = [];
+        foreach ($post_users as $post_user) {
+            $profiles[] = $post_user->user;
+        }
+        return view('profiles.postUsers', ['profiles' => $profiles]);
+    }
+
 
     public function avatar(Request $request)
     {

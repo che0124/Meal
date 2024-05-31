@@ -66,13 +66,9 @@ body {
 .avatarShow-container {
     display: flex;
     align-items: center;
-    justify-content: start;
 }
 
-.user-list {
-    display: flex;
-    justify-content: end;
-}
+
 
 .avatar-relative {
     position: relative;
@@ -82,7 +78,6 @@ body {
 
 .avatarShow {
     position: absolute;
-    right: 0;
 }
 
 
@@ -235,40 +230,6 @@ body {
     color: #fff;
 }
 
-
-@media (max-width: 1200px) {
-    .grid-container {
-        grid-template-columns: 90px auto;
-    }
-
-    .navbar {
-        width: auto;
-    }
-
-    .nav-title {
-        display: none;
-    }
-
-    .nav-link-title {
-        display: none;
-    }
-
-    .nav-link-brand {
-        text-align: center;
-    }
-
-    .nav-brand {
-        padding: 0;
-    }
-
-    #logo {
-        content: url('http://localhost:8080/Meal/public/images/smallLogo.svg');
-        width: auto;
-        height: auto;
-    }
-
-}
-
 /*
 |--------------------------------------------------------------------------
 | home                                               
@@ -280,7 +241,7 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: #b58c6873;
-    padding: 10px 20px;
+    padding: 20px 50px;
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -312,18 +273,36 @@ user
     text-align: center;
     width: 70%;
     height: 80%;
-    padding-left: 10px;
-    padding-top: 50px;
+    padding-top: 40px;
     margin: auto;
-    margin-top: 40px;
     background-color: #b58c6878;
     border-radius: 15px;
 }
 
+.form-container {
+    width: 100%;
+}
+
 .form-item {
-    margin-bottom: 30px;
     display: flex;
+    width: 100%;
     align-items: center;
+    margin-bottom: 30px;
+}
+
+.form-item.datetime {
+    flex-direction: column;
+}
+
+.error-msg {
+    margin-bottom: 10px;
+}
+
+.error {
+    width: 100%;
+    color: red;
+    font-size: 15px;
+    white-space: pre-wrap;
 }
 
 .form-item label {
@@ -333,6 +312,7 @@ user
 .form-field-name {
     flex: 0 0 130px;
     white-space: nowrap;
+    text-align: start;
     margin-left: 10px;
     line-height: 1.5;
     font-size: 25px;
@@ -343,7 +323,7 @@ user
 
 .form-control {
     background-color: #fef8f2;
-    width: 600px;
+    width: 75%;
     padding: 10px;
     border: 2px solid #573b22a9;
     border-radius: 5px;
@@ -353,8 +333,9 @@ user
 }
 
 .time-form-control {
+    display: block;
     background-color: #fef8f2;
-    width: 230px;
+    width: 28.7%;
     padding: 10px;
     border: 2px solid #573b22a9;
     border-radius: 5px;
@@ -375,6 +356,7 @@ user
 
 .form-name-textarea {
     flex: 0 0 130px;
+    text-align: start;
     font-weight: bold;
     margin-left: 10px;
     line-height: 1.5;
@@ -385,7 +367,7 @@ user
 
 .form-control-textarea {
     background-color: #fef8f2;
-    width: 600px;
+    width: 75%;
     height: 180px;
     padding: 10px;
     border: 2px solid #573b22a9;
@@ -422,6 +404,78 @@ user
 
 /*
 |--------------------------------------------------------------------------
+| edit delete                                               
+|--------------------------------------------------------------------------
+*/
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 120px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    background-color: #262626;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.delete-item{
+    text-align: center;
+    color: #f5f5f5;
+    width: 100%;
+}
+
+.delete-form{
+    width: 100%;
+}
+
+.delete-item-form{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.delete-btn{
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #cccccc60;
+}
+#danger{
+    color: red;
+}
+
+
+/*
+|--------------------------------------------------------------------------
 | profile                                               
 |--------------------------------------------------------------------------
 */
@@ -431,8 +485,8 @@ user
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
-    padding-right: 200px;
+    margin-top: 130px;
+    margin-right: 150px;
 }
 
 .edit-form {
@@ -457,8 +511,8 @@ user
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20vw;
-    height: 20vw;
+    width: 350px;
+    height: 350px;
     margin-right: 50px;
 }
 
@@ -1281,4 +1335,150 @@ ul {
     border: none;
     cursor: pointer;
     transition: box-shadow 0.3s ease;
+}
+
+
+/* navbar */
+@media (max-width: 800px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .navbar {
+        flex-direction: row;
+        top: auto;
+        bottom: 0;
+        height: 55px;
+        width: 100%;
+        padding: 0;
+        background-color: #fef8f2;
+    }
+
+    .nav-brand,
+    .nav-last {
+        display: none;
+    }
+
+    .nav-item-list {
+        display: flex;
+        justify-content: space-evenly;
+        margin: auto;
+        width: 100%;
+    }
+
+    .nav-title {
+        display: none;
+    }
+
+    .nav-link-title {
+        display: none;
+    }
+
+    .nav-link-brand {
+        text-align: center;
+    }
+
+    .nav-brand {
+        padding: 0;
+    }
+
+    #logo {
+        content: url('http://localhost:8080/Meal/public/images/smallLogo.svg');
+        width: auto;
+        height: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    h1 {
+        text-align: center;
+    }
+
+    .profile {
+        padding-right: 0;
+        margin-top: 30%;
+        flex-wrap: wrap;
+        padding-right: 0;
+    }
+
+    .back{
+        width: 50%;
+    }
+
+    .post-shoe-container{
+        margin-top: 0;
+    }
+    @media (min-width: 800px) {
+
+        .grid-container {
+            grid-template-columns: 90px auto;
+        }
+
+        .navbar {
+            width: auto;
+        }
+
+        .nav-title {
+            display: none;
+        }
+
+        .nav-link-title {
+            display: none;
+        }
+
+        .nav-link-brand {
+            text-align: center;
+        }
+
+        .nav-brand {
+            padding: 0;
+        }
+
+        #logo {
+            content: url('http://localhost:8080/Meal/public/images/smallLogo.svg');
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+/* form */
+@media (max-width: 1000px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .form {
+        padding: 30px;
+    }
+
+    .form-item {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .form-field-name {
+        flex: auto;
+    }
+
+    .time-form-control {
+        width: 100%;
+    }
+
+    .form-control-textarea {
+        width: 100%;
+    }
+
+    .form-item-textarea {
+        flex-direction: column;
+    }
+
+    .form-name-textarea {
+        flex: auto;
+    }
 }
