@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
 
     Route::get('/surprise', [SurpriseController::class, 'surprise'])->name('surprise');
+    // Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
     Route::get('/turntable', function () {
         return view('turntable');
     })->name('turntable');

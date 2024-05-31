@@ -5,11 +5,11 @@
 <body>
     <style>
         .container_s {
-            position:absolute;
+            /* position:absolute; */
             margin-left: 220px;
-            background-color: black;
-            /* background-image: url(http://localhost:8080/Meal/public/images/clipart2544596.svg); */
-            opacity: 0.3;
+            /* background-color: black; */
+            /* background-image: url();  */
+            /* opacity: 0.3; */
         }
 
         .surprise-container {
@@ -17,7 +17,7 @@
             flex-direction: column;
             text-align: center;
             /* background-color: pink; */
-            position:relative;
+            /* position:relative; */
         }
 
         .surprise-item {
@@ -46,6 +46,19 @@
             font-size: 18px;
             color: #333;
         }
+
+        .button111 {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
     <div class="surprise-container">
         <div class="container_s"></div>
@@ -60,6 +73,27 @@
             <div class="surprise-item">
                 <div id="random"></div>
             </div>
+
+            @foreach ($posts as $post)
+            @if (!in_array($post->id, $userPostIds))
+            <a class="buttom111" href="{{ route('posts.show', ['post' => $post]) }}">
+                <div class="post-container">
+                    <div class="post-title">
+                        {{ $post->title }}
+                    </div>
+                    <div class="post-content">
+                        {{ $post->restaurant }}
+                    </div>
+                    <div class="post-content">
+                        {{ $post->time }}
+                    </div>
+                </div>
+            </a>
+            @endif
+            @endforeach
+
+
+
         </div>
     </div>
 
