@@ -13,7 +13,7 @@
                 justify-content: start;
                 height: 50px;
                 width: 100%;
-                margin: 20px 0
+                margin: 20px
             }
 
             .title-item {
@@ -36,7 +36,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                padding-right: 100px;
+                padding-left: 15px;
                 gap: 20px;
             }
 
@@ -96,7 +96,7 @@
                 display: flex;
                 justify-content: start;
                 text-decoration: none;
-                color: #4B2E20;
+                color: #69412d;
                 font-size: 20px;
                 font-weight: 600;
                 text-align: center;
@@ -138,7 +138,7 @@
                                     {{ $post->restaurant }}
                                 </div>
                                 <div class="post-content">
-                                    {{ $post->time }}
+                                    {{ $post->date }}
                                 </div>
                             </div>
                         </a>
