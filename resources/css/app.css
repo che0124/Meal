@@ -315,7 +315,7 @@ user
 .form-field-name {
     flex: 0 0 130px;
     white-space: nowrap;
-    text-align: start;
+    text-align: center;
     margin-left: 10px;
     line-height: 1.5;
     font-size: 25px;
@@ -359,7 +359,7 @@ user
 
 .form-name-textarea {
     flex: 0 0 130px;
-    text-align: start;
+    text-align: center;
     font-weight: bold;
     margin-left: 10px;
     line-height: 1.5;

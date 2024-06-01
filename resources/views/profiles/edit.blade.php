@@ -66,14 +66,15 @@
                 @method('PUT')
                 @csrf
                 <div class="form-item">
-                    <label for="username" class="form-field-name">使用者名稱 </label>
+                    <label for="username" class="form-field-name" >使用者名稱 </label>
                     <input type="text" class="form-control" name="username" id="username"
-                        value="{{ $profile->username }}" />
+                        value="{{ $profile->username }}" placeholder="請輸入使用者名稱"/>
                 </div>
 
                 <div class="form-item">
                     <label for="gender" class="form-field-name">性別 </label>
                     <select name="gender" class="form-control" id="gender">
+                        <option value="null" disabled selected>請選擇</option>
                         <option value="男">男</option>
                         <option value="女">女</option>
                         <option value="其他">其他</option>
@@ -83,7 +84,7 @@
                 <div class="form-item">
                     <label for="birthday" class="form-field-name">生日</label>
                     <input type="date" class="form-control" name="birthday" id=""
-                        value="{{ $profile->birthday }}" />
+                        placeholder="{{ $profile->birthday }}"/>
                 </div>
 
                 <div class="form-item-textarea">
