@@ -2,12 +2,13 @@
 
 @section('content')
     <style>
-        .post-shoe-container{
+        .post-shoe-container {
             widows: 100%;
             display: flex;
             flex-direction: column;
             margin-top: 50px;
         }
+
         .title {
             display: flex;
             align-items: center;
@@ -29,7 +30,6 @@
         .page-title {
             margin-left: 20px;
         }
-
 
         .all-posts {
             display: flex;
@@ -78,13 +78,23 @@
         }
 
         .post-title {
-            text-decoration: none;
+            display: flex;
+            flex-direction: column;
             background-color: #8c4c1fba;
             color: #fff;
             font-size: 25px;
             font-weight: bold;
-            text-align: center;
             padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .post-title div {
+            text-align: start;
+        }
+
+        #post-time {
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .post-content {
@@ -95,9 +105,7 @@
             font-size: 20px;
             font-weight: 600;
             text-align: center;
-            margin: auto;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            margin-left: 15px;
         }
     </style>
 
@@ -126,10 +134,15 @@
                             <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
                                 <div class="post-container">
                                     <div class="post-title">
-                                        {{ $post->title }}
+                                        <div id="post-time">
+                                            {{ $timeCreateds[$post->id] }}
+                                        </div>
+                                        <div>
+                                            {{ $post->title }}
+                                        </div>
                                     </div>
                                     <div class="post-content">
-                                        {{ $post->restaurant }}
+                                        餐廳 : {{ $post->restaurant }}
                                     </div>
                                     <div class="post-content">
                                         {{ $post->date }}
@@ -138,7 +151,7 @@
                             </a>
                         @endif
                     @endforeach
-                </div>  
+                </div>
             </div>
         </div>
     </body>

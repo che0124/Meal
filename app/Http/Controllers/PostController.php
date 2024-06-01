@@ -18,14 +18,22 @@ class PostController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('zh');
+
         $user = Auth::user();
         $posts = Post::all();
 
         $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
 
+        $timeCreateds = [];
+        foreach ($posts as $post) {
+            $timeCreateds[$post->id] = Carbon::parse($post->created_at)->diffForHumans();
+        }
+
         return view('posts.index', [
             'posts' => $posts,
-            'userPostIds' => $userPostIds
+            'userPostIds' => $userPostIds,
+            'timeCreateds' => $timeCreateds
         ]);
     }
 
@@ -63,10 +71,6 @@ class PostController extends Controller
         $post_user->post_id = $post->id;
         $post_user->user_id = $post->user->id;
         $post_user->save();
-
-        // $user = User::find(Auth::user()->id);
-        // $post = Post::find($post->id);
-        // $user->notify(new MealReminder($post));
 
         return redirect(route('posts.show', ['post' => $post]));
     }
