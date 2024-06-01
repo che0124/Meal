@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Profile;
-use App\Models\Avatar;
 use App\Models\Post;
 use App\Models\PostUser;
+use Carbon\Carbon;
 
+use App\Notifications\MealReminder;
 
 class PostController extends Controller
 {
@@ -18,14 +18,22 @@ class PostController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('zh');
+
         $user = Auth::user();
         $posts = Post::all();
 
         $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
 
+        $timeCreateds = [];
+        foreach ($posts as $post) {
+            $timeCreateds[$post->id] = Carbon::parse($post->created_at)->diffForHumans();
+        }
+
         return view('posts.index', [
             'posts' => $posts,
-            'userPostIds' => $userPostIds
+            'userPostIds' => $userPostIds,
+            'timeCreateds' => $timeCreateds
         ]);
     }
 
@@ -46,6 +54,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+        ]);
+
         $post = new Post;
         $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
@@ -109,5 +121,38 @@ class PostController extends Controller
         $post->delete();
 
         return redirect(route('posts.index'));
+    }
+
+    public function notifyUsersBeforeEvent()
+    {
+        // 获取当前时间并加上一小时
+        $now = Carbon::now();
+        $oneHourFromNow = $now->copy()->addHour();
+
+
+        $currentDate = $now->toDateString();
+        $currentTime = $now->toTimeString();
+        $oneHourFromNowDate = $oneHourFromNow->toDateString();
+        $oneHourFromNowTime = $oneHourFromNow->toTimeString();
+
+        $eventsToday = Post::where('date', $currentDate)
+            ->whereBetween('time', [$currentTime, '23:59:59'])
+            ->get();
+
+        $eventsNextDay = Post::where('date', $oneHourFromNowDate)
+            ->whereBetween('time', ['00:00:00', $oneHourFromNowTime])
+            ->get();
+
+        $posts = $eventsToday->merge($eventsNextDay);
+        
+        foreach ($posts as $post) {
+            $post_users = PostUser::where('post_id', $post->id)->get();
+            foreach ($post_users as $post_user) {
+                $user = User::find($post_user->user_id);
+                $user->notify(new MealReminder($post));
+            }
+        }
+
+        return redirect()->back();
     }
 }
