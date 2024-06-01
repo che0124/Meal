@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Profile;
-use App\Models\Avatar;
 use App\Models\Post;
 use App\Models\PostUser;
-
 use Carbon\Carbon;
 
+use App\Notifications\MealReminder;
 
 class PostController extends Controller
 {
@@ -49,7 +47,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:posts',
+            'title' => 'required',
         ]);
 
         $post = new Post;
@@ -65,6 +63,11 @@ class PostController extends Controller
         $post_user->post_id = $post->id;
         $post_user->user_id = $post->user->id;
         $post_user->save();
+
+        // $user = User::find(Auth::user()->id);
+        // $post = Post::find($post->id);
+        // $user->notify(new MealReminder($post));
+
         return redirect(route('posts.show', ['post' => $post]));
     }
 
@@ -114,5 +117,38 @@ class PostController extends Controller
         $post->delete();
 
         return redirect(route('posts.index'));
+    }
+
+    public function notifyUsersBeforeEvent()
+    {
+        // 获取当前时间并加上一小时
+        $now = Carbon::now();
+        $oneHourFromNow = $now->copy()->addHour();
+
+
+        $currentDate = $now->toDateString();
+        $currentTime = $now->toTimeString();
+        $oneHourFromNowDate = $oneHourFromNow->toDateString();
+        $oneHourFromNowTime = $oneHourFromNow->toTimeString();
+
+        $eventsToday = Post::where('date', $currentDate)
+            ->whereBetween('time', [$currentTime, '23:59:59'])
+            ->get();
+
+        $eventsNextDay = Post::where('date', $oneHourFromNowDate)
+            ->whereBetween('time', ['00:00:00', $oneHourFromNowTime])
+            ->get();
+
+        $posts = $eventsToday->merge($eventsNextDay);
+        
+        foreach ($posts as $post) {
+            $post_users = PostUser::where('post_id', $post->id)->get();
+            foreach ($post_users as $post_user) {
+                $user = User::find($post_user->user_id);
+                $user->notify(new MealReminder($post));
+            }
+        }
+
+        return redirect()->back();
     }
 }

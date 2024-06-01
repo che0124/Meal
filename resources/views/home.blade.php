@@ -8,6 +8,9 @@
                 <div class="post">
                     <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
                     <div class="avatarShow-container">
+                        <div class="avatarShow-time">
+                            <span>{{ $post->date }} {{ $post->time }}</span>
+                        </div>
                         <div class="user-list">
                             <div class="avatar-relative">
                                 <a href="{{ route('profiles.postUsers', ['post' => $post]) }}">
@@ -15,8 +18,12 @@
                                         @if ($index < 3)
                                             <div class="avatarShow"
                                                 style="transform: translate({{ -($index * 20) }}px); z-index: {{ $index + 1 }}; right: 0;">
-                                                <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}"
-                                                    alt="User Avatar">
+                                                @if ($avatar->image)
+                                                    <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}">
+                                                @else
+                                                    <img class="user-avatar"
+                                                        src="http://localhost:8080/Meal/public/images/user/user.png">
+                                                @endif
                                             </div>
                                         @endif
                                     @endforeach
@@ -38,6 +45,9 @@
                 <div class="post">
                     <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
                     <div class="avatarShow-container">
+                        <div class="avatarShow-time">
+                            <span>{{ $post->date }} {{ $post->time }}</span>
+                        </div>
                         <div class="user-list">
                             <div class="avatar-relative">
                                 <a href="{{ route('profiles.postUsers', ['post' => $post]) }}">
@@ -45,8 +55,13 @@
                                         @if ($index < 3)
                                             <div class="avatarShow"
                                                 style="transform: translate({{ -($index * 20) }}px); z-index: {{ $index + 1 }}; right: 0;">
-                                                <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}"
-                                                    alt="User Avatar">
+                                                @if ($avatar->image)
+                                                    <img class="user-avatar"
+                                                        src="{{ asset('storage/' . $avatar->image) }}">
+                                                @else
+                                                    <img class="user-avatar"
+                                                        src="http://localhost:8080/Meal/public/images/user/user.png">
+                                                @endif
                                             </div>
                                         @endif
                                     @endforeach

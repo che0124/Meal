@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\Post;
 use App\Models\PostUser;
-use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -16,7 +17,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -103,6 +103,15 @@ class ProfileController extends Controller
         return redirect()->route('profiles.show', ['profile' => $profile]);
     }
 
+    public function removeAvatar()
+    {
+        $user = Auth::user();
+        Storage::delete($user->profile->avatar->image);
+        $user->profile->avatar->image = NUll;
+        $user->profile->avatar->save();
+
+        return redirect()->back();
+    }
 
     /**
      * Remove the specified resource from storage.

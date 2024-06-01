@@ -49,6 +49,14 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .surprise-content{
+            height: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
         .surprise-title {
             top: 0;
             text-align: center;
@@ -71,14 +79,13 @@
         }
 
         #post-title {
-            text-align: center; 
+            text-align: center;
         }
 
         .button-list {
             display: flex;
             width: 100%;
             padding: 10px;
-            margin-bottom: 40px;
         }
 
         .button-item {
@@ -153,34 +160,36 @@
                 <div class="surprise-title">
                     <span>驚喜包</span>
                 </div>
-                <div id="random">
+                <div class="surprise-content">
+                    <div id="random">
+                        @if ($randomPost != null)
+                            <div id="post-title"><span>{{ $randomPost->title }}</span></div>
+                            <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
+                            <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
+                            <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
+                        @else
+                            {{ __('No more restaurant') }}
+                        @endif
+                    </div>
                     @if ($randomPost != null)
-                        <div id="post-title"><span>{{ $randomPost->title }}</span></div>
-                        <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
-                        <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
-                        <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
-                    @else
-                        {{ __('No more restaurant') }}
+                        <div class="button-list">
+                            <div class="button-item">
+                                <div class="button">
+                                    <a href="{{ route('surprise') }}" id="randomButton">驚喜按鈕</a>
+                                </div>
+                            </div>
+                            <div class="button-item">
+                                <div class=button>
+                                    <form action="{{ route('post_user.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="post_id" id="post_id" value="{{ $randomPost->id }}">
+                                        <input type="submit" value="加入飯局">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
-                @if ($randomPost != null)
-                    <div class="button-list">
-                        <div class="button-item">
-                            <div class="button">
-                                <a href="{{ route('surprise') }}" id="randomButton">驚喜按鈕</a>
-                            </div>
-                        </div>
-                        <div class="button-item">
-                            <div class=button>
-                                <form action="{{ route('post_user.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="post_id" id="post_id" value="{{ $randomPost->id }}">
-                                    <input type="submit" value="加入飯局">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                @endif
             </div>
         </div>
     </div>

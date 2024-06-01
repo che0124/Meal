@@ -35,7 +35,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            padding-left: 15px;
+            padding: 10px;
             gap: 20px;
         }
 
@@ -52,11 +52,13 @@
         }
 
         .post-container:hover {
-            background-color: #bc9e8da0;
+            background-color: #ffd5bb55;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             height: 100%;
             width: 100%;
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
 
         .post-link {
@@ -68,12 +70,6 @@
             font-weight: 600;
             margin: 10px 10px;
         }
-
-        .post-link:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-
 
         .post-container .post {
             display: flex;
@@ -130,7 +126,7 @@
                             <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
                                 <div class="post-container">
                                     <div class="post-title">
-                                        {{ $post->title }}
+                                        {{ $post->title }}{{ Carbon::parse($post->created_at)->diffForHumans(); }}
                                     </div>
                                     <div class="post-content">
                                         {{ $post->restaurant }}
