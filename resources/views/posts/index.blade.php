@@ -126,7 +126,7 @@
                             <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
                                 <div class="post-container">
                                     <div class="post-title">
-                                        {{ $post->title }}{{ Carbon::parse($post->created_at)->diffForHumans(); }}
+                                        {{ $post->title }}
                                     </div>
                                     <div class="post-content">
                                         {{ $post->restaurant }}
