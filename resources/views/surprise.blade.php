@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('content')
     <style>
@@ -24,6 +25,7 @@
             width: 100%;
             height: 100vh;
             background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -35,6 +37,7 @@
             width: 100%;
             height: 100vh;
             z-index: 2;
+            z-index: 2;
         }
 
         .back {
@@ -42,7 +45,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: start;
+            justify-content: start;
             overflow: hidden;
+                background: #fef8f2;
                 background: #fef8f2;
             width: 30%;
             height: 55%;
@@ -151,7 +156,7 @@
                     <span>驚喜包</span>
                 </div>
                 <div id="random">
-                    @if ($postUsers->count() > 0)
+                    @if ($randomPost != null)
                         <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
                         <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
                         <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
@@ -159,7 +164,7 @@
                         {{ __('No more restaurant') }}
                     @endif
                 </div>
-                @if ($postUsers->count() > 0)
+                @if ($randomPost != null)
                     <div class="button-list">
                         <div class="button-item">
                             <div class="button">
