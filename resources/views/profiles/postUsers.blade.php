@@ -8,7 +8,11 @@
                 <div class="user-avatar">
                     <a href="{{ route('profiles.show', ['profile' => $profile->profile]) }}">
                         <div class="avatar">
-                            <img src="{{ asset('storage/' . $profile->profile->avatar->image) }}">
+                            @if ($profile->profile->avatar->image)
+                                <img src="{{ asset('storage/' . $profile->profile->avatar->image) }}">
+                            @else
+                                <img src="http://localhost:8080/Meal/public/images/user/user.png">
+                            @endif
                         </div>
                     </a>
                 </div>

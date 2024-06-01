@@ -2,20 +2,28 @@
 
 @section('content')
     <div class="container">
-        <h1 class="page-title">我的飯局</h1>
-        @foreach ($posts as $post)
-            @if (in_array($post->id, $userPostIds))
+        <h1 class="page-title">創建的飯局</h1>
+        @if ($postCreates->count() > 0)
+            @foreach ($postCreates as $post)
                 <div class="post">
                     <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
                     <div class="avatarShow-container">
+                        <div class="avatarShow-time">
+                            <span>{{ $post->date }} {{ $post->time }}</span>
+                        </div>
                         <div class="user-list">
                             <div class="avatar-relative">
-                                <a href="{{ route('profiles.index') }}">
+                                <a href="{{ route('profiles.postUsers', ['post' => $post]) }}">
                                     @foreach ($avatars[$post->id] as $index => $avatar)
                                         @if ($index < 3)
-                                            <div class="avatarShow" style="transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }};">
-                                                <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}"
-                                                    alt="User Avatar">
+                                            <div class="avatarShow"
+                                                style="transform: translate({{ -($index * 20) }}px); z-index: {{ $index + 1 }}; right: 0;">
+                                                @if ($avatar->image)
+                                                    <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}">
+                                                @else
+                                                    <img class="user-avatar"
+                                                        src="http://localhost:8080/Meal/public/images/user/user.png">
+                                                @endif
                                             </div>
                                         @endif
                                     @endforeach
@@ -24,9 +32,50 @@
                         </div>
                     </div>
                 </div>
-            @endif
-        @endforeach
+            @endforeach
+        @else
+            <div class="post">
+                <a class="link" href="{{ route('posts.create') }}">{{ __('去創建飯局吧!') }}</a>
+            </div>
+        @endif
 
+        <h1 class="page-title">參加的飯局</h1>
+        @if ($postCreates->count() > 0)
+            @foreach ($postJoins as $post)
+                <div class="post">
+                    <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
+                    <div class="avatarShow-container">
+                        <div class="avatarShow-time">
+                            <span>{{ $post->date }} {{ $post->time }}</span>
+                        </div>
+                        <div class="user-list">
+                            <div class="avatar-relative">
+                                <a href="{{ route('profiles.postUsers', ['post' => $post]) }}">
+                                    @foreach ($avatars[$post->id] as $index => $avatar)
+                                        @if ($index < 3)
+                                            <div class="avatarShow"
+                                                style="transform: translate({{ -($index * 20) }}px); z-index: {{ $index + 1 }}; right: 0;">
+                                                @if ($avatar->image)
+                                                    <img class="user-avatar"
+                                                        src="{{ asset('storage/' . $avatar->image) }}">
+                                                @else
+                                                    <img class="user-avatar"
+                                                        src="http://localhost:8080/Meal/public/images/user/user.png">
+                                                @endif
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class="post">
+                <a class="link" href="{{ route('posts.index') }}">{{ __('去參加飯局吧!') }}</a>
+            </div>
+        @endif
     </div>
 @endsection
 
