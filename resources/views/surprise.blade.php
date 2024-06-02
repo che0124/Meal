@@ -166,16 +166,16 @@
                 </div>
                 <div class="surprise-content">
                     <div id="random">
-                        @if ($randomPost != null)
-                            <div id="post-title"><span>{{ $randomPost->title }}</span></div>
-                            <div><span>餐廳地點 : {{ $randomPost->restaurant }}</span></div>
-                            <div><span>用餐日期 : {{ $randomPost->date }}</span></div>
-                            <div><span>用餐時間 : {{ $randomPost->time }}</span></div>
+                        @if ($postLists != [])
+                            <div id="post-title"><span>{{ $postLists->title }}</span></div>
+                            <div><span>餐廳地點 : {{ $postLists->restaurant }}</span></div>
+                            <div><span>用餐日期 : {{ $postLists->date }}</span></div>
+                            <div><span>用餐時間 : {{ $postLists->time }}</span></div>
                         @else
                             {{ __('No more restaurant') }}
                         @endif
                     </div>
-                    @if ($randomPost != null)
+                    @if ($postLists != [])
                         <div class="button-list">
                             <div class="button-item">
                                 <div class="button">
@@ -186,7 +186,7 @@
                                 <div class=button>
                                     <form action="{{ route('post_user.store') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="post_id" id="post_id" value="{{ $randomPost->id }}">
+                                        <input type="hidden" name="post_id" id="post_id" value="{{ $postLists->id }}">
                                         <input type="submit" value="加入飯局">
                                     </form>
                                 </div>
