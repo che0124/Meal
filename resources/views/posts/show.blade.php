@@ -149,7 +149,7 @@
             <div class="background"></div>
             <div class="overlay"></div>
             <div class="post-data-container">
-                @if (!$exist)
+                @if ($postOwner)
                     <div class="post-edit">
                         <a href="{{ route('posts.edit', ['post' => $post]) }}" class="edit-btn">
                             <span>編輯</span>

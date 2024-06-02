@@ -98,6 +98,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $exist = PostUser::where('user_id', Auth::user()->id)->where('post_id', $post->id)->exists();
+        $postOwner = Post::where('user_id', Auth::user()->id)->where('id', $post->id)->exists();
+
         $post_users = PostUser::where('post_id', $post->id)->get();
 
         $avatars = [];
@@ -105,7 +107,7 @@ class PostController extends Controller
             $user = User::find($postUser->user_id);
             $avatars[] = $user->profile->avatar;
         }
-        return view('posts.show', ['post' => $post, 'exist' => $exist, 'avatars' => $avatars]);
+        return view('posts.show', ['post' => $post, 'exist' => $exist, 'postOwner' => $postOwner, 'avatars' => $avatars]);
     }
 
     /**
@@ -113,6 +115,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (Auth::id() !== $post->user_id) {
+            return redirect()->route('posts.show', ['post' => $post]);
+        }
         return view('posts.edit', ['post' => $post]);
     }
 
