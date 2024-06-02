@@ -29,18 +29,35 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now();
+        $currentDate = $now->toDateString();
+        $currentTime = $now->toTimeString();
+
         //user create post
         $postCreates = Post::where('user_id', Auth::user()->id)
+            ->where('date', '>', $currentDate)
+            ->where('time', '>', $currentTime)
             ->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
         $postCreateIds = $postCreates->pluck('id')->toArray();
 
         //user join post
         $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
         $postJoins = [];
+
+        $postRunnings = [];
+
         foreach ($userJoinIds as $userJoinId) {
+            //post running
+            $post = $userJoinId->post;
+            $postDatetime = Carbon::create($post->date . $post->time)->setTimezone('Asia/Taipei');
+            if ($postDatetime <= $now && $post->status == 1) {
+                $postRunnings[] = $post;
+            }
             //except user create post
             if (!in_array($userJoinId->post_id, $postCreateIds)) {
-                $postJoins[] = $userJoinId->post;
+                if ($postDatetime > $now) {
+                    $postJoins[] = $userJoinId->post;
+                }
             }
         }
         //postJoins sort by date and time
@@ -51,19 +68,11 @@ class HomeController extends Controller
             }
             return $dateComparison;
         });
-        
+
         //user's avatar in the post and post running
         $posts = Post::all();
-        $now = Carbon::now();
-        $postRunnings = [];
         $avatars = [];
         foreach ($posts as $post) {
-            //post running
-            $postDatetime = Carbon::create($post->date.$post->time)->setTimezone('Asia/Taipei');
-            if($postDatetime <= $now && $post->status == 1){
-                $postRunnings[] = $post;
-            }
-
             $postUsers = PostUser::where('post_id', $post->id)->get();
             foreach ($postUsers as $postUser) {
                 $user = User::find($postUser->user_id);
