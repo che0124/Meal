@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        Carbon::setLocale('zh');
+        Carbon::setLocale('zh-tw');
 
         $user = Auth::user();
         $posts = Post::all();
@@ -42,10 +42,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        if (is_null(Auth::user())) {
-            return redirect(route('login'));
-        }
-
         return view('posts.create');
     }
 
@@ -57,6 +53,27 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
         ]);
+
+        $existingPost = Post::where('user_id', Auth::user()->id)
+            ->where('date', $request->input('date'))
+            ->where('time', $request->input('time'))
+            ->first();
+
+        if ($existingPost) {
+            return redirect()->back()->withErrors(['time' => '您在這個時段已經創建一個飯局了']);
+        }
+
+
+        $date = $request->input('date');
+        $time = $request->input('time');
+        $joiningPosts = PostUser::where('user_id', Auth::user()->id)->get();
+        foreach ($joiningPosts as $joiningPost) {
+            $joinPost = $joiningPost->post;
+            dd($joinPost);
+            if ($joinPost->date == $date && $joinPost->time == $time) {
+                return redirect()->back()->withErrors(['time' => '您在這個時段已參加一個飯局了']);
+            }
+        }
 
         $post = new Post;
         $post->title = $request->input('title');
@@ -120,12 +137,11 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect(route('posts.index'));
+        return redirect(route('/'));
     }
 
     public function notifyUsersBeforeEvent()
     {
-        // 获取当前时间并加上一小时
         $now = Carbon::now();
         $oneHourFromNow = $now->copy()->addHour();
 
@@ -144,7 +160,7 @@ class PostController extends Controller
             ->get();
 
         $posts = $eventsToday->merge($eventsNextDay);
-        
+
         foreach ($posts as $post) {
             $post_users = PostUser::where('post_id', $post->id)->get();
             foreach ($post_users as $post_user) {

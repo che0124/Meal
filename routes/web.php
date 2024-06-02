@@ -19,7 +19,7 @@ Route::get('/meal', function () {
 })->middleware(RedirectIfAuthenticated::class);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('/');
 
     Route::get('/surprise', [SurpriseController::class, 'surprise'])->name('surprise');
     Route::get('/turntable', function () {
