@@ -60,7 +60,7 @@ class HomeController extends Controller
         foreach ($posts as $post) {
             //post running
             $postDatetime = Carbon::create($post->date.$post->time)->setTimezone('Asia/Taipei');
-            if($postDatetime <= $now){
+            if($postDatetime <= $now && $post->status == 1){
                 $postRunnings[] = $post;
             }
 

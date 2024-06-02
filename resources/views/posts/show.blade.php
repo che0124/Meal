@@ -210,6 +210,16 @@
                         </span>
                     </div>
                 </div>
+                @if ($postOwner && $post->status == 1)
+                    <form action="{{ route('posts.endPost') }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
+                        <div class=button>
+                            <input type="submit" value="結束飯局">
+                        </div>
+                    </form>
+                @endif
 
                 @if (!$exist)
                     <form action="{{ route('post_user.store') }}" method="POST">

@@ -53,7 +53,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $now = Carbon::now();
-        $postDatetime = Carbon::create($request->date.$request->time)->setTimezone('Asia/Taipei');
+        $postDatetime = Carbon::create($request->date . $request->time)->setTimezone('Asia/Taipei');
 
         if ($postDatetime <= $now) {
             return redirect()->back()->withErrors(['time' => '不可輸入過去的時間']);
@@ -188,5 +188,13 @@ class PostController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function endPost(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->status = 2;
+        $post->save();
+        return redirect(route('/'));
     }
 }
