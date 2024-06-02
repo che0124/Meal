@@ -10,6 +10,8 @@ use App\Models\PostUser;
 use Carbon\Carbon;
 
 use App\Notifications\MealReminder;
+use App\Notifications\DeletePost;
+
 
 class PostController extends Controller
 {
@@ -21,7 +23,7 @@ class PostController extends Controller
         Carbon::setLocale('zh-tw');
 
         $user = Auth::user();
-        $posts = Post::all();
+        $posts = Post::orderBy('date', 'asc')->orderBy('time', 'asc')->get();
 
         $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
 
@@ -69,7 +71,6 @@ class PostController extends Controller
         $joiningPosts = PostUser::where('user_id', Auth::user()->id)->get();
         foreach ($joiningPosts as $joiningPost) {
             $joinPost = $joiningPost->post;
-            dd($joinPost);
             if ($joinPost->date == $date && $joinPost->time == $time) {
                 return redirect()->back()->withErrors(['time' => '您在這個時段已參加一個飯局了']);
             }
@@ -140,7 +141,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        if (auth()->user()->id === $post->user_id) {
+
+            $post_users = PostUser::where('post_id', $post->id)->get();
+            foreach ($post_users as $post_user) {
+                $user = User::find($post_user->user_id);
+                $user->notify(new DeletePost($post));
+            }
+            $post->delete();
+        }
 
         return redirect(route('/'));
     }

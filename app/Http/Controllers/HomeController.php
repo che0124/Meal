@@ -28,11 +28,13 @@ class HomeController extends Controller
     public function index()
     {
         //user create post
-        $postCreates = Post::where('user_id', Auth::user()->id)->get();
+        $postCreates = Post::where('user_id', Auth::user()->id)
+            ->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
         $postCreateIds = $postCreates->pluck('id')->toArray();
 
         //user join post
         $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
+
         $postJoins = [];
         foreach ($userJoinIds as $userJoinId) {
             //except user create post
@@ -40,6 +42,16 @@ class HomeController extends Controller
                 $postJoins[] = $userJoinId->post;
             }
         }
+        
+        //sort by date and time
+        usort($postJoins, function ($a, $b) {
+            $dateComparison = strcmp($a->date, $b->date);
+            if ($dateComparison == 0) {
+                return strcmp($a->time, $b->time);
+            }
+            return $dateComparison;
+        });
+
 
         //user's avatar in the post
         $posts = Post::all();
