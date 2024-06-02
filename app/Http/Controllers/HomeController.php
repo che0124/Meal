@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\PostUser;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -34,7 +36,6 @@ class HomeController extends Controller
 
         //user join post
         $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
-
         $postJoins = [];
         foreach ($userJoinIds as $userJoinId) {
             //except user create post
@@ -42,8 +43,7 @@ class HomeController extends Controller
                 $postJoins[] = $userJoinId->post;
             }
         }
-        
-        //sort by date and time
+        //postJoins sort by date and time
         usort($postJoins, function ($a, $b) {
             $dateComparison = strcmp($a->date, $b->date);
             if ($dateComparison == 0) {
@@ -51,12 +51,19 @@ class HomeController extends Controller
             }
             return $dateComparison;
         });
-
-
-        //user's avatar in the post
+        
+        //user's avatar in the post and post running
         $posts = Post::all();
+        $now = Carbon::now();
+        $postRunnings = [];
         $avatars = [];
         foreach ($posts as $post) {
+            //post running
+            $postDatetime = Carbon::create($post->date.$post->time)->setTimezone('Asia/Taipei');
+            if($postDatetime <= $now){
+                $postRunnings[] = $post;
+            }
+
             $postUsers = PostUser::where('post_id', $post->id)->get();
             foreach ($postUsers as $postUser) {
                 $user = User::find($postUser->user_id);
@@ -65,6 +72,7 @@ class HomeController extends Controller
         }
         return view('home', [
             'posts' => $posts,
+            'postRunnings' => $postRunnings,
             'postCreates' => $postCreates,
             'postJoins' => $postJoins,
             'avatars' => $avatars,

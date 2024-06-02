@@ -42,7 +42,6 @@
                 color: #8B5E34;
                 font-size: 30px;
                 font-weight: 700;
-                line-height: 2.5;
                 text-align: center;
             }
 
@@ -50,7 +49,7 @@
                 position: relative;
                 background: #fef8f2;
                 border: 1px solid #dddddd00;
-                padding: 50px 70px;
+                padding: 30px 60px;
                 border-radius: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 z-index: 1;
@@ -102,7 +101,7 @@
 
             input {
                 display: block;
-                width: 95%;
+                width: 100%;
                 line-height: 40px;
                 border-radius: 25px;
                 background-color: #A67B5B;
@@ -125,12 +124,13 @@
             }
 
             .button {
-                text-align: center;
                 padding: 10px;
                 border-radius: 8px;
-                width: 200px;
-                margin: auto;
-                z-index: 1;
+            }
+
+            .already-join {
+                display: flex;
+                justify-content: center;
             }
 
             .eat {
@@ -138,8 +138,9 @@
                 border-radius: 15px;
                 background-color: #7A5230;
                 color: #fff;
-                font-size: 20px;
-                padding: 3px 20px;
+                width: 100px;
+                padding: 2px;
+                font-size: 13px;
             }
         </style>
     </head>
@@ -157,7 +158,14 @@
                     </div>
                 @endif
 
+
+                @if ($exist)
+                    <div class="already-join">
+                        <div class="eat"><span>已參加此飯局!</span></div>
+                    </div>
+                @endif
                 <div class="title">{{ $post->title }}</div>
+
                 <div class="show-item-container">
                     <div class="show-item">
                         <span>餐廳 : </span>
@@ -202,17 +210,17 @@
                         </span>
                     </div>
                 </div>
+
                 @if (!$exist)
-                    <form action="{{ route('post_user.store') }}" method="POST" class="page-label">
+                    <form action="{{ route('post_user.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
                         <div class=button>
                             <input type="submit" value="加入飯局">
                         </div>
                     </form>
-                @else
-                    <div class="eat"><span>已參加此飯局!</span></div>
                 @endif
+
 
                 <!-- error msg -->
                 @if ($errors->any())
@@ -226,6 +234,7 @@
                 @endif
 
             </div>
+
     </body>
 
     </html>
