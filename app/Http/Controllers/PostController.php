@@ -52,10 +52,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-        ]);
+        $now = Carbon::now();
+        $postDatetime = Carbon::create($request->date.$request->time)->setTimezone('Asia/Taipei');
 
+        if ($postDatetime <= $now) {
+            return redirect()->back()->withErrors(['time' => '不可輸入過去的時間']);
+        }
+
+        //user already create a post at this session
         $existingPost = Post::where('user_id', Auth::user()->id)
             ->where('date', $request->input('date'))
             ->where('time', $request->input('time'))
@@ -65,7 +69,7 @@ class PostController extends Controller
             return redirect()->back()->withErrors(['time' => '您在這個時段已經創建一個飯局了']);
         }
 
-
+        //user already join other post at this session
         $date = $request->input('date');
         $time = $request->input('time');
         $joiningPosts = PostUser::where('user_id', Auth::user()->id)->get();

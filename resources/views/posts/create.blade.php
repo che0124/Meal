@@ -25,7 +25,7 @@
 
                         <label for="time" class="form-field-name">時間 :</label>
                         <input type="time" class="time-form-control" id="time" name="time"
-                            value="<?= date('H') . ':00' ?>" step="3600">
+                            value="<?= date('H:00', strtotime('+1 hour')) . ':00' ?>" step="3600">
                     </div>
 
                     <div class="form-item-textarea">
