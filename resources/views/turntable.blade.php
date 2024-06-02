@@ -20,7 +20,7 @@
             <div>
                 <ul id="food-list">
                     <li class="food-item" id="food-1">1. 火鍋
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/hotpot.svg" alt="火鍋" height="90%" width="50px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/hotpot.svg" alt="火鍋" height="90px" width="50px">
                     </li>
                     <li class="food-item" id="food-2">2. 拉麵
                         <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/ramen.svg" alt="拉麵" height="90px" width="90px">
@@ -48,7 +48,7 @@
                         <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/sukiyaki.svg" alt="壽喜燒">
                     </li>
                     <li class="food-item" id="food-9">9. 鐵板燒
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/teppanyaki.svg" alt="鐵板燒" height="82px" width="85px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/teppanyaki.svg" alt="鐵板燒" height="80px" width="85px">
                     </li>
                     <li class="food-item" id="food-10">10. 義大利麵
                         <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/pasta.svg" alt="義大利麵" height="92px" width="92px">
