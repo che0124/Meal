@@ -20,38 +20,38 @@
             <div>
                 <ul id="food-list">
                     <li class="food-item" id="food-1">1. 火鍋
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/hotpot.svg" alt="火鍋" height="90%" width="50px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/hotpot.svg" alt="火鍋" height="90px" width="50px">
                     </li>
                     <li class="food-item" id="food-2">2. 拉麵
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/ramen.svg" alt="拉麵" height="90px" width="90px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/ramen.svg" alt="拉麵" height="90px" width="90px">
                     </li>
                     <li class="food-item" id="food-3">3. 漢堡
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/hamburger.svg" alt="漢堡" height="92px" width="92px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/hamburger.svg" alt="漢堡" height="92px" width="92px">
                     </li>
                     <li class="food-item" id="food-4">4. 披薩
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/pizza.svg" alt="披薩" height="92px" width="92px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/pizza.svg" alt="披薩" height="92px" width="92px">
                     </li>
                     <li class="food-item" id="food-5">5. 全家
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/family.svg" alt="全家" height="92px" width="92px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/family.svg" alt="全家" height="92px" width="92px">
                     </li>
                 </ul>
             </div>
             <div>
                 <ul id="food-list">
                     <div class="food-item" id="food-6">6. 壽司
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/sushi.svg" alt="壽司" >
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/sushi.svg" alt="壽司" >
                     </div>
                     <li class="food-item" id="food-7">7. 韓式
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/korea.svg" alt="韓式" height="100%" width="100%">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/korea.svg" alt="韓式" height="100%" width="100%">
                     </li>
                     <li class="food-item" id="food-8">8. 壽喜燒
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/sukiyaki.svg" alt="壽喜燒">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/sukiyaki.svg" alt="壽喜燒">
                     </li>
                     <li class="food-item" id="food-9">9. 鐵板燒
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/teppanyaki.svg" alt="鐵板燒" height="82px" width="85px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/teppanyaki.svg" alt="鐵板燒" height="80px" width="85px">
                     </li>
                     <li class="food-item" id="food-10">10. 義大利麵
-                        <img class="pic" src="http://localhost:8080/Meal/public/images/pasta.svg" alt="義大利麵" height="92px" width="92px">
+                        <img class="pic" src="http://localhost:8080/Meal/public/images/turntable/pasta.svg" alt="義大利麵" height="92px" width="92px">
                     </li>
                 </ul>
             </div>

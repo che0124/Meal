@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Profile;
-use App\Models\Avatar;
 use App\Models\Post;
 use App\Models\PostUser;
+use Carbon\Carbon;
+
+use App\Notifications\MealReminder;
+use App\Notifications\DeletePost;
 
 
 class PostController extends Controller
@@ -18,14 +20,22 @@ class PostController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('zh-tw');
+
         $user = Auth::user();
-        $posts = Post::all();
+        $posts = Post::orderBy('date', 'asc')->orderBy('time', 'asc')->get();
 
         $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
 
+        $timeCreateds = [];
+        foreach ($posts as $post) {
+            $timeCreateds[$post->id] = Carbon::parse($post->created_at)->diffForHumans();
+        }
+
         return view('posts.index', [
             'posts' => $posts,
-            'userPostIds' => $userPostIds
+            'userPostIds' => $userPostIds,
+            'timeCreateds' => $timeCreateds
         ]);
     }
 
@@ -34,10 +44,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        if (is_null(Auth::user())) {
-            return redirect(route('login'));
-        }
-
         return view('posts.create');
     }
 
@@ -46,6 +52,34 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $now = Carbon::now();
+        $postDatetime = Carbon::create($request->date . $request->time)->setTimezone('Asia/Taipei');
+
+        if ($postDatetime <= $now) {
+            return redirect()->back()->withErrors(['time' => '不可輸入過去的時間']);
+        }
+
+        //user already create a post at this session
+        $existingPost = Post::where('user_id', Auth::user()->id)
+            ->where('date', $request->input('date'))
+            ->where('time', $request->input('time'))
+            ->first();
+
+        if ($existingPost) {
+            return redirect()->back()->withErrors(['time' => '您在這個時段已經創建一個飯局了']);
+        }
+
+        //user already join other post at this session
+        $date = $request->input('date');
+        $time = $request->input('time');
+        $joiningPosts = PostUser::where('user_id', Auth::user()->id)->get();
+        foreach ($joiningPosts as $joiningPost) {
+            $joinPost = $joiningPost->post;
+            if ($joinPost->date == $date && $joinPost->time == $time) {
+                return redirect()->back()->withErrors(['time' => '您在這個時段已參加一個飯局了']);
+            }
+        }
+
         $post = new Post;
         $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
@@ -69,6 +103,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $exist = PostUser::where('user_id', Auth::user()->id)->where('post_id', $post->id)->exists();
+        $postOwner = Post::where('user_id', Auth::user()->id)->where('id', $post->id)->exists();
+
         $post_users = PostUser::where('post_id', $post->id)->get();
 
         $avatars = [];
@@ -76,7 +112,7 @@ class PostController extends Controller
             $user = User::find($postUser->user_id);
             $avatars[] = $user->profile->avatar;
         }
-        return view('posts.show', ['post' => $post, 'exist' => $exist, 'avatars' => $avatars]);
+        return view('posts.show', ['post' => $post, 'exist' => $exist, 'postOwner' => $postOwner, 'avatars' => $avatars]);
     }
 
     /**
@@ -84,6 +120,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (Auth::id() !== $post->user_id) {
+            return redirect()->route('posts.show', ['post' => $post]);
+        }
         return view('posts.edit', ['post' => $post]);
     }
 
@@ -107,8 +146,56 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        if (auth()->user()->id === $post->user_id) {
 
-        return redirect(route('posts.index'));
+            $post_users = PostUser::where('post_id', $post->id)->get();
+            foreach ($post_users as $post_user) {
+                $user = User::find($post_user->user_id);
+                $user->notify(new DeletePost($post));
+            }
+            $post->delete();
+        }
+
+        return redirect(route('/'));
+    }
+
+    public function notifyUsersBeforeEvent()
+    {
+        $now = Carbon::now();
+        $oneHourFromNow = $now->copy()->addHour();
+
+
+        $currentDate = $now->toDateString();
+        $currentTime = $now->toTimeString();
+        $oneHourFromNowDate = $oneHourFromNow->toDateString();
+        $oneHourFromNowTime = $oneHourFromNow->toTimeString();
+
+        $eventsToday = Post::where('date', $currentDate)
+            ->whereBetween('time', [$currentTime, '23:59:59'])
+            ->get();
+
+        $eventsNextDay = Post::where('date', $oneHourFromNowDate)
+            ->whereBetween('time', ['00:00:00', $oneHourFromNowTime])
+            ->get();
+
+        $posts = $eventsToday->merge($eventsNextDay);
+
+        foreach ($posts as $post) {
+            $post_users = PostUser::where('post_id', $post->id)->get();
+            foreach ($post_users as $post_user) {
+                $user = User::find($post_user->user_id);
+                $user->notify(new MealReminder($post));
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    public function endPost(Request $request)
+    {
+        $post = Post::find($request->post_id);
+        $post->status = 2;
+        $post->save();
+        return redirect(route('/'));
     }
 }

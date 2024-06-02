@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
-use App\Models\Avatar;
-use App\Models\User;
+use App\Models\Post;
+use App\Models\PostUser;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -15,7 +17,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profiles.index', ['profiles' => User::cursor()]);
     }
 
     /**
@@ -78,6 +79,18 @@ class ProfileController extends Controller
         return redirect(route('profiles.show', ['profile' => $profile]));
     }
 
+    public function postUsers($post)
+    {
+        $post = Post::find($post);
+        $post_users = PostUser::where('post_id', $post->id)->get();
+        $profiles = [];
+        foreach ($post_users as $post_user) {
+            $profiles[] = $post_user->user;
+        }
+        return view('profiles.postUsers', ['profiles' => $profiles]);
+    }
+
+
     public function avatar(Request $request)
     {
         $imagePath = time();
@@ -90,6 +103,15 @@ class ProfileController extends Controller
         return redirect()->route('profiles.show', ['profile' => $profile]);
     }
 
+    public function removeAvatar()
+    {
+        $user = Auth::user();
+        Storage::delete($user->profile->avatar->image);
+        $user->profile->avatar->image = NUll;
+        $user->profile->avatar->save();
+
+        return redirect()->back();
+    }
 
     /**
      * Remove the specified resource from storage.

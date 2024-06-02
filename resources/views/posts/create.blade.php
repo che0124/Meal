@@ -5,36 +5,48 @@
         <h1 class="page-title">創建飯局</h1>
 
         <div class="form">
-            <form action="{{ route('posts.store') }}" method="POST">
-                @csrf
-                <div class="form-item">
-                    <label for="title" class="form-field-name">標題 :</label>
-                    <input type="text" class="form-control" name="title" id="title" required />
-                </div>
+            <div class="form-container">
+                <form action="{{ route('posts.store') }}" method="POST">
+                    @csrf
+                    <div class="form-item">
+                        <label for="title" class="form-field-name">標題 :</label>
+                        <input type="text" class="form-control" name="title" id="title" required />
+                    </div>
 
-                <div class="form-item">
-                    <label for="restaurant" class="form-field-name">餐廳 :</label>
-                    <input type="text" class="form-control" name="restaurant" id="restaurant" required />
-                </div>
+                    <div class="form-item">
+                        <label for="restaurant" class="form-field-name">餐廳 :</label>
+                        <input type="text" class="form-control" name="restaurant" id="restaurant" required />
+                    </div>
 
 
-                <div class="form-item">
-                    <label for="date" class="form-field-name">日期 :</label>
-                    <input type="date" class="time-form-control" name="date" />
-                    <label for="time" class="form-field-name">時間 :</label>
-                    <input type="time" class="time-form-control" id="time" name="time"
-                        value="<?= date('H') . ':00' ?>">
-                </div>
+                    <div class="form-item">
+                        <label for="date" class="form-field-name">日期 :</label>
+                        <input type="date" class="time-form-control" name="date" value="<?= date('Y-m-d') ?>" />
 
-                <div class="form-item-textarea">
-                    <label class="form-name-textarea">備註 :</label>
-                    <textarea name="content" class="form-control-textarea" style="resize: none;"></textarea>
-                </div>
+                        <label for="time" class="form-field-name">時間 :</label>
+                        <input type="time" class="time-form-control" id="time" name="time"
+                            value="<?= date('H:00', strtotime('+1 hour')) . ':00' ?>" step="3600">
+                    </div>
 
-                <div class="form-item-btn">
-                    <input class="btn-primary" type="submit" value="送出" />
-                </div>
-            </form>
+                    <div class="form-item-textarea">
+                        <label class="form-name-textarea">備註 :</label>
+                        <textarea name="content" class="form-control-textarea" style="resize: none;"></textarea>
+                    </div>
+                    @if ($errors->any())
+                        <div class="error-msg">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li class="error">{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <div class="form-item-btn">
+                        <input class="btn-primary" type="submit" value="送出" />
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection
@@ -65,7 +77,7 @@
                     </svg>`;
 
                 var navLinks = document.querySelectorAll('.nav-link');
-                navLinks.forEach(function(link){
+                navLinks.forEach(function(link) {
                     link.addEventListener('click', function() {
                         createSVG.innerHTML = `
                         <svg aria-label="新貼文" id="createSVG" fill="currentColor" height="24" role="img"

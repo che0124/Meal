@@ -5,7 +5,11 @@
         <div class="profile">
             <div class="profile-avatar">
                 <div class="avatar">
-                    <img src="{{ asset('storage/' . $profile->avatar->image) }}">
+                    @if ($profile->avatar->image)
+                        <img src="{{ asset('storage/' . $profile->avatar->image) }}">
+                    @else
+                        <img src="http://localhost:8080/Meal/public/images/user/user.png">
+                    @endif
                 </div>
             </div>
             <div class="profile-item-container">
@@ -49,11 +53,11 @@
                 <div class="profile-item">
                     <span class="profile-title">加入日期 ：{{ $user->created_at->format('M d, Y') }}</span>
                 </div>
-                
+
                 @if ($profile->user == Auth::user())
-                <div class="profile-item">
-                    <a class="profile-link" href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}">編輯個人檔案</a>
-                </div>
+                    <div class="profile-item">
+                        <a class="profile-link" href="{{ route('profiles.edit', ['profile' => Auth::user()]) }}">編輯個人檔案</a>
+                    </div>
                 @endif
             </div>
         </div>
