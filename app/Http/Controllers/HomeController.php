@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\PostUser;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -27,9 +29,48 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now();
+        $currentDate = $now->toDateString();
+        $currentTime = $now->toTimeString();
+
+        //user create post
+        $postCreates = Post::where('user_id', Auth::user()->id)
+            ->where('date', '>', $currentDate)
+            ->where('time', '>', $currentTime)
+            ->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
+        $postCreateIds = $postCreates->pluck('id')->toArray();
+
+        //user join post
+        $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
+        $postJoins = [];
+
+        $postRunnings = [];
+
+        foreach ($userJoinIds as $userJoinId) {
+            //post running
+            $post = $userJoinId->post;
+            $postDatetime = Carbon::create($post->date . $post->time)->setTimezone('Asia/Taipei');
+            if ($postDatetime <= $now && $post->status == 1) {
+                $postRunnings[] = $post;
+            }
+            //except user create post
+            if (!in_array($userJoinId->post_id, $postCreateIds)) {
+                if ($postDatetime > $now) {
+                    $postJoins[] = $userJoinId->post;
+                }
+            }
+        }
+        //postJoins sort by date and time
+        usort($postJoins, function ($a, $b) {
+            $dateComparison = strcmp($a->date, $b->date);
+            if ($dateComparison == 0) {
+                return strcmp($a->time, $b->time);
+            }
+            return $dateComparison;
+        });
+
+        //user's avatar in the post and post running
         $posts = Post::all();
-        
-        $postCreates = Post::where('user_id', Auth::user()->id)->get();
         $avatars = [];
         foreach ($posts as $post) {
             $postUsers = PostUser::where('post_id', $post->id)->get();
@@ -38,15 +79,9 @@ class HomeController extends Controller
                 $avatars[$post->id][] = $user->profile->avatar;
             }
         }
-
-        $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
-        $postJoins = [];
-        foreach($userJoinIds as $userJoinId){
-            $postJoins[] = $userJoinId->post;
-        }
-
         return view('home', [
             'posts' => $posts,
+            'postRunnings' => $postRunnings,
             'postCreates' => $postCreates,
             'postJoins' => $postJoins,
             'avatars' => $avatars,

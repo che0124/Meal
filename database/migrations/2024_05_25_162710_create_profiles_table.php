@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('username')->nullable();
             $table->enum('gender', ['男', '女', '其他'])->nullable();
-            $table->date('birthday')->nullable();
+            $table->string('birthday', 10)->nullable();
             $table->text('bio', 100)->nullable();
             $table->string('profile_picture')->nullable();
             $table->timestamps();
