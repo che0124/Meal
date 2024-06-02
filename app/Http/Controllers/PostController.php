@@ -21,11 +21,24 @@ class PostController extends Controller
     public function index()
     {
         Carbon::setLocale('zh-tw');
+        $now = Carbon::now();
 
         $user = Auth::user();
         $posts = Post::orderBy('date', 'asc')->orderBy('time', 'asc')->get();
+        $participatedPostIds = PostUser::where('user_id', $user->id)
+            ->pluck('post_id');
 
-        $userPostIds = PostUser::where('user_id', $user->id)->pluck('post_id')->toArray();
+        // 获取所有当前用户没有参加的饭局信息
+        $postIds = Post::whereNotIn('id', $participatedPostIds)
+            ->get();
+
+        $postLists = [];
+        foreach ($postIds as $post) {
+            $postDatetime = Carbon::create($post->date . $post->time)->setTimezone('Asia/Taipei');
+            if ($postDatetime > $now && $post->status == 1) {
+                $postLists[] = $post;
+            }
+        }
 
         $timeCreateds = [];
         foreach ($posts as $post) {
@@ -34,7 +47,7 @@ class PostController extends Controller
 
         return view('posts.index', [
             'posts' => $posts,
-            'userPostIds' => $userPostIds,
+            'postLists' => $postLists,
             'timeCreateds' => $timeCreateds
         ]);
     }
@@ -79,7 +92,6 @@ class PostController extends Controller
                 return redirect()->back()->withErrors(['time' => '您在這個時段已參加一個飯局了']);
             }
         }
-
         $post = new Post;
         $post->title = $request->input('title');
         $post->restaurant = $request->input('restaurant');
@@ -132,8 +144,8 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $post->restaurant = $request->input('restaurant');
+        $post->date = $request->input('date');  
         $post->time = $request->input('time');
-        $post->date = $request->input('date');
         $post->content = $request->input('content');
         $post->save();
 

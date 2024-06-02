@@ -40,8 +40,8 @@
         @endif
 
         <h1 class="page-title">創建的飯局</h1>
-        @if ($postCreates->count() > 0)
-            @foreach ($postCreates as $post)
+        @if ($userCreates != [])
+            @foreach ($userCreates as $post)
                 <div class="post">
                     <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
                     <div class="avatarShow-container">
