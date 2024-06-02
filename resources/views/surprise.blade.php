@@ -24,6 +24,7 @@
             width: 100%;
             height: 100vh;
             background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -35,13 +36,16 @@
             width: 100%;
             height: 100vh;
             z-index: 2;
+            z-index: 2;
         }
 
         .back {
             display: flex;
             flex-direction: column;
             align-items: center;
+            
             overflow: hidden;
+                background: #fef8f2;
             background: #fef8f2;
             width: 400px;
             height: 450px;

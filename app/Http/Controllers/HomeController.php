@@ -30,16 +30,22 @@ class HomeController extends Controller
     public function index()
     {
         $now = Carbon::now();
-        $currentDate = $now->toDateString();
-        $currentTime = $now->toTimeString();
 
         //user create post
         $postCreates = Post::where('user_id', Auth::user()->id)
-            ->where('date', '>', $currentDate)
-            ->where('time', '>', $currentTime)
-            ->orderBy('date', 'asc')->orderBy('time', 'asc')->get();
-        $postCreateIds = $postCreates->pluck('id')->toArray();
+            ->orderBy('date', 'asc')
+            ->orderBy('time', 'asc')
+            ->get();
 
+        $userCreates = [];
+        foreach($postCreates as $postCreate){
+            $postDatetime = Carbon::create($postCreate->date . $postCreate->time)->setTimezone('Asia/Taipei');
+            if ($postDatetime > $now && $postCreate->status == 1) {
+                $userCreates[] = $postCreate;
+            }
+        }
+        // dd($userCreates);
+        $postCreateIds = $postCreates->pluck('id')->toArray();
         //user join post
         $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
         $postJoins = [];
@@ -60,6 +66,7 @@ class HomeController extends Controller
                 }
             }
         }
+        // dd($postJoins);
         //postJoins sort by date and time
         usort($postJoins, function ($a, $b) {
             $dateComparison = strcmp($a->date, $b->date);
@@ -82,7 +89,7 @@ class HomeController extends Controller
         return view('home', [
             'posts' => $posts,
             'postRunnings' => $postRunnings,
-            'postCreates' => $postCreates,
+            'userCreates' => $userCreates,
             'postJoins' => $postJoins,
             'avatars' => $avatars,
         ]);

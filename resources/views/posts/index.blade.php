@@ -129,8 +129,7 @@
                     </div>
                 </div>
                 <div class="all-posts">
-                    @foreach ($posts as $post)
-                        @if (!in_array($post->id, $userPostIds))
+                    @foreach ($postLists as $post)
                             <a class="post-link" href="{{ route('posts.show', ['post' => $post]) }}">
                                 <div class="post-container">
                                     <div class="post-title">
@@ -149,7 +148,6 @@
                                     </div>
                                 </div>
                             </a>
-                        @endif
                     @endforeach
                 </div>
             </div>
