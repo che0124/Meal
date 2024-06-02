@@ -27,9 +27,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        
+        //user create post
         $postCreates = Post::where('user_id', Auth::user()->id)->get();
+        $postCreateIds = $postCreates->pluck('id')->toArray();
+
+        //user join post
+        $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
+        $postJoins = [];
+        foreach ($userJoinIds as $userJoinId) {
+            //except user create post
+            if (!in_array($userJoinId->post_id, $postCreateIds)) {
+                $postJoins[] = $userJoinId->post;
+            }
+        }
+
+        //user's avatar in the post
+        $posts = Post::all();
         $avatars = [];
         foreach ($posts as $post) {
             $postUsers = PostUser::where('post_id', $post->id)->get();
@@ -38,13 +51,6 @@ class HomeController extends Controller
                 $avatars[$post->id][] = $user->profile->avatar;
             }
         }
-
-        $userJoinIds = PostUser::where('user_id', Auth::user()->id)->get();
-        $postJoins = [];
-        foreach($userJoinIds as $userJoinId){
-            $postJoins[] = $userJoinId->post;
-        }
-
         return view('home', [
             'posts' => $posts,
             'postCreates' => $postCreates,

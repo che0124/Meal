@@ -21,7 +21,7 @@
             <div class="navbar">
                 <!--Logo-->
                 <div class="nav-brand">
-                    <a class="nav-link-brand" href="{{ url('/') }}">
+                    <a class="nav-link-brand" href="{{ route('/') }}">
                         <img id="logo" src="http://localhost:8080/Meal/public/images/logo.svg" height="40px"
                             width="100px">
                     </a>
@@ -30,7 +30,7 @@
                 <div class="nav-item-list">
                     <!-- 首頁 -->
                     <div class="nav-item">
-                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">
+                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('/') }}">
                             <div class="nav-link-icon-title">
                                 <div class="nav-link-icon">
                                     <svg aria-label="首頁" id="homeSVG" fill="currentColor" height="24"

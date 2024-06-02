@@ -35,15 +35,15 @@
             @endforeach
         @else
             <div class="post">
-                <a class="link" href="{{ route('posts.create') }}">{{ __('去創建飯局吧!') }}</a>
+                <a class="link" href="{{ route('posts.create') }}">{{ __('點我創建飯局吧!') }}</a>
             </div>
         @endif
 
         <h1 class="page-title">參加的飯局</h1>
-        @if ($postCreates->count() > 0)
+        @if ($postJoins != [])
             @foreach ($postJoins as $post)
                 <div class="post">
-                    <a class="link" href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
+                    <a class="link" href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                     <div class="avatarShow-container">
                         <div class="avatarShow-time">
                             <span>{{ $post->date }} {{ $post->time }}</span>
@@ -56,11 +56,9 @@
                                             <div class="avatarShow"
                                                 style="transform: translate({{ -($index * 20) }}px); z-index: {{ $index + 1 }}; right: 0;">
                                                 @if ($avatar->image)
-                                                    <img class="user-avatar"
-                                                        src="{{ asset('storage/' . $avatar->image) }}">
+                                                    <img class="user-avatar" src="{{ asset('storage/' . $avatar->image) }}">
                                                 @else
-                                                    <img class="user-avatar"
-                                                        src="http://localhost:8080/Meal/public/images/user/user.png">
+                                                    <img class="user-avatar" src="http://localhost:8080/Meal/public/images/user/user.png">
                                                 @endif
                                             </div>
                                         @endif
@@ -73,7 +71,7 @@
             @endforeach
         @else
             <div class="post">
-                <a class="link" href="{{ route('posts.index') }}">{{ __('去參加飯局吧!') }}</a>
+                <a class="link" href="{{ route('posts.index') }}">{{ __('點我參加飯局吧!') }}</a>
             </div>
         @endif
     </div>

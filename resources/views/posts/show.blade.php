@@ -149,7 +149,7 @@
             <div class="background"></div>
             <div class="overlay"></div>
             <div class="post-data-container">
-                @if (!$exist)
+                @if ($postOwner)
                     <div class="post-edit">
                         <a href="{{ route('posts.edit', ['post' => $post]) }}" class="edit-btn">
                             <span>編輯</span>
@@ -185,8 +185,13 @@
                                                 @if ($index < 3)
                                                     <div class="avatarShow show"
                                                         style="transform: translate({{ $index * 20 }}px); z-index: {{ $index + 1 }}; left: 0;">
-                                                        <img class="user-avatar"
-                                                            src="{{ asset('storage/' . $avatar->image) }}">
+                                                        @if ($avatar->image)
+                                                            <img class="user-avatar"
+                                                                src="{{ asset('storage/' . $avatar->image) }}">
+                                                        @else
+                                                            <img class="user-avatar"
+                                                                src="http://localhost:8080/Meal/public/images/user/user.png">
+                                                        @endif
                                                     </div>
                                                 @endif
                                             @endforeach
@@ -207,6 +212,17 @@
                     </form>
                 @else
                     <div class="eat"><span>已參加此飯局!</span></div>
+                @endif
+
+                <!-- error msg -->
+                @if ($errors->any())
+                    <div class="error-msg">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="error">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
 
             </div>
