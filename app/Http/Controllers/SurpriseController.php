@@ -25,22 +25,7 @@ class SurpriseController extends Controller
         return view('surprise', ['randomPost' => $randomPost]);
     }
 
-    public function store(Request $request)
-    {    
-        
-        $exist = PostUser::where('user_id', $request->user()->id)->where('post_id', (int)$request->post_id)->exists();
-        
-        $post_user = new PostUser;
-        $post_user->post_id = (int)$request->post_id;
-        $post_user->user_id = $request->user()->id;
-        $post_user->save();
-    
-        
-        return redirect()->route('post.show', ['post' => $request->post_id]);
 
-        
-        
-    }
     
 
     public function show()
